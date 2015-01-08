@@ -1,2 +1,12 @@
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+<%- include doctype.html%>
+<head>
+    <%var head={title:__('homeTitle')};%>
+    <%- include head.html%>
+</head>
+
+<body class="boxed">
+    <div id="wrapper">
+        <%- include header.html%>
+        <%- include footer.html%>
+    </div>
+</body>

@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
+var i18n = require('i18n');
 
 global.ROOT_PATH = __dirname;
 global.DB_CONFIG_FILE = __dirname + '/configs/dbConfig';
@@ -13,6 +14,14 @@ if (/^win/.test(process.platform)) {
 } else {
     global.DATA_PATH = '/lm_data';
 }
+
+i18n.configure({
+    locales : ['en-us', 'zh-cn', 'zh-hk'],
+    defaultLocale : 'en-us',
+    cookie : 'lang',
+    directory : __dirname + '/locales',
+    extension: '.json'
+});
 
 var app = express();
 
@@ -28,6 +37,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(i18n.init);
 
 require(path.join(ROOT_PATH, 'middlewares/route'))(app, {
     verbose : false
