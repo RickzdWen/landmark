@@ -1,4 +1,8 @@
 {
-    "homeTitle" : "Landmark Shop",
-    "hello" : "hello"
+	"homeTitle": "Landmark Shop",
+	"hello": "hello",
+	"shoppingCart": "Shopping Cart",
+    "wishList" : "WisthList",
+    "checkOut" : "CheckOut",
+    "myAccount" : "My Account"
 }

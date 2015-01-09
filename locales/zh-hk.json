@@ -1,3 +1,8 @@
 {
-    "homeTitle" : "首頁"
+    "homeTitle" : "首頁",
+    "emial" : "電郵",
+    "shoppingCart" : "購物車",
+    "wishList" : "收藏",
+    "checkOut" : "結算",
+    "myAccount" : "我的帳號"
 }

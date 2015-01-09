@@ -1,4 +1,8 @@
 {
-    "homeTitle" : "首页",
-    "hello" : "你好"
+	"homeTitle": "首页",
+	"hello": "你好",
+	"shoppingCart": "购物车",
+    "wishList" : "收藏",
+    "checkOut" : "结算",
+    "myAccount" : "我的帐号"
 }

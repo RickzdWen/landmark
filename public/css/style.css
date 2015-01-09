@@ -253,7 +253,10 @@ ul.top-bar-menu li i {
 .fivehundredpx:before,
 .forrst:before,
 .stumbleupon:before,
-.dribbble:before {
+.dribbble:before,
+.qq:before,
+.wechat:before,
+.weibo:before {
 	font-family: "fontello";
 	font-size: 16px;
 	line-height: 16px;
@@ -265,6 +268,12 @@ ul.top-bar-menu li i {
 	transition: all 0.15s ease-in-out;
 	position: absolute;
 	z-index: 20;
+}
+
+.qq:before,
+.wechat:before,
+.weibo:before {
+    font-family: 'FontAwesome';
 }
 
 .the-team a:before { display: none; }
@@ -497,6 +506,27 @@ ul.top-bar-menu li i {
 .instagram:hover { background-color: #3f6f94; }
 .the-team .instagram { background-color: #3f6f94; }
 
+.qq i, .qq:before { margin: 13px 0 0 14px; }
+#top-bar .qq i, #top-bar .qq:before { margin: 11px 0 0 10px; }
+.qq:before { content: "\f1d6"; top: 0; opacity:1; }
+.qq:hover:before { top: 30px; opacity: 0; }
+.qq:hover { background-color: #3D95D5; }
+.the-team .qq { background-color: #3D95D5; }
+
+.wechat i, .wechat:before { margin: 13px 0 0 14px; }
+#top-bar .wechat i, #top-bar .wechat:before { margin: 11px 0 0 11px; }
+.wechat:before { content: "\f1d7"; top: 0; opacity:1; }
+.wechat:hover:before { top: 30px; opacity: 0; }
+.wechat:hover { background-color: #02BB00; }
+.the-team .wechat { background-color: #02BB00; }
+
+.weibo i, .weibo:before { margin: 13px 0 0 14px; }
+#top-bar .weibo i, #top-bar .weibo:before { margin: 11px 0 0 12px; }
+.weibo:before { content: "\f18a"; top: 0; opacity:1; }
+.weibo:hover:before { top: 30px; opacity: 0; }
+.weibo:hover { background-color: #F76D25; }
+.the-team .weibo { background-color: #F76D25; }
+
 
 /* Web Font */
 @font-face {
@@ -523,6 +553,10 @@ ul.top-bar-menu li i {
 	line-height: 16px;
 	font-size: 16px;
 	width: auto;
+}
+
+.social-icons .font-awesome i {
+    font-family: "FontAwesome";
 }
 
 .icon-delicious:before { content: '\23'; } /* '#' */
@@ -557,6 +591,9 @@ ul.top-bar-menu li i {
 .icon-wordpress:before { content: '\77'; } /* 'w' */
 .icon-linkedin-rect:before { content: '\f31b'; } /* '?' */
 .icon-instagram:before { content: '\f31f'; } /* '?' */
+.icon-qq:before { content: '\f1d6'; } /* '?' */
+.icon-wechat:before { content: '\f1d7'; } /* '?' */
+.icon-weibo:before { content: '\f18a'; } /* '?' */
 
 
 /* Skill Bars

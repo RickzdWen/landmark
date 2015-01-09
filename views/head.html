@@ -15,3 +15,11 @@
 <!--[if lt IE 9]>
 <script src="scripts/lib/html5.js"></script>
 <![endif]-->
+
+<script src="/scripts/app/config.js?{version}"></script>
+<script type="text/javascript">
+    _i18n('<%= getLocale()%>');
+    _params({
+        lang : '<%= getLocale()%>'
+    });
+</script>
