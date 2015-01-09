@@ -7,6 +7,32 @@
 <body class="boxed">
     <div id="wrapper">
         <%- include header.html%>
+
+        <!-- Slider
+================================================== -->
+        <div class="container fullwidth-element home-slider">
+
+            <div class="tp-banner-container">
+                <div class="tp-banner">
+                    <ul>
+                        <!-- Slide 1  -->
+                        <%banners.forEach(function(banner){%>
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                            <img src="images/home_banners/<%= banner.id%>.<%= banner.extension%>?v=<%= banner.img_version%>"  alt="<%= banner.title%>"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                            <%if (banner.title){%>
+                            <div class="caption dark sfb fadeout" data-x="145" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+                                <h2><%= banner.title%></h2>
+                                <%if (banner.sub_title){%><h3><%= banner.sub_title%></h3><%}%>
+                                <%if (banner.target && banner.label){%><a href="<%= banner.target%>" <%if (banner.open_new){%>target="_blank"<%}%> class="caption-btn"><%= banner.label%></a><%}%>
+                            </div>
+                            <%}%>
+                        </li>
+                        <%})%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <%- include footer.html%>
     </div>
 </body>

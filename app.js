@@ -39,6 +39,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
 
+app.use(function(req, res, next){
+    var locale = res.getLocale();
+    res.lang = locale.substr(3);
+    next();
+});
+
 require(path.join(ROOT_PATH, 'middlewares/route'))(app, {
     verbose : false
 });

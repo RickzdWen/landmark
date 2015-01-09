@@ -45,6 +45,8 @@ var require = {
     },
     shim : {
         'backbone' : ['jquery', 'underscore'],
-        'lib/jquery.cookie' : ['jquery']
+        'lib/jquery.cookie' : ['jquery'],
+        'lib/jquery.themepunch.plugins.min' : ['jquery'],
+        'lib/jquery.themepunch.revolution.min' : ['jquery', 'lib/jquery.themepunch.plugins.min']
     }
 };
