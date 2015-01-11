@@ -20,7 +20,8 @@ i18n.configure({
     defaultLocale : 'en-us',
     cookie : 'lang',
     directory : __dirname + '/locales',
-    extension: '.json'
+    extension: '.json',
+    objectNotation : true
 });
 
 var app = express();
@@ -31,7 +32,7 @@ app.engine('.html', ejs.__express);
 app.set('view engine', 'html');// app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,6 +43,13 @@ app.use(i18n.init);
 app.use(function(req, res, next){
     var locale = res.getLocale();
     res.lang = locale.substr(3);
+    res.successJson = function(json){
+        res.json({
+            code : 0,
+            message : '',
+            data : json
+        });
+    };
     next();
 });
 

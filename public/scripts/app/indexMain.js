@@ -3,9 +3,12 @@
  */
 
 require([
+    'domReady!',
+    'jquery',
     'lib/jquery.themepunch.revolution.min',
+    'lib/jquery.themepunch.showbizpro.min',
     'app/common/commonRun'
-], function(){
+], function(doc, $){
     // Revolution Slider
     //----------------------------------------//
 
@@ -21,5 +24,33 @@ require([
         soloArrowLeftVOffset:0,
         soloArrowRightHOffset:0,
         soloArrowRightVOffset:0
+    });
+
+    // ShowBiz Carousel
+    //----------------------------------------//
+    $('#new-arrivals').showbizpro({
+        dragAndScroll:"off",
+        visibleElementsArray:[4,4,3,1],
+        carousel:"off",
+        entrySizeOffset:0,
+        allEntryAtOnce:"off",
+        rewindFromEnd:"off",
+        autoPlay:"off",
+        delay:2000,
+        speed:400,
+        easing:'Back.easeOut'
+    });
+
+    $('#special-offers').showbizpro({
+        dragAndScroll:"off",
+        visibleElementsArray:[4,4,3,1],
+        carousel:"off",
+        entrySizeOffset:0,
+        allEntryAtOnce:"off",
+        rewindFromEnd:"off",
+        autoPlay:"off",
+        delay:2000,
+        speed:400,
+        easing:'Back.easeOut'
     });
 });

@@ -6,6 +6,7 @@
 
 <body class="boxed">
     <div id="wrapper">
+        <%var header={nav:'home'};%>
         <%- include header.html%>
 
         <!-- Slider
@@ -16,12 +17,12 @@
                 <div class="tp-banner">
                     <ul>
                         <!-- Slide 1  -->
-                        <%banners.forEach(function(banner){%>
-                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                        <%banners.forEach(function(banner, index){%>
+                        <li data-transition="<%if(index%3==0){%>fade<%}else if(index%3==1){%>zoomout<%}else{%>fadetotopfadefrombottom<%}%>" data-slotamount="7" data-masterspeed="1500" >
                             <img src="images/home_banners/<%= banner.id%>.<%= banner.extension%>?v=<%= banner.img_version%>"  alt="<%= banner.title%>"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <%if (banner.title){%>
-                            <div class="caption dark sfb fadeout" data-x="145" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
-                                <h2><%= banner.title%></h2>
+                            <%if (banner.title || banner.sub_title || (banner.target && banner.label)){%>
+                            <div class="caption dark sfb fadeout" data-x="<%= banner.coordx%>" data-y="<%= banner.coordy%>" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+                                <%if (banner.title){%><h2><%= banner.title%></h2><%}%>
                                 <%if (banner.sub_title){%><h3><%= banner.sub_title%></h3><%}%>
                                 <%if (banner.target && banner.label){%><a href="<%= banner.target%>" <%if (banner.open_new){%>target="_blank"<%}%> class="caption-btn"><%= banner.label%></a><%}%>
                             </div>
@@ -31,6 +32,123 @@
                     </ul>
                 </div>
             </div>
+        </div>
+
+        <!-- New Arrivals
+================================================== -->
+        <div class="container">
+
+            <!-- Headline -->
+            <div class="sixteen columns">
+                <h3 class="headline"><%= __('newArrivals')%></h3>
+                <span class="line margin-bottom-0"></span>
+            </div>
+
+            <!-- Carousel -->
+            <div id="new-arrivals" class="showbiz-container sixteen columns" >
+
+                <!-- Navigation -->
+                <div class="showbiz-navigation">
+                    <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+                    <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <!-- Products -->
+                <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+                    <div class="overflowholder">
+
+                        <ul>
+
+                            <!-- Product #1 -->
+                            <%products.forEach(function(product){%>
+                            <li>
+                                <figure class="product">
+                                    <div class="">
+                                        <a href="variable-product-page.html">
+                                            <img alt="" style="height: 360px;margin: auto;" src="images/products/<%= product.id%>.jpg?v=<%= product.img_version%>">
+                                            <!--<div class="cover">
+                                                <img alt="" src="images/products/<%= product.id%>.jpg?v=<%= product.img_version%>">
+                                            </div>-->
+                                        </a>
+                                        <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
+                                    </div>
+
+                                    <a href="variable-product-page.html">
+                                        <section>
+                                            <span class="product-category"><%= product.brand%></span>
+                                            <h5><%= product.name%></h5>
+                                            <span class="product-price">$<%= product.price%></span>
+                                        </section>
+                                    </a>
+                                </figure>
+                            </li>
+                            <%});%>
+                        </ul>
+                        <div class="clearfix"></div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Latest Special Offers
+================================================== -->
+        <div class="container">
+
+            <!-- Headline -->
+            <div class="sixteen columns">
+                <h3 class="headline"><%= __('latestSpecialOffers')%></h3>
+                <span class="line margin-bottom-0"></span>
+            </div>
+
+            <!-- Carousel -->
+            <div id="special-offers" class="showbiz-container sixteen columns" >
+
+                <!-- Navigation -->
+                <div class="showbiz-navigation">
+                    <div id="showbiz_left_2" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+                    <div id="showbiz_right_2" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <!-- Products -->
+                <div class="showbiz" data-left="#showbiz_left_2" data-right="#showbiz_right_2" data-play="#showbiz_play_2" >
+                    <div class="overflowholder">
+
+                        <ul>
+
+                            <!-- Product #1 -->
+                            <%offers.forEach(function(offer){%>
+                            <li>
+                                <figure class="product">
+                                    <div class="">
+                                        <a href="variable-product-page.html">
+                                            <img alt="" style="height: 125px;margin: auto;" src="images/special_offers/<%= offer.id%>.jpg?v=<%= offer.img_version%>">
+                                        </a>
+                                        <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
+                                    </div>
+
+                                    <a href="variable-product-page.html">
+                                        <section>
+                                            <h6><%= offer.title%></h6>
+                                            <span class="product-price">$<%= offer.price%></span>
+                                        </section>
+                                    </a>
+                                </figure>
+                            </li>
+                            <%});%>
+
+                        </ul>
+                        <div class="clearfix"></div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
         </div>
 
         <%- include footer.html%>

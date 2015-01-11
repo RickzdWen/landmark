@@ -67,7 +67,7 @@
 
     <!-- Logo -->
     <div class="four columns">
-        <div id="logo">
+        <div id="logo" style="margin-top: 18px;">
             <h1><a href="index.html"><img src="images/logo.png" alt="Trizzy" /></a></h1>
         </div>
     </div>
@@ -79,7 +79,7 @@
             <ul>
                 <li><a href="#"><%= __('shoppingCart')%></a></li>
                 <li><a href="#"><%= __('wishList')%> <span>(0)</span></a></li>
-                <li><a href="#"><%= __('checkOut')%></a></li>
+                <!--<li><a href="#"><%= __('checkOut')%></a></li>-->
                 <li><a href="#"><%= __('myAccount')%></a></li>
             </ul>
         </div>
@@ -96,7 +96,7 @@
                 <a href="#" class="button adc">$178.00</a>
             </div>
 
-            <div class="cart-list">
+            <!--<div class="cart-list">
 
                 <div class="arrow"></div>
 
@@ -127,7 +127,7 @@
                 <div class="clearfix">
 
                 </div>
-            </div>
+            </div>-->
 
         </div>
 
@@ -135,7 +135,7 @@
         <nav class="top-search">
             <form action="#" method="get">
                 <button><i class="fa fa-search"></i></button>
-                <input class="search-field" type="text" placeholder="Search" value="">
+                <input class="search-field" type="text" placeholder="<%= __('search')%>" value="">
             </form>
         </nav>
 
@@ -154,17 +154,14 @@
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-                <li><a href="index.html" class="current homepage" id="current">Home</a></li>
+                <li><a href="/" class="homepage <%if (header.nav=='home'){%>current<%}%>" title="<%= __('home')%>">Home</a></li>
 
                 <li class="dropdown">
-                    <a href="#">Shop</a>
+                    <a href="#" <%if (header.nav=='products'){%>class="current"<%}%>><%= __('product.other')%></a>
                     <ul>
-                        <li><a href="shop-with-sidebar.html">Shop With Sidebar</a></li>
-                        <li><a href="shop-full-width.html">Shop Full Width</a></li>
-                        <li><a href="shop-categories-grid.html">Categories Grid</a></li>
-                        <li><a href="single-product-page.html">Single Product Page</a></li>
-                        <li><a href="variable-product-page.html">Variable Product Page</a></li>
-                        <li><a href="shopping-cart.html">Shopping Cart</a></li>
+                        <li><a href="/products"><%= __('allProducts')%></a></li>
+                        <li><a href="/products/special_offers"><%= __('allSpecialOffers')%></a></li>
+                        <li><a href="/products/sales"><%= __('allSales')%></a></li>
                     </ul>
                 </li>
 

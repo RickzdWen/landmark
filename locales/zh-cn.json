@@ -1,8 +1,37 @@
 {
-	"homeTitle": "首页",
+	"home": "首页",
+	"homeTitle": "Landmark商城",
 	"hello": "你好",
 	"shoppingCart": "购物车",
-    "wishList" : "收藏",
-    "checkOut" : "结算",
-    "myAccount" : "我的帐号"
+	"wishList": "收藏",
+	"checkOut": "结算",
+	"myAccount": "我的帐号",
+	"newArrivals": "新品推介",
+	"addToCart": "加入购物车",
+	"search": "搜索",
+	"product": {
+        "one" : "产品",
+        "other" : "产品",
+        "all" : "所有产品"
+    },
+	"latestSpecialOffers": "最新优惠",
+	"allProducts": "所有产品",
+	"allSpecialOffers": "所有优惠",
+	"allSales": "所有销售品",
+	"all": "所有",
+	"brand": {
+		"one": "品牌",
+		"other": "品牌"
+	},
+    "price" : "价格",
+    "filter" : "过滤",
+    "filterByPrice" : "价格过滤",
+    "defaultSorting" : "默认排序",
+    "sortByPriceAsc" : "按价格升序排序",
+    "sortByPriceDesc" : "按价格降序排序",
+    "pagination" : {
+        "prev" : "上一页",
+        "next" : "下一页"
+    },
+    "productPageSubTitle" : "你能找到你想要的！"
 }

@@ -36,7 +36,6 @@ var require = {
     paths : {
         jquery : 'lib/jquery',
         backbone : 'lib/backbone',
-        underscore : 'lib/underscore',
         moment : 'lib/moment',
         numeral : 'lib/numeral',
         domReady : 'lib/domReady',
@@ -44,9 +43,24 @@ var require = {
         i18n : 'lib/i18n'
     },
     shim : {
-        'backbone' : ['jquery', 'underscore'],
+        'lib/underscore' : {
+            init:function(){
+                this._.templateSettings = {
+                    evaluate:    /\{%([\s\S]+?)%\}/g,
+                    interpolate: /\{%=([\s\S]+?)%\}/g,
+                    escape: /\{%-([\s\S]+?)%\}/g
+                };
+                return this._;
+            }
+        },
+        'backbone' : ['jquery', 'lib/underscore'],
         'lib/jquery.cookie' : ['jquery'],
         'lib/jquery.themepunch.plugins.min' : ['jquery'],
-        'lib/jquery.themepunch.revolution.min' : ['jquery', 'lib/jquery.themepunch.plugins.min']
+        'lib/jquery.themepunch.revolution.min' : ['jquery', 'lib/jquery.themepunch.plugins.min'],
+        'lib/jquery.themepunch.showbizpro.min' : ['jquery', 'lib/jquery.themepunch.plugins.min'],
+        'lib/jquery.selectric.min' : ['jquery'],
+        'lib/jquery.pricefilter' : ['jquery'],
+        'lib/jquery.pureparallax' : ['jquery'],
+        'lib/superfish' : ['jquery']
     }
 };

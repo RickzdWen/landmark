@@ -1,8 +1,37 @@
 {
-    "homeTitle" : "首頁",
-    "emial" : "電郵",
-    "shoppingCart" : "購物車",
-    "wishList" : "收藏",
-    "checkOut" : "結算",
-    "myAccount" : "我的帳號"
+	"home": "首頁",
+	"homeTitle": "Landmark商城",
+	"emial": "電郵",
+	"shoppingCart": "購物車",
+	"wishList": "收藏",
+	"checkOut": "結算",
+	"myAccount": "我的帳號",
+	"newArrivals": "新品推介",
+	"addToCart": "加入購物車",
+	"search": "搜尋",
+	"product": {
+        "one" : "產品",
+        "other" : "產品",
+        "all" : "所有產品"
+    },
+	"latestSpecialOffers": "最新優惠",
+	"allProducts": "所有產品",
+	"allSpecialOffers": "所有優惠",
+	"allSales": "所有銷售品",
+	"all": "所有",
+	"brand": {
+        "one": "品牌",
+        "other": "品牌"
+    },
+    "price" : "價格",
+    "filter" : "過濾",
+    "filterByPrice" : "價格過濾",
+    "defaultSorting" : "默認排序",
+    "sortByPriceAsc" : "按價格升序排序",
+    "sortByPriceDesc" : "按價格降序排序",
+    "pagination" : {
+        "prev" : "上一頁",
+        "next" : "下一頁"
+    },
+    "productPageSubTitle" : "你能搵到你想要嘅！"
 }

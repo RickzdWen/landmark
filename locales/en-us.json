@@ -1,8 +1,37 @@
 {
+	"home": "Home",
 	"homeTitle": "Landmark Shop",
 	"hello": "hello",
 	"shoppingCart": "Shopping Cart",
-    "wishList" : "WisthList",
-    "checkOut" : "CheckOut",
-    "myAccount" : "My Account"
+	"wishList": "WisthList",
+	"checkOut": "CheckOut",
+	"myAccount": "My Account",
+	"newArrivals": "New Arrivals",
+	"addToCart": "Add To Cart",
+	"search": "Search",
+	"product": {
+		"one": "Product",
+		"other": "Product",
+        "all" : "All Products"
+	},
+	"latestSpecialOffers": "Latest Special Offers",
+	"allProducts": "All Products",
+	"allSpecialOffers": "All Special Offers",
+	"allSales": "All Sales",
+	"all": "All",
+	"brand": {
+		"one": "Brand",
+		"other": "Brands"
+	},
+    "price" : "Price",
+    "filter" : "Filter",
+    "filterByPrice" : "Filter By Price",
+    "defaultSorting" : "Default Sorting",
+    "sortByPriceAsc" : "Sort by Price Asc",
+    "sortByPriceDesc" : "Sort by Price Desc",
+    "pagination" : {
+        "prev" : "prev",
+        "next" : "next"
+    },
+    "productPageSubTitle" : "You can find what you want!"
 }

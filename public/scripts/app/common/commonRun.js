@@ -3,6 +3,7 @@
  */
 
 define([
-    './topbar'
+    './header',
+    './footer'
 ], function(){
 });
