@@ -1,0 +1,139 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:__('allSpecialOffers')};%>
+    <%- include ../head.html%>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'products'};%>
+    <%- include ../header.html%>
+
+    <section class="parallax-titlebar fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="120">
+        <div class="parallax-overlay"></div>
+
+
+        <div class="parallax-content">
+            <h2><%= __('allSpecialOffers')%> <span><%= __('productPageSubTitle')%></span></h2>
+
+            <nav id="breadcrumbs">
+                <ul style="margin: auto;">
+                    <li><a href="/"><%= __('home')%></a></li>
+                    <li><%= __('product.other')%></li>
+                    <li><%= __('allSpecialOffers')%></li>
+                </ul>
+            </nav>
+        </div>
+
+    </section>
+
+    <div class="container">
+
+        <!-- Sidebar
+        ================================================== -->
+        <div class="four columns">
+
+            <!-- Brands -->
+            <div class="widget margin-top-0" id="productConds">
+                <h3 class="headline"><%= __('product.related')%></h3><span class="line"></span><div class="clearfix"></div>
+
+                <ul id="categories">
+                    <%list.forEach(function(rel){%>
+                    <li><a href="#pid/<%=rel.pid%>" data-id="<%=rel.pid%>"><%= rel.name%> <span>(<%=rel.count%>)</span></a></li>
+                    <%});%>
+                    <li><a href="#"><%= __('all')%> <span></span></a></li>
+                </ul>
+                <div class="clearfix"></div>
+
+            </div>
+
+
+            <!-- Widget -->
+            <div class="widget">
+                <h3 class="headline"><%= __('filterByPrice')%></h3><span class="line"></span><div class="clearfix"></div>
+
+                <div id="price-range">
+                    <div class="padding-range"><div id="slider-range"></div></div>
+                    <label for="amount"><%= __('price')%>:</label>
+                    <input type="text" id="amount">
+                    <a href="#" class="button color" id="filter"><%= __('filter')%></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+
+
+        <!-- Content
+        ================================================== -->
+        <div class="twelve columns">
+
+            <!-- Ordering -->
+            <select class="orderby">
+                <option value=""><%= __('defaultSorting')%></option>
+                <option value="pa"><%= __('sortByPriceAsc')%></option>
+                <option value="pd"><%= __('sortByPriceDesc')%></option>
+            </select>
+
+        </div>
+
+        <!-- Products -->
+        <div class="twelve columns products">
+
+            <div id="resultList">
+            </div>
+            <div class="clearfix"></div>
+
+
+            <!-- Pagination -->
+            <div class="pagination-container">
+            </div>
+
+        </div>
+
+    </div>
+
+    <%- include ../footer.html%>
+</div>
+</body>
+
+<script type="text/template" id="productTpl">
+    {%for(var i = 0, len = obj.length; i < len; ++i){var item = obj[i];%}
+    <div class="four shop columns">
+        <figure class="product" style="overflow: hidden;">
+            <div class="">
+                <a href="single-product-page.html">
+                    <img alt="" style="margin: auto;height: 125px;" src="/images/special_offers/{%= item.id%}.jpg?v={%= item.img_version%}">
+                </a>
+                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
+            </div>
+
+            <a href="single-product-page.html">
+                <section>
+                    <h6>{%= item.name%}</h6>
+                    <span class="product-price">${%= item.price%}</span>
+                </section>
+            </a>
+        </figure>
+    </div>
+    {%}%}
+</script>
+
+<script type="text/template" id="paginationTpl">
+    <nav class="pagination">
+        <ul>
+            {%for(var i = 1; i <= totalPage; ++i){%}
+            <li><a href="#" {%if(page==i){%}class="current-page"{%}%} data-page="{%=i%}">{%=i%}</a></li>
+            {%}%}
+        </ul>
+    </nav>
+
+    <nav class="pagination-next-prev">
+        <ul>
+            <li><a href="#" class="prev" {%if(page>1){%}data-page="{%=page-1%}"{%}%} title="<%= __('pagination.prev')%>"></a></li>
+            <li><a href="#" class="next" {%if(page<totalPage){%}data-page="{%=page+1%}"{%}%} title="<%= __('pagination.next')%>"></a></li>
+        </ul>
+    </nav>
+</script>
+
+<script data-main="app/products/specialOffersMain" src="/scripts/lib/require.js"></script>

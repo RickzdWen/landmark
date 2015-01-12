@@ -44,8 +44,65 @@ exports.getLatestSpecialOffers = function(lang) {
 
 exports.searchProducts = function(query, lang) {
     var page = query.page || 1;
-    var cid = query.cid;
-    var bid = query.bid;
+    var ret = _getSqlAndCond(query, {
+        cid : query.cid,
+        bid : query.bid
+    });
+    var defer = q.defer();
+    q.all([
+        ProductModel.getInstance().getByPage(ret.sql, ret.cond, '*', page, 15),
+        BrandModel.getInstance().getAllMap()
+    ]).then(function(resArray){
+        var info = resArray[0];
+        var productsList = info.result;
+        var brands = resArray[1];
+        var list = mergeProductAndBrand(productsList, brands, lang);
+        info.result = list;
+        defer.resolve(info);
+    }, function(err){
+        defer.reject(err);
+    });
+    return defer.promise;
+};
+
+exports.searchSpecialOffers = function(query, lang) {
+    var page = query.page || 1;
+    var pid = query.pid;
+    var defer = q.defer();
+    if (pid) {
+        SalesProductRelationModel.getInstance().getAll('pid=? GROUP BY sid', [pid], 'sid').then(function(rows){
+            rows = rows || [];
+            var ret = [];
+            rows.forEach(function(item){
+                ret.push(item.sid);
+            });
+            defer.resolve(ret);
+        }, function(err){
+            defer.reject(err);
+        });
+    } else {
+        defer.resolve(null);
+    }
+
+    var defer2 = q.defer();
+    defer.promise.then(function(rows){
+        var ret = _getSqlAndCond(query, {
+            id : rows,
+            special_offer : 1
+        });
+        SalesProductModel.getInstance().getByPage(ret.sql, ret.cond, '*', page, 15).then(function(info){
+            info.result = getSimpleSpecialOffers(info.result, lang);
+            defer2.resolve(info);
+        }, function(err){
+            defer2.reject(err);
+        });
+    }, function(err){
+        defer2.reject(err);
+    });
+    return defer2.promise;
+};
+
+function _getSqlAndCond(query, params) {
     var sortBy = query.sort_by;
     var sortDirect = query.sort_direct;
     var priceLeft = query.price_left;
@@ -65,16 +122,19 @@ exports.searchProducts = function(query, lang) {
     } else {
         sortDirect = 'DESC';
     }
-
     var sql = 'published=? AND deleted=?';
     var cond = [1, 0];
-    if (cid) {
-        sql += ' AND cid=?';
-        cond.push(cid);
-    }
-    if (bid) {
-        sql += ' AND bid=?';
-        cond.push(bid);
+    params = params || {};
+    var util = require('util');
+    for (var key in params) {
+        if (params[key]) {
+            if (util.isArray(params[key]) && params[key].length > 0) {
+                sql += ' AND ' + key + ' IN (' + params[key].join(',') + ')';
+            } else {
+                sql += ' AND ' + key + '=?';
+                cond.push(params[key]);
+            }
+        }
     }
     if (!isNaN(priceLeft) && !isNaN(priceRight)) {
         sql += ' AND price BETWEEN ? AND ?';
@@ -82,22 +142,12 @@ exports.searchProducts = function(query, lang) {
         cond.push(priceRight * 1000);
     }
     sql += ' ORDER BY ' + sortBy + ' ' + sortDirect;
-    var defer = q.defer();
-    q.all([
-        ProductModel.getInstance().getByPage(sql, cond, '*', page, 15),
-        BrandModel.getInstance().getAllMap()
-    ]).then(function(resArray){
-        var info = resArray[0];
-        var productsList = info.result;
-        var brands = resArray[1];
-        var list = mergeProductAndBrand(productsList, brands, lang);
-        info.result = list;
-        defer.resolve(info);
-    }, function(err){
-        defer.reject(err);
-    });
-    return defer.promise;
-};
+    console.log(sql);
+    return {
+        sql : sql,
+        cond : cond
+    };
+}
 
 function mergeProductAndBrand(products, brands, lang) {
     var ret = [];
@@ -115,6 +165,20 @@ function mergeProductAndBrand(products, brands, lang) {
         obj.cid = product.cid;
         obj.bid = product.bid;
         obj.qty = product.qty;
+        ret.push(obj);
+    });
+    return ret;
+}
+
+function getSimpleSpecialOffers(offers, lang) {
+    var ret = [];
+    offers = offers || [];
+    offers.forEach(function(offer){
+        var obj = {};
+        obj.name = offer['title_' + lang];
+        obj.price = numeral(offer.price / 1000).format('0.00');
+        obj.id = offer.id;
+        obj.img_version = offer.img_version;
         ret.push(obj);
     });
     return ret;

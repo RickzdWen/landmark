@@ -12,7 +12,8 @@
 	"product": {
 		"one": "Product",
 		"other": "Product",
-        "all" : "All Products"
+        "all" : "All Products",
+        "related" : "Related Products"
 	},
 	"latestSpecialOffers": "Latest Special Offers",
 	"allProducts": "All Products",

@@ -12,7 +12,8 @@
 	"product": {
         "one" : "產品",
         "other" : "產品",
-        "all" : "所有產品"
+        "all" : "所有產品",
+        "related" : "相關產品"
     },
 	"latestSpecialOffers": "最新優惠",
 	"allProducts": "所有產品",

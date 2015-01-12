@@ -12,7 +12,8 @@
 	"product": {
         "one" : "产品",
         "other" : "产品",
-        "all" : "所有产品"
+        "all" : "所有产品",
+        "related" : "相关产品"
     },
 	"latestSpecialOffers": "最新优惠",
 	"allProducts": "所有产品",

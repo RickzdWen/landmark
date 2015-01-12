@@ -17,5 +17,14 @@ define([
         });
     };
 
+    products.searchSpecialOffers = function(cond, page) {
+        cond = cond || {};
+        page && (cond.page = page);
+        return xhr({
+            url : '/products/search/s',
+            data : cond
+        });
+    };
+
     return products;
 });
