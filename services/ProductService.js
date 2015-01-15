@@ -8,6 +8,7 @@ var SalesProductRelationModel = require('../models/SalesProductRelationModel');
 var BrandModel = require(ROOT_PATH + '/models/BrandModel');
 var q = require('q');
 var numeral = require('numeral');
+var CommonError = require(ROOT_PATH + '/libs/errors/CommonError');
 
 exports.getHomeProductList = function(lang) {
     lang = lang || 'us';
@@ -129,7 +130,7 @@ function _getSqlAndCond(query, params) {
     for (var key in params) {
         if (params[key]) {
             if (util.isArray(params[key]) && params[key].length > 0) {
-                sql += ' AND ' + key + ' IN (' + params[key].join(',') + ')';
+                sql += ' AND ' + key + ' IN (\'' + params[key].join('\',\'') + '\')';
             } else {
                 sql += ' AND ' + key + '=?';
                 cond.push(params[key]);
@@ -142,7 +143,6 @@ function _getSqlAndCond(query, params) {
         cond.push(priceRight * 1000);
     }
     sql += ' ORDER BY ' + sortBy + ' ' + sortDirect;
-    console.log(sql);
     return {
         sql : sql,
         cond : cond
@@ -183,3 +183,47 @@ function getSimpleSpecialOffers(offers, lang) {
     });
     return ret;
 }
+
+exports.getOneProductInfo = function(id, lang) {
+    var defer = q.defer();
+    ProductModel.getInstance().getOne('id=? AND published=? AND deleted=?', [id, 1, 0]).then(function(product){
+        if (!product) {
+            defer.reject(new CommonError('', 50005));
+        } else {
+            product['name'] = product['name_' + lang];
+            product['feature'] = product['feature_' + lang];
+            product['parameters'] = product['parameters_' + lang];
+            product['usage'] = product['usage_' + lang];
+            product['price_s'] = numeral(product.price / 1000).format('0.00');
+            defer.resolve(product);
+        }
+    }, function(err){
+        defer.reject(err);
+    });
+    return defer.promise;
+};
+
+exports.getRelatedSpecialOffers = function(pid, lang) {
+    var defer = q.defer();
+    SalesProductRelationModel.getInstance().getAll('pid=?', [pid], 'sid').then(function(rels){
+        rels = rels || [];
+        if (!rels.length) {
+            defer.resolve([]);
+        } else {
+            var sql = 'published=? AND deleted=? AND id IN ('
+            var sids = [];
+            rels.forEach(function(rel){
+                sids.push(rel.sid);
+            });
+            sql += sids.join(',') + ')';
+            SalesProductModel.getInstance().getAll(sql, [1, 0]).then(function(offers){
+                defer.resolve(getSimpleSpecialOffers(offers, lang));
+            }, function(err){
+                next(err);
+            });
+        }
+    }, function(err){
+        defer.reject(err);
+    });
+    return defer.promise;
+};

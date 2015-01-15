@@ -9,7 +9,25 @@
     <%var header={nav:'products'};%>
     <%- include ../header.html%>
 
-    <section class="parallax-titlebar fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="120">
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('product.all')%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><%= __('product.other')%></li>
+                        <li><%= __('allProducts')%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!--<section class="parallax-titlebar fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="120">
         <div class="parallax-overlay"></div>
 
 
@@ -25,7 +43,7 @@
             </nav>
         </div>
 
-    </section>
+    </section>-->
 
     <div class="container">
 
@@ -115,13 +133,13 @@
     <div class="four shop columns">
         <figure class="product" style="overflow: hidden;">
             <div class="">
-                <a href="single-product-page.html">
+                <a href="/product/{%= product.id%}">
                     <img alt="" style="margin: auto;height: 320px;" src="/images/products/{%= product.id%}.jpg?v={%= product.img_version%}">
                 </a>
                 <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
             </div>
 
-            <a href="single-product-page.html">
+            <a href="/product/{%= product.id%}">
                 <section>
                     <span class="product-category">{%= product.brand%}</span>
                     <h5>{%= product.name%}</h5>

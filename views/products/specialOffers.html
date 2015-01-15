@@ -9,7 +9,23 @@
     <%var header={nav:'products'};%>
     <%- include ../header.html%>
 
-    <section class="parallax-titlebar fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="120">
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('allSpecialOffers')%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><%= __('product.other')%></li>
+                        <li><%= __('allSpecialOffers')%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!--<section class="parallax-titlebar fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="120">
         <div class="parallax-overlay"></div>
 
 
@@ -25,7 +41,7 @@
             </nav>
         </div>
 
-    </section>
+    </section>-->
 
     <div class="container">
 

@@ -61,6 +61,7 @@ var require = {
         'lib/jquery.selectric.min' : ['jquery'],
         'lib/jquery.pricefilter' : ['jquery'],
         'lib/jquery.pureparallax' : ['jquery'],
+        'lib/jquery.royalslider.min' : ['jquery'],
         'lib/superfish' : ['jquery']
     }
 };
