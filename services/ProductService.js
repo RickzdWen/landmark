@@ -193,6 +193,7 @@ exports.getOneProductInfo = function(id, lang) {
             product['name'] = product['name_' + lang];
             product['feature'] = product['feature_' + lang];
             product['parameters'] = product['parameters_' + lang];
+            product['summary'] = product['summary_' + lang];
             product['usage'] = product['usage_' + lang];
             product['price_s'] = numeral(product.price / 1000).format('0.00');
             defer.resolve(product);

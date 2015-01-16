@@ -61,7 +61,9 @@
 
             <!-- Text Parapgraph -->
             <section>
-                <p class="margin-reset">Maecenas consequat mauris nec semper tristique. Etiam fermentum augue ac vulputate pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque <a href="#">ThemeForest</a> arcu sed mollis. Nulla egestas nulla elit, eu condimentum diam fringilla blandit.</p>
+                <p class="margin-reset">
+                    <%- product.summary%>
+                </p>
 
                 <!-- Share Buttons -->
                 <!--<div class="share-buttons">
@@ -105,9 +107,9 @@
         <div class="sixteen columns">
             <!-- Tabs Navigation -->
             <ul class="tabs-nav">
-                <li class="active"><a href="#tab1">Feature</a></li>
-                <li><a href="#tab2">Supplement Facts</a></li>
-                <li><a href="#tab3">Usage</a></li>
+                <li class="active"><a href="#tab1"><%= __('feature')%></a></li>
+                <li><a href="#tab2"><%= __('supplementFacts')%></a></li>
+                <li><a href="#tab3"><%= __('usage')%></a></li>
             </ul>
 
             <!-- Tabs Content -->
@@ -136,7 +138,7 @@
 
         <!-- Headline -->
         <div class="sixteen columns">
-            <h3 class="headline">Related Special Offers</h3>
+            <h3 class="headline"><%= __('specialOffer.related')%></h3>
             <span class="line margin-bottom-0"></span>
         </div>
 

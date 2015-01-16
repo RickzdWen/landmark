@@ -18,6 +18,11 @@
 	"latestSpecialOffers": "最新優惠",
 	"allProducts": "所有產品",
 	"allSpecialOffers": "所有優惠",
+    "specialOffer" : {
+        "one" : "優惠",
+        "other" : "優惠",
+        "related" : "相關優惠"
+    },
 	"allSales": "所有銷售品",
 	"all": "所有",
 	"brand": {
@@ -34,5 +39,8 @@
         "prev" : "上一頁",
         "next" : "下一頁"
     },
-    "productPageSubTitle" : "你能搵到你想要嘅！"
+    "productPageSubTitle" : "你能搵到你想要嘅！",
+    "feature" : "產品特性",
+    "supplementFacts" : "成分表",
+    "usage" : "使用方法"
 }

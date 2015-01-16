@@ -18,6 +18,11 @@
 	"latestSpecialOffers": "Latest Special Offers",
 	"allProducts": "All Products",
 	"allSpecialOffers": "All Special Offers",
+    "specialOffer" : {
+        "one" : "Special Offer",
+        "other" : "Special Offers",
+        "related" : "Related Special Offers"
+    },
 	"allSales": "All Sales",
 	"all": "All",
 	"brand": {
@@ -34,5 +39,8 @@
         "prev" : "prev",
         "next" : "next"
     },
-    "productPageSubTitle" : "You can find what you want!"
+    "productPageSubTitle" : "You can find what you want!",
+    "feature" : "Feature",
+    "supplementFacts" : "Supplement Facts",
+    "usage" : "Usage"
 }
