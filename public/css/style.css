@@ -5678,6 +5678,18 @@ a.cart-remove:hover {
 
 .linking a.button:hover { background-color: #606060; }
 
+/* Add to Wish List Button */
+.linking a.button.atw:before {
+    content: "\f005";
+    position: absolute;
+    font-family: "FontAwesome";
+    padding: 8px 15px 8px 12px;
+    height: 100%;
+    background: rgba(0,0,0,0.06);
+    top:0;
+    left:0;
+}
+
 
 /* Shopping Cart
 ------------------------------------- */

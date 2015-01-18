@@ -48,7 +48,7 @@
             <!-- Headline -->
             <section class="title">
                 <h2><%= product.name%></h2>
-                <span class="product-price-discount"><i>$<%= product.price_s%></i></span>
+                <span class="product-price">$<%= product.price_s%></span>
 
                 <!--<div class="reviews-counter">
                     <div class="rating five-stars">
@@ -64,7 +64,6 @@
                 <p class="margin-reset">
                     <%- product.summary%>
                 </p>
-
                 <!-- Share Buttons -->
                 <!--<div class="share-buttons">
                     <ul>
@@ -79,25 +78,22 @@
 
             </section>
 
+            <section class="linking">
 
-            <!-- Variables -->
-            <section class="variables">
+                <form action='#'>
+                    <div class="qtyminus"></div>
+                    <input type='text' name="quantity" value='1' class="qty" />
+                    <div class="qtyplus"></div>
+                </form>
 
-                <section class="linking">
-
-                    <form action='#'>
-                        <div class="qtyminus"></div>
-                        <input type='text' name="quantity" value='1' class="qty" />
-                        <div class="qtyplus"></div>
-                    </form>
-
-                    <a href="#" class="button adc"><%= __('addToCart')%></a>
-                    <div class="clearfix"></div>
-
-                </section>
+                <a href="#" class="button adc"><%= __('addToCart')%></a>
+                <a href="#" class="button atw"><%= __('addToWishList')%></a>
                 <div class="clearfix"></div>
 
             </section>
+            <%if(offers.length){%>
+            <a href="#relatedOffers"><%= __('specialOffer.findMore')%></a>
+            <%}%>
 
         </div>
     </div>
@@ -133,8 +129,9 @@
         </div>
     </div>
 
+    <%if(offers && offers.length){%>
     <!-- Related Products -->
-    <div class="container margin-top-5">
+    <div class="container margin-top-5" id="relatedOffers">
 
         <!-- Headline -->
         <div class="sixteen columns">
@@ -165,13 +162,13 @@
                         <li>
                             <figure class="product">
                                 <div class="">
-                                    <a href="variable-product-page.html">
+                                    <a href="/product/special_offer/<%= offer.id%>" target="_blank">
                                         <img alt="" style="height: 125px;margin: auto;" src="/images/special_offers/<%= offer.id%>.jpg?v=<%= offer.img_version%>">
                                     </a>
                                     <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
                                 </div>
 
-                                <a href="variable-product-page.html">
+                                <a href="/product/special_offer/<%= offer.id%>" target="_blank">
                                     <section>
                                         <h6><%= offer.name%></h6>
                                         <span class="product-price">$<%= offer.price%></span>
@@ -189,6 +186,7 @@
             </div>
         </div>
     </div>
+    <%}%>
 
     <%- include ../footer.html%>
 </div>

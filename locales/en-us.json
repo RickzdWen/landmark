@@ -21,7 +21,8 @@
     "specialOffer" : {
         "one" : "Special Offer",
         "other" : "Special Offers",
-        "related" : "Related Special Offers"
+        "related" : "Related Special Offers",
+        "findMore" : "Find More Special Offers"
     },
 	"allSales": "All Sales",
 	"all": "All",
@@ -42,5 +43,6 @@
     "productPageSubTitle" : "You can find what you want!",
     "feature" : "Feature",
     "supplementFacts" : "Supplement Facts",
-    "usage" : "Usage"
+    "usage" : "Usage",
+    "addToWishList" : "Add to WishList"
 }

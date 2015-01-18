@@ -21,7 +21,8 @@
     "specialOffer" : {
         "one" : "優惠",
         "other" : "優惠",
-        "related" : "相關優惠"
+        "related" : "相關優惠",
+        "findMore" : "了解更多優惠"
     },
 	"allSales": "所有銷售品",
 	"all": "所有",
@@ -42,5 +43,6 @@
     "productPageSubTitle" : "你能搵到你想要嘅！",
     "feature" : "產品特性",
     "supplementFacts" : "成分表",
-    "usage" : "使用方法"
+    "usage" : "使用方法",
+    "addToWishList" : "加入收藏"
 }

@@ -2,6 +2,7 @@ node_modules
 configs
 libs
 models
+services
 public/images/ueditor
 public/images/products
 public/images/special_offers

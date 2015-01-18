@@ -133,13 +133,13 @@
     <div class="four shop columns">
         <figure class="product" style="overflow: hidden;">
             <div class="">
-                <a href="/product/{%= product.id%}">
+                <a href="/product/{%= product.id%}" target="_blank">
                     <img alt="" style="margin: auto;height: 320px;" src="/images/products/{%= product.id%}.jpg?v={%= product.img_version%}">
                 </a>
                 <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
             </div>
 
-            <a href="/product/{%= product.id%}">
+            <a href="/product/{%= product.id%}" target="_blank">
                 <section>
                     <span class="product-category">{%= product.brand%}</span>
                     <h5>{%= product.name%}</h5>

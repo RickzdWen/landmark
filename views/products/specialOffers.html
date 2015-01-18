@@ -118,16 +118,16 @@
     <div class="four shop columns">
         <figure class="product" style="overflow: hidden;">
             <div class="">
-                <a href="single-product-page.html">
+                <a href="/product/special_offer/{%= item.id%}" target="_blank">
                     <img alt="" style="margin: auto;height: 125px;" src="/images/special_offers/{%= item.id%}.jpg?v={%= item.img_version%}">
                 </a>
                 <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
             </div>
 
-            <a href="single-product-page.html">
+            <a href="/product/special_offer/{%= item.id%}" target="_blank">
                 <section>
                     <h6>{%= item.name%}</h6>
-                    <span class="product-price">${%= item.price%}</span>
+                    <span class="product-price-discount">${%= item.oprice%}<i>${%= item.price%}</i></span>
                 </section>
             </a>
         </figure>
