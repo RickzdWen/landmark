@@ -1,6 +1,6 @@
 <%- include ../doctype.html%>
 <head>
-    <%var head={title:__('allProducts')};%>
+    <%var head={title:__('product.other')};%>
     <%- include ../head.html%>
 </head>
 
@@ -14,158 +14,102 @@
     <section class="titlebar">
         <div class="container">
             <div class="sixteen columns">
-                <h2><%= __('product.all')%></h2>
+                <h2><%= __('product.other')%></h2>
 
                 <nav id="breadcrumbs">
                     <ul>
                         <li><a href="/"><%= __('home')%></a></li>
                         <li><%= __('product.other')%></li>
-                        <li><%= __('allProducts')%></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </section>
 
-    <!--<section class="parallax-titlebar fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="120">
+        <!-- Parallax Banner
+================================================== -->
+    <div class="parallax-banner fullwidth-element"  data-background="#000" data-opacity="0.5" data-height="235">
+        <img src="/images/common/all_products.png" alt="<%= __('product.other')%>" />
         <div class="parallax-overlay"></div>
+        <div class="parallax-title"><%= __('productsPageTitle')%> <span><%= __('productsPageSubTitle')%></span></div>
+    </div>
 
-
-        <div class="parallax-content">
-            <h2><%= __('product.all')%> <span><%= __('productPageSubTitle')%></span></h2>
-
-            <nav id="breadcrumbs">
-                <ul style="margin: auto;">
-                    <li><a href="/"><%= __('home')%></a></li>
-                    <li><%= __('product.other')%></li>
-                    <li><%= __('allProducts')%></li>
-                </ul>
-            </nav>
-        </div>
-
-    </section>-->
+    <div class="margin-top-40"></div>
 
     <div class="container">
 
-    <!-- Sidebar
-    ================================================== -->
-    <div class="four columns">
+    <!-- Portfolio Wrapper-->
+    <div id="portfolio-wrapper">
 
-        <!-- Categories -->
-        <!--<div class="widget margin-top-0">
-            <h3 class="headline">Categories</h3><span class="line"></span><div class="clearfix"></div>
+        <!-- Portfolio Item -->
+        <div class="one-third column portfolio-item clothing other">
+            <figure>
+                <div class="portfolio-holder">
+                    <a href="/products/all">
+                        <img alt="<%= __('product.all')%>" title="<%= __('product.all')%>" src="/images/common/aproducts.png">
+                        <div class="hover-cover" title="<%= __('product.all')%>"></div>
+                        <!--<div class="hover-icon"></div>-->
+                    </a>
+                </div>
 
-            <ul id="categories">
-                <%categories.forEach(function(cat){%>
-                <li><a href="#" data-id="<%=cat.id%>"><%= cat.name%> <span>(<%=cat.qty%>)</span></a></li>
-                <%});%>
-            </ul>
-            <div class="clearfix"></div>
+                <a href="/products/all">
+                    <section class="item-description">
+                        <span><%= __('product.all')%></span>
+                        <h5><%= __('madeInTheUSA')%></h5>
+                    </section>
+                </a>
 
-        </div>-->
-
-        <!-- Brands -->
-        <div class="widget margin-top-0" id="brandsConds">
-            <h3 class="headline"><%= __('brand.other')%></h3><span class="line"></span><div class="clearfix"></div>
-
-            <ul id="categories">
-                <%brands.forEach(function(brand){%>
-                <li><a href="#b<%=brand.id%>" data-id="<%=brand.id%>"><%= brand.name%> <span>(<%=brand.qty%>)</span></a></li>
-                <%});%>
-                <li><a href="#"><%= __('all')%> <span></span></a></li>
-            </ul>
-            <div class="clearfix"></div>
-
+            </figure>
         </div>
 
+        <!-- Portfolio Item -->
+        <div class="one-third column portfolio-item accessories clothing technology">
+            <figure>
+                <div class="portfolio-holder">
+                    <a href="/products/special_offers">
+                        <img alt="<%= __('specialOffer.all')%>" title="<%= __('specialOffer.all')%>" src="/images/common/specialoffer.png">
+                        <div class="hover-cover" title="<%= __('specialOffer.all')%>"></div>
+                        <!--<div class="hover-icon"></div>-->
+                    </a>
+                </div>
 
-        <!-- Widget -->
-        <div class="widget">
-            <h3 class="headline"><%= __('filterByPrice')%></h3><span class="line"></span><div class="clearfix"></div>
+                <a href="/products/special_offers">
+                    <section class="item-description">
+                        <span><%= __('specialOffer.all')%></span>
+                        <h5><%= __('saveYourMoney')%></h5>
+                    </section>
+                </a>
 
-            <div id="price-range">
-                <div class="padding-range"><div id="slider-range"></div></div>
-                <label for="amount"><%= __('price')%>:</label>
-                <input type="text" id="amount">
-                <a href="#" class="button color" id="filter"><%= __('filter')%></a>
-            </div>
-            <div class="clearfix"></div>
+            </figure>
         </div>
 
-    </div>
+        <!-- Portfolio Item -->
+        <div class="one-third column portfolio-item clothing accessories">
+            <figure>
+                <div class="portfolio-holder">
+                    <a href="/products/safe">
+                        <img alt="<%= __('safeAndCertificates')%>" title="<%= __('safeAndCertificates')%>" src="/images/common/certificate.png">
+                        <div class="hover-cover" title="<%= __('safeAndCertificates')%>"></div>
+                        <!--<div class="hover-icon"></div>-->
+                    </a>
+                </div>
 
+                <a href="/products/safe">
+                    <section class="item-description">
+                        <span><%= __('safeAndCertificates')%></span>
+                        <h5><%= __('useItFreely')%></h5>
+                    </section>
+                </a>
 
-    <!-- Content
-    ================================================== -->
-    <div class="twelve columns">
-
-        <!-- Ordering -->
-        <select class="orderby">
-            <option value=""><%= __('defaultSorting')%></option>
-            <option value="pa"><%= __('sortByPriceAsc')%></option>
-            <option value="pd"><%= __('sortByPriceDesc')%></option>
-        </select>
-
-    </div>
-
-    <!-- Products -->
-    <div class="twelve columns products">
-
-    <div id="resultList">
-    </div>
-    <div class="clearfix"></div>
-
-
-    <!-- Pagination -->
-    <div class="pagination-container">
-    </div>
+            </figure>
+        </div>
+    <!-- Portfolio Wrapper / End -->
 
     </div>
-
     </div>
 
     <%- include ../footer.html%>
 </div>
 </body>
-
-<script type="text/template" id="productTpl">
-    {%for(var i = 0, len = obj.length; i < len; ++i){var product = obj[i];%}
-    <div class="four shop columns">
-        <figure class="product" style="overflow: hidden;">
-            <div class="">
-                <a href="/product/{%= product.id%}" target="_blank">
-                    <img alt="" style="margin: auto;height: 320px;" src="/images/products/{%= product.id%}.jpg?v={%= product.img_version%}">
-                </a>
-                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
-            </div>
-
-            <a href="/product/{%= product.id%}" target="_blank">
-                <section>
-                    <span class="product-category">{%= product.brand%}</span>
-                    <h5>{%= product.name%}</h5>
-                    <span class="product-price">${%= product.price%}</span>
-                </section>
-            </a>
-        </figure>
-    </div>
-    {%}%}
-</script>
-
-<script type="text/template" id="paginationTpl">
-    <nav class="pagination">
-        <ul>
-            {%for(var i = 1; i <= totalPage; ++i){%}
-            <li><a href="#" {%if(page==i){%}class="current-page"{%}%} data-page="{%=i%}">{%=i%}</a></li>
-            {%}%}
-        </ul>
-    </nav>
-
-    <nav class="pagination-next-prev">
-        <ul>
-            <li><a href="#" class="prev" {%if(page>1){%}data-page="{%=page-1%}"{%}%} title="<%= __('pagination.prev')%>"></a></li>
-            <li><a href="#" class="next" {%if(page<totalPage){%}data-page="{%=page+1%}"{%}%} title="<%= __('pagination.next')%>"></a></li>
-        </ul>
-    </nav>
-</script>
 
 <script data-main="app/products/indexMain" src="/scripts/lib/require.js"></script>

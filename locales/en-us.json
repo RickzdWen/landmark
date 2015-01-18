@@ -22,7 +22,8 @@
         "one" : "Special Offer",
         "other" : "Special Offers",
         "related" : "Related Special Offers",
-        "findMore" : "Find More Special Offers"
+        "findMore" : "Find More Special Offers",
+        "all" : "All Special Offers"
     },
 	"allSales": "All Sales",
 	"all": "All",
@@ -40,7 +41,8 @@
         "prev" : "prev",
         "next" : "next"
     },
-    "productPageSubTitle" : "You can find what you want!",
+    "productsPageTitle" : "Bringing Health To Life",
+    "productsPageSubTitle" : "You can find what you want!",
     "feature" : "Feature",
     "supplementFacts" : "Supplement Facts",
     "usage" : "Usage",
@@ -58,5 +60,9 @@
     },
     "aboutUs" : "About Us",
     "contactUs" : "Contact Us",
-    "joinUs" : "Join Us"
+    "joinUs" : "Join Us",
+    "safeAndCertificates" : "Safety and Certificates",
+    "madeInTheUSA" : "made in the USA",
+    "saveYourMoney" : "save your money",
+    "useItFreely" : "use it freely"
 }

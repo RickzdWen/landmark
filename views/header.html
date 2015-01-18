@@ -68,7 +68,7 @@
     <!-- Logo -->
     <div class="four columns">
         <div id="logo" style="margin-top: 18px;">
-            <h1><a href="index.html"><img src="/images/logo.png" alt="Trizzy" /></a></h1>
+            <h1><a href="/"><img src="/images/logo.png" alt="Landmark" /></a></h1>
         </div>
     </div>
 
@@ -154,14 +154,14 @@
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-                <li><a href="/" class="homepage <%if (header.nav=='home'){%>current<%}%>" title="<%= __('home')%>">Home</a></li>
+                <li><a href="/" class="homepage <%if (header.nav=='home'){%>current<%}%>" title="<%= __('home')%>"><%= __('home')%></a></li>
 
                 <li class="dropdown">
-                    <a href="#" <%if (header.nav=='products'){%>class="current"<%}%>><%= __('product.other')%></a>
+                    <a href="/products" <%if (header.nav=='products'){%>class="current"<%}%>><%= __('product.other')%></a>
                     <ul>
-                        <li><a href="/products"><%= __('allProducts')%></a></li>
+                        <li><a href="/products/all"><%= __('allProducts')%></a></li>
                         <li><a href="/products/special_offers"><%= __('allSpecialOffers')%></a></li>
-                        <!--<li><a href="/products/sales"><%= __('allSales')%></a></li>-->
+                        <li><a href="/products/safe"><%= __('safeAndCertificates')%></a></li>
                     </ul>
                 </li>
 

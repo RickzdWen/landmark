@@ -22,7 +22,8 @@
         "one" : "優惠",
         "other" : "優惠",
         "related" : "相關優惠",
-        "findMore" : "了解更多優惠"
+        "findMore" : "了解更多優惠",
+        "all": "所有優惠"
     },
 	"allSales": "所有銷售品",
 	"all": "所有",
@@ -40,7 +41,8 @@
         "prev" : "上一頁",
         "next" : "下一頁"
     },
-    "productPageSubTitle" : "你能搵到你想要嘅！",
+    "productsPageTitle" : "將健康帶到生活中",
+    "productsPageSubTitle" : "你能找到你想要的！",
     "feature" : "產品特性",
     "supplementFacts" : "成分表",
     "usage" : "使用方法",
@@ -58,5 +60,9 @@
     },
     "aboutUs" : "關於我們",
     "contactUs" : "聯繫我們",
-    "joinUs" : "加盟我們"
+    "joinUs" : "加盟我們",
+    "safeAndCertificates" : "產品安全與證書",
+    "madeInTheUSA" : "產自美國",
+    "saveYourMoney" : "為您省錢",
+    "useItFreely" : "放心使用"
 }

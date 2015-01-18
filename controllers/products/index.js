@@ -13,6 +13,14 @@ var q = require('q');
 module.exports = function(router){
     router.get('/', function(req, res, next){
         try {
+            res.render('products/index');
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.get('/all', function(req, res, next){
+        try {
             q.all([
                 ProductCategoryModel.getInstance().getAll(),
                 BrandModel.getInstance().getAll(),
@@ -31,7 +39,7 @@ module.exports = function(router){
                     brand.name = brand['name_' + res.lang];
                     brand.qty = binfo[brand.id] || 0;
                 });
-                res.render('products/index', {
+                res.render('products/all', {
                     categories : categories,
                     brands : brands
                 });

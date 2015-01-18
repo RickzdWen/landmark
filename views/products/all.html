@@ -1,6 +1,6 @@
 <%- include ../doctype.html%>
 <head>
-    <%var head={title:__('allSpecialOffers')};%>
+    <%var head={title:__('product.all')};%>
     <%- include ../head.html%>
 </head>
 
@@ -9,16 +9,18 @@
     <%var header={nav:'products'};%>
     <%- include ../header.html%>
 
+    <!-- Titlebar
+================================================== -->
     <section class="titlebar">
         <div class="container">
             <div class="sixteen columns">
-                <h2><%= __('allSpecialOffers')%></h2>
+                <h2><%= __('product.all')%></h2>
 
                 <nav id="breadcrumbs">
                     <ul>
                         <li><a href="/"><%= __('home')%></a></li>
-                        <li><a href="/products"><%= __('product.other')%></li>
-                        <li><%= __('allSpecialOffers')%></li>
+                        <li><a href="/products"><%= __('product.other')%></a></li>
+                        <li><%= __('product.all')%></li>
                     </ul>
                 </nav>
             </div>
@@ -30,13 +32,13 @@
 
 
         <div class="parallax-content">
-            <h2><%= __('allSpecialOffers')%> <span><%= __('productPageSubTitle')%></span></h2>
+            <h2><%= __('product.all')%> <span><%= __('productPageSubTitle')%></span></h2>
 
             <nav id="breadcrumbs">
                 <ul style="margin: auto;">
                     <li><a href="/"><%= __('home')%></a></li>
                     <li><%= __('product.other')%></li>
-                    <li><%= __('allSpecialOffers')%></li>
+                    <li><%= __('allProducts')%></li>
                 </ul>
             </nav>
         </div>
@@ -49,13 +51,26 @@
         ================================================== -->
         <div class="four columns">
 
-            <!-- Brands -->
-            <div class="widget margin-top-0" id="productConds">
-                <h3 class="headline"><%= __('product.related')%></h3><span class="line"></span><div class="clearfix"></div>
+            <!-- Categories -->
+            <!--<div class="widget margin-top-0">
+                <h3 class="headline">Categories</h3><span class="line"></span><div class="clearfix"></div>
 
                 <ul id="categories">
-                    <%list.forEach(function(rel){%>
-                    <li><a href="#pid/<%=rel.pid%>" data-id="<%=rel.pid%>"><%= rel.name%> <span>(<%=rel.count%>)</span></a></li>
+                    <%categories.forEach(function(cat){%>
+                    <li><a href="#" data-id="<%=cat.id%>"><%= cat.name%> <span>(<%=cat.qty%>)</span></a></li>
+                    <%});%>
+                </ul>
+                <div class="clearfix"></div>
+
+            </div>-->
+
+            <!-- Brands -->
+            <div class="widget margin-top-0" id="brandsConds">
+                <h3 class="headline"><%= __('brand.other')%></h3><span class="line"></span><div class="clearfix"></div>
+
+                <ul id="categories">
+                    <%brands.forEach(function(brand){%>
+                    <li><a href="#b<%=brand.id%>" data-id="<%=brand.id%>"><%= brand.name%> <span>(<%=brand.qty%>)</span></a></li>
                     <%});%>
                     <li><a href="#"><%= __('all')%> <span></span></a></li>
                 </ul>
@@ -114,20 +129,21 @@
 </body>
 
 <script type="text/template" id="productTpl">
-    {%for(var i = 0, len = obj.length; i < len; ++i){var item = obj[i];%}
+    {%for(var i = 0, len = obj.length; i < len; ++i){var product = obj[i];%}
     <div class="four shop columns">
         <figure class="product" style="overflow: hidden;">
             <div class="">
-                <a href="/product/special_offer/{%= item.id%}" target="_blank">
-                    <img alt="" style="margin: auto;height: 125px;" src="/images/special_offers/{%= item.id%}.jpg?v={%= item.img_version%}">
+                <a href="/product/{%= product.id%}" target="_blank">
+                    <img alt="" style="margin: auto;height: 320px;" src="/images/products/{%= product.id%}.jpg?v={%= product.img_version%}">
                 </a>
                 <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
             </div>
 
-            <a href="/product/special_offer/{%= item.id%}" target="_blank">
+            <a href="/product/{%= product.id%}" target="_blank">
                 <section>
-                    <h6>{%= item.name%}</h6>
-                    <span class="product-price-discount">${%= item.oprice%}<i>${%= item.price%}</i></span>
+                    <span class="product-category">{%= product.brand%}</span>
+                    <h5>{%= product.name%}</h5>
+                    <span class="product-price">${%= product.price%}</span>
                 </section>
             </a>
         </figure>
@@ -152,4 +168,4 @@
     </nav>
 </script>
 
-<script data-main="app/products/specialOffersMain" src="/scripts/lib/require.js"></script>
+<script data-main="app/products/allMain" src="/scripts/lib/require.js"></script>
