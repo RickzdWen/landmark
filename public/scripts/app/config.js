@@ -62,6 +62,7 @@ var require = {
         'lib/jquery.pricefilter' : ['jquery'],
         'lib/jquery.pureparallax' : ['jquery'],
         'lib/jquery.royalslider.min' : ['jquery'],
+        'lib/jquery.jpanelmenu' : ['jquery'],
         'lib/superfish' : ['jquery']
     }
 };
