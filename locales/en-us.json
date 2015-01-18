@@ -44,5 +44,19 @@
     "feature" : "Feature",
     "supplementFacts" : "Supplement Facts",
     "usage" : "Usage",
-    "addToWishList" : "Add to WishList"
+    "addToWishList" : "Add to WishList",
+    "lmp" : "LMP",
+    "ume" : "UltraMax USA",
+    "order" : {
+        "one" : "Order",
+        "other" : "Orders"
+    },
+    "record" : {
+        "one" : "Record",
+        "other" : "Records",
+        "trade_s" : "Trade Records"
+    },
+    "aboutUs" : "About Us",
+    "contactUs" : "Contact Us",
+    "joinUs" : "Join Us"
 }

@@ -44,5 +44,19 @@
     "feature" : "產品特性",
     "supplementFacts" : "成分表",
     "usage" : "使用方法",
-    "addToWishList" : "加入收藏"
+    "addToWishList" : "加入收藏",
+    "lmp" : "美國藍夢",
+    "ume" : "美國無限藥業",
+    "order" : {
+        "one" : "訂單",
+        "other" : "訂單"
+    },
+    "record" : {
+        "one" : "記錄",
+        "other" : "記錄",
+        "trade_s" : "交易記錄"
+    },
+    "aboutUs" : "關於我們",
+    "contactUs" : "聯繫我們",
+    "joinUs" : "加盟我們"
 }
