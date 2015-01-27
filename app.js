@@ -2,8 +2,10 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var RedisStore = require('connect-redis')(session);
 var ejs = require('ejs');
 var i18n = require('i18n');
 
@@ -40,6 +42,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
 
+app.use(session({
+    name : 'lmpsess',
+    store: new RedisStore({
+        host: "113.10.139.120",
+        port: 6379,
+        pass : 'rickca-redis'
+    }),
+    resave:false,
+    saveUninitialized:false,
+    secret: 'rick_lmp',
+    cookie : { path: '/', httpOnly: true, secure: false, maxAge: null }
+}));
+
 app.use(function(req, res, next){
     var locale = res.getLocale();
     res.lang = locale.substr(3);
@@ -50,6 +65,7 @@ app.use(function(req, res, next){
             data : json
         });
     };
+    console.log(req.session);
     next();
 });
 
