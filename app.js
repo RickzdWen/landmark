@@ -65,7 +65,7 @@ app.use(function(req, res, next){
             data : json
         });
     };
-    console.log(req.session);
+    res.locals.logonId = req.session.id || '';
     next();
 });
 
