@@ -238,7 +238,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#"><%= __('myAccount')%></a>
+                    <a href="#" <%if (header.nav=='account'){%>class="current"<%}%>><%= __('myAccount')%></a>
                     <ul>
                         <li><a href="#"><%= __('shoppingCart')%></a></li>
                         <li><a href="#"><%= __('wishList')%></a></li>

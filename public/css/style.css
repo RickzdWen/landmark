@@ -7055,3 +7055,27 @@ only screen and (min-device-pixel-ratio: 2) {
 	}
 	
 	@media only screen and (max-width: 1024px) {#style-switcher {display: none;}}
+
+
+/* My Account
+-------------------------------------- */
+.centered {
+    margin: 0 auto !important;
+    float: none !important;
+    display: block !important;
+}
+
+.form-row-wide input {width: 100%;}
+.required {color: #d11c1c;}
+
+.rememberme {
+    display: block;
+    margin-top: 10px;
+}
+
+.rememberme {cursor: pointer;}
+.rememberme input {
+    margin: 0 2px 0 0;
+    top: 1px;
+    display: inline-block;
+}
