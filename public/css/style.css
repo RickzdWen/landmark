@@ -1633,7 +1633,7 @@ input[type="submit"] {
 input[type="button"]:hover,
 input[type="submit"]:hover { background-color: #c0c0c0; }
 
-input[type="button"].disabled {background-color: #c0c0c0;}
+input[type="button"].disabled {background-color: #c0c0c0;cursor: default;}
 
 a.button.dark { background-color: #606060; }
 a.button.gray { background-color: #c0c0c0; }

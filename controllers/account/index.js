@@ -3,6 +3,7 @@
  */
 
 var UserService = require(ROOT_PATH + '/services/UserService');
+var UserModel = require(ROOT_PATH + '/models/UserModel');
 
 module.exports = function(router){
     router.get('/login', function(req, res, next){
@@ -20,6 +21,26 @@ module.exports = function(router){
             res.render('account/loginAndReg', {
                 isReg : true
             });
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.get('/reg-check', function(req, res, next){
+        try {
+            res._format = 'json';
+            if (req.query.email) {
+                UserModel.getInstance().checkEmailExist(req.query.email).then(function(ret){
+                    res.successJson({
+                        pass : ret ? false : true,
+                        ret_msg : ret ? 'email has been exist' : ''
+                    });
+                }, function(err){
+                    next(err);
+                });
+            } else {
+                res.successJson({});
+            }
         } catch (err) {
             next(err);
         }

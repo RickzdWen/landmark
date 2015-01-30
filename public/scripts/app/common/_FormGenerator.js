@@ -88,8 +88,8 @@ define([
         for (var i = 0; i < len; ++i) {
             var name = names[i];
             var $node = this['$' + name + 'Input'] = this.$form.find('input[name=' + name + ']');
-            var $wrapper = this['$' + name + 'Wrapper'] = $node.parents('li:first');
-            this['$' + name + 'Msg'] = $wrapper.find('.msgTxt');
+            var $wrapper = this['$' + name + 'Wrapper'] = $node.parents('.form-row');
+            this['$' + name + 'Msg'] = $wrapper.find('.ui-msg-text');
         }
     };
 
@@ -141,7 +141,7 @@ define([
     _FormGenerator.prototype._check = function(name, tip) {
         var cName = name.substring(0, 1).toUpperCase() + name.substr(1);
         this['checking' + cName] = true;
-        this['$' + name + 'Wrapper'].removeClass('msgOk msgError');
+//        this['$' + name + 'Wrapper'].removeClass('msgOk msgError');
         this['$' + name + 'Msg'].text(tip).show();
     };
 
