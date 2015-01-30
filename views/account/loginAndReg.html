@@ -50,13 +50,15 @@
 
 
                         <p class="form-row form-row-wide">
-                            <label for="username">Username or Email Address: <span class="required">*</span></label>
-                            <input type="text" class="input-text" name="username" id="username" value="">
+                            <label>Email: <span class="required">*</span>
+                            <input type="text" class="input-text" name="email" value="">
+                            </label>
                         </p>
 
                         <p class="form-row form-row-wide">
-                            <label for="password">Password: <span class="required">*</span></label>
-                            <input class="input-text" type="password" name="password" id="password">
+                            <label>Password: <span class="required">*</span>
+                            <input class="input-text" type="password" name="password">
+                            </label>
                         </p>
 
                         <p class="form-row">
@@ -67,7 +69,7 @@
                         </p>
 
                         <p class="lost_password">
-                            <a href="http://vasterad.com/themes/trizzy/my-account.html#">Lost Your Password?</a>
+                            <a href="#">Lost Your Password?</a>
                         </p>
 
 
@@ -82,24 +84,30 @@
                     <form method="post" class="register">
 
                         <p class="form-row form-row-wide">
-                            <label for="reg_email">Email Address: <span class="required">*</span></label>
+                            <label for="reg_email">Email: <span class="required">*</span></label>
                             <input type="email" class="input-text" name="email" id="reg_email" value="">
+                            <span class="required">error</span>
                         </p>
 
 
                         <p class="form-row form-row-wide">
                             <label for="reg_password">Password: <span class="required">*</span></label>
-                            <input type="password" class="input-text" name="password" id="reg_password">
+                            <input type="password" class="input-text" name="passwd" id="reg_password">
                         </p>
 
                         <p class="form-row form-row-wide">
                             <label for="reg_password2">Repeat Password: <span class="required">*</span></label>
-                            <input type="password" class="input-text" name="password" id="reg_password2">
+                            <input type="password" class="input-text" name="repasswd" id="reg_password2">
                         </p>
 
+                        <div class="notification error closeable">
+                            <p><span class="ui-error-msg">Error!</span></p>
+                            <a class="close" href="#"></a>
+                        </div>
 
                         <p class="form-row">
-                            <input type="submit" class="button" name="register" value="Register">
+                            <input type="submit" class="button ui-submit" name="register" value="Register">
+                            <input type="button" class="button disabled ui-submit" value="Submitting...">
                         </p>
 
                     </form>
