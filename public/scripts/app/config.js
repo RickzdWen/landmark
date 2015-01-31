@@ -63,6 +63,7 @@ var require = {
         'lib/jquery.pureparallax' : ['jquery'],
         'lib/jquery.royalslider.min' : ['jquery'],
         'lib/jquery.jpanelmenu' : ['jquery'],
+        'lib/jquery.md5' : ['jquery'],
         'lib/superfish' : ['jquery']
     }
 };

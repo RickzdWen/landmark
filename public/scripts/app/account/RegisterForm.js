@@ -7,8 +7,9 @@ define([
     'landmark/declare',
     'app/common/_FormGenerator',
     './accountValidator',
-    'app/services/account'
-], function($, declare, _FormGenerator, accountValidator, account){
+    'app/services/account',
+    'lib/jquery.md5'
+], function($, declare, _FormGenerator, accountValidator, account, md5){
     return declare([_FormGenerator], {
         inputNames : ['email', 'nick', 'passwd', 'repasswd'],
         validateNames : ['email', 'nick', 'passwd', 'repasswd'],
@@ -16,18 +17,18 @@ define([
         remoteService : account.checkReg,
 
         init : function(){
+            var self = this;
             this.validator.validRepasswd = function(repasswd) {
                 var ret = {};
                 if (!repasswd) {
-                    ret.result = 1;
                     ret.message = 'repeat password is required';
                 } else {
-                    var pwd = this.$passwdInput.val();
+                    var pwd = self.$passwdInput.val();
                     if (pwd && pwd != repasswd) {
-                        ret.result = 2;
                         ret.message = 'two password are not the same';
                     }
                 }
+                ret.result = ret.message ? false : true;
                 return ret;
             };
             this.inherited(arguments);
@@ -53,7 +54,21 @@ define([
         },
 
         submit : function() {
-
+            var self = this;
+            $.when(this.emailDfd, this.nickDfd, this.passwdDfd, this.repasswdDfd).done(function(){
+                var data = self.$form.serializeObject();
+                data.passwd = md5(data.passwd);
+                data.repasswd = '';
+                console.log(data);
+                self._displaySubmitting(true);
+                account.register(data).done(function(ret){
+                    alert(ret.insertId);
+                }).fail(function(error){
+                    self._displayError(error.message);
+                }).always(function(){
+                    self._displaySubmitting(false);
+                });
+            });
         }
     });
 });

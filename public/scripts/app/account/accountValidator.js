@@ -5,42 +5,30 @@
 define([], function(){
     return {
         validEmail : function(email) {
-            var ret = {
-                result : 0,
-                message : ''
-            };
+            var ret = {};
             if (!email) {
-                ret.result = 1;
                 ret.message = 'email is required';
             } else if (!/^((?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+)@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i.test(email)) {
-                ret.result = 2;
                 ret.message = 'invalid email address';
             }
+            ret.result = ret.message ? false : true;
             return ret;
         },
 
         validNick : function(nick) {
-            var ret = {
-                result : 0,
-                message : ''
-            };
+            var ret = {};
             if (!nick) {
-                ret.result = 1;
                 ret.message = 'username is required';
             }
+            ret.result = ret.message ? false : true;
             return ret;
         },
 
         validPasswd : function(pwd) {
-            var ret = {
-                result : 0,
-                message : ''
-            };
+            var ret = {};
             if (!pwd) {
-                ret.result = 1;
                 ret.message = 'password is required';
             } else if (pwd.length < 6) {
-                ret.result = 2;
                 ret.message = 'at least 6 chars';
             } else {
                 var badPass = 1;
@@ -52,10 +40,10 @@ define([], function(){
                     }
                 }
                 if (badPass) {
-                    ret.result = 3;
                     ret.message = 'all characters are same';
                 }
             }
+            ret.result = ret.message ? false : true;
             return ret;
         }
     }

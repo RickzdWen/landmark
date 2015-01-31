@@ -154,7 +154,6 @@ define([
         this['is' + cName + 'Valid'] = ret.result;
         if (ret.result) {
             this._displayMsg(name, '', dfd);
-            dfd.resolve();
         } else {
             this._displayMsg(name, ret.message, dfd);
         }
@@ -175,7 +174,7 @@ define([
                 self['is' + cName + 'Valid'] = true;
                 self._displayMsg(name, '', dfd);
             }).fail(function(error){
-                self._displayMsg(name, error, dfd);
+                self._displayMsg(name, error.message, dfd);
             });
         } else {
             this._displayMsg(name, ret.message, dfd);
@@ -184,11 +183,11 @@ define([
 
     _FormGenerator.prototype._displayMsg = function(name, error, dfd) {
         if (error) {
-            this['$' + name + 'Wrapper'].addClass('msgError').removeClass('msgOk');
+//            this['$' + name + 'Wrapper'].addClass('msgError').removeClass('msgOk');
             this['$' + name + 'Msg'].text(error).show();
             dfd && dfd.reject();
         } else {
-            this['$' + name + 'Wrapper'].addClass('msgOk').removeClass('msgError');
+//            this['$' + name + 'Wrapper'].addClass('msgOk').removeClass('msgError');
             this['$' + name + 'Msg'].text('').hide();
             dfd && dfd.resolve();
         }

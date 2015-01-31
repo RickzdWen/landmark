@@ -5,8 +5,9 @@
 require([
     'domReady!',
     'jquery',
+    'app/account/RegisterForm',
     'app/common/commonRun'
-], function(doc, $){
+], function(doc, $, RegisterForm){
     // Tabs
     //----------------------------------------//
     var $tabsNav    = $('.tabs-nav'),
@@ -32,5 +33,9 @@ require([
             .siblings( $this.find('a').attr('href') ).fadeIn();
 
         e.preventDefault();
+    });
+
+    var regForm = new RegisterForm({
+        $wrapper : $('#tab2')
     });
 });

@@ -4,6 +4,7 @@
 
 var UserService = require(ROOT_PATH + '/services/UserService');
 var UserModel = require(ROOT_PATH + '/models/UserModel');
+var CommonError = require(ROOT_PATH + '/libs/errors/CommonError');
 
 module.exports = function(router){
     router.get('/login', function(req, res, next){
@@ -31,10 +32,11 @@ module.exports = function(router){
             res._format = 'json';
             if (req.query.email) {
                 UserModel.getInstance().checkEmailExist(req.query.email).then(function(ret){
-                    res.successJson({
-                        pass : ret ? false : true,
-                        ret_msg : ret ? 'email has been exist' : ''
-                    });
+                    if (ret) {
+                        res.failJson(new CommonError('', 52001));
+                    } else {
+                        res.successJson({});
+                    }
                 }, function(err){
                     next(err);
                 });

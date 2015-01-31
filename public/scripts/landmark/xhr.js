@@ -19,7 +19,7 @@ define([
                 dfd.reject(ret);
             }
         }, function(error){
-            dfd.reject(error);
+            dfd.reject(error.responseJSON || error);
         });
         return dfd;
     };

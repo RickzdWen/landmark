@@ -55,19 +55,7 @@ app.use(session({
     cookie : { path: '/', httpOnly: true, secure: false, maxAge: null }
 }));
 
-app.use(function(req, res, next){
-    var locale = res.getLocale();
-    res.lang = locale.substr(3);
-    res.successJson = function(json){
-        res.json({
-            code : 0,
-            message : '',
-            data : json
-        });
-    };
-    res.locals.logonId = req.session.id || '';
-    next();
-});
+app.use(require(path.join(ROOT_PATH, 'middlewares/preprocess')));
 
 require(path.join(ROOT_PATH, 'middlewares/route'))(app, {
     verbose : false
@@ -88,7 +76,7 @@ if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         if (res._format == 'json') {
-            res.json(err);
+            res.failJson(err);
         } else {
             res.render('error', {
                 message: (err.getMessage && err.getMessage()) || err.message,
@@ -103,7 +91,7 @@ if (app.get('env') === 'development') {
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     if (res._format == 'json') {
-        res.json(err);
+        res.failJson(err);
     } else {
         res.render('error', {
             message: (err.getMessage && err.getMessage()) || err.message,
