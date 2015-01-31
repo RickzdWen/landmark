@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var RedisStore = require('connect-redis')(session);
 var ejs = require('ejs');
 var i18n = require('i18n');
+var csrf = require('csurf');
 
 global.ROOT_PATH = __dirname;
 global.DB_CONFIG_FILE = __dirname + '/configs/dbConfig';
@@ -47,13 +48,16 @@ app.use(session({
     store: new RedisStore({
         host: "113.10.139.120",
         port: 6379,
-        pass : 'rickca-redis'
+        pass : 'rickca-redis',
+        ttl : 30 * 24 * 3600
     }),
     resave:false,
     saveUninitialized:false,
     secret: 'rick_lmp',
     cookie : { path: '/', httpOnly: true, secure: false, maxAge: null }
 }));
+
+app.use(csrf());
 
 app.use(require(path.join(ROOT_PATH, 'middlewares/preprocess')));
 

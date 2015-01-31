@@ -1,6 +1,6 @@
 <%- include ../doctype.html%>
 <head>
-    <%var head={title:'Login And Register'};%>
+    <%var head={title:__('loginAndRegister')};%>
     <%- include ../head.html%>
 </head>
 
@@ -14,12 +14,13 @@
     <section class="titlebar">
         <div class="container">
             <div class="sixteen columns">
-                <h2>My Account</h2>
+                <h2><%= __('myAccount')%></h2>
 
                 <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="http://vasterad.com/themes/trizzy/my-account.html#">Home</a></li>
-                        <li>My Account</li>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><a href="/account"><%= __('myAccount')%></a></li>
+                        <li><%= __('loginAndRegister')%></li>
                     </ul>
                 </nav>
             </div>
@@ -36,40 +37,50 @@
         <div class="six columns centered">
 
             <ul class="tabs-nav my-account">
-                <li class="active"><a href="#tab1">Login</a></li>
-                <li><a href="#tab2">Register</a></li>
+                <li class="active"><a href="#tab1"><%= __('login')%></a></li>
+                <li><a href="#tab2"><%= __('register')%></a></li>
             </ul>
 
             <div class="tabs-container">
                 <!-- Login -->
                 <div class="tab-content" id="tab1" style="">
 
-                    <h3 class="headline">Login</h3><span class="line" style="margin-bottom:20px;"></span><div class="clearfix"></div>
+                    <h3 class="headline"><%= __('login')%></h3><span class="line" style="margin-bottom:20px;"></span><div class="clearfix"></div>
 
                     <form method="post" class="login">
 
 
                         <p class="form-row form-row-wide">
-                            <label>Email: <span class="required">*</span>
+                            <label><%= __('email')%>: <span class="required">*</span>
                             <input type="text" class="input-text" name="email" value="">
                             </label>
+                            <span class="required ui-msg-text"></span>
                         </p>
 
                         <p class="form-row form-row-wide">
-                            <label>Password: <span class="required">*</span>
-                            <input class="input-text" type="password" name="password">
+                            <label><%= __('password.text')%>: <span class="required">*</span>
+                            <input class="input-text" type="password" name="passwd">
                             </label>
+                            <span class="required ui-msg-text"></span>
                         </p>
 
+                        <div class="notification error closeable" style="display: none;">
+                            <p><span class="ui-error-msg">Error!</span></p>
+                            <a class="close" href="#"></a>
+                        </div>
+
+                        <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
+
                         <p class="form-row">
-                            <input type="submit" class="button" name="login" value="Login">
+                            <input type="submit" class="button ui-submit" name="login" value="<%= __('login')%>">
+                            <input type="button" class="button disabled ui-submitting" style="display: none;" value="<%= __('submit.ing')%>...">
 
                             <label for="rememberme" class="rememberme">
-                                <input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember Me</label>
+                                <input name="rememberme" type="checkbox" id="rememberme" value="1"> <%= __('rememberMe')%></label>
                         </p>
 
                         <p class="lost_password">
-                            <a href="#">Lost Your Password?</a>
+                            <a href="#"><%= __('password.lost')%>?</a>
                         </p>
 
 
@@ -79,30 +90,30 @@
                 <!-- Register -->
                 <div class="tab-content" id="tab2" style="display: none;">
 
-                    <h3 class="headline">Register</h3><span class="line" style="margin-bottom:20px;"></span><div class="clearfix"></div>
+                    <h3 class="headline"><%= __('register')%></h3><span class="line" style="margin-bottom:20px;"></span><div class="clearfix"></div>
 
                     <form method="post" class="register">
 
                         <p class="form-row form-row-wide">
-                            <label for="reg_email">Email: <span class="required">*</span></label>
+                            <label for="reg_email"><%= __('email')%>: <span class="required">*</span></label>
                             <input type="email" class="input-text" name="email" id="reg_email" value="">
                             <span class="required ui-msg-text"></span>
                         </p>
 
                         <p class="form-row form-row-wide">
-                            <label for="reg_nick">Username: <span class="required">*</span></label>
+                            <label for="reg_nick"><%= __('username')%>: <span class="required">*</span></label>
                             <input type="text" class="input-text" name="nick" id="reg_nick" value="">
                             <span class="required ui-msg-text"></span>
                         </p>
 
                         <p class="form-row form-row-wide">
-                            <label for="reg_password">Password: <span class="required">*</span></label>
+                            <label for="reg_password"><%= __('password.text')%>: <span class="required">*</span></label>
                             <input type="password" class="input-text" name="passwd" id="reg_password">
                             <span class="required ui-msg-text"></span>
                         </p>
 
                         <p class="form-row form-row-wide">
-                            <label for="reg_password2">Repeat Password: <span class="required">*</span></label>
+                            <label for="reg_password2"><%= __('password.repeat')%>: <span class="required">*</span></label>
                             <input type="password" class="input-text" name="repasswd" id="reg_password2">
                             <span class="required ui-msg-text"></span>
                         </p>
@@ -112,9 +123,11 @@
                             <a class="close" href="#"></a>
                         </div>
 
+                        <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
+
                         <p class="form-row">
-                            <input type="submit" class="button ui-submit" name="register" value="Register">
-                            <input type="button" class="button disabled ui-submitting" style="display: none;" value="Submitting...">
+                            <input type="submit" class="button ui-submit" name="register" value="<%= __('register')%>">
+                            <input type="button" class="button disabled ui-submitting" style="display: none;" value="<%= __('submit.ing')%>...">
                         </p>
 
                     </form>

@@ -64,5 +64,20 @@
     "safeAndCertificates" : "Safety and Certificates",
     "madeInTheUSA" : "made in the USA",
     "saveYourMoney" : "save your money",
-    "useItFreely" : "use it freely"
+    "useItFreely" : "use it freely",
+    "login" : "Login",
+    "register" : "Register",
+    "loginAndRegister" : "Login And Register",
+    "email" : "Email",
+    "password" : {
+        "text" : "Password",
+        "lost" : "Lost Your Password",
+        "repeat" : "Repeat Password"
+    },
+    "rememberMe" : "Remember Me",
+    "username" : "Username",
+    "submit" : {
+        "text" : "Submit",
+        "ing" : "Submitting"
+    }
 }

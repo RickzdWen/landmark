@@ -4,6 +4,7 @@
 
 var HomeBannerModel = require(ROOT_PATH + '/models/HomeBannerModel');
 var ProductService = require(ROOT_PATH + '/services/ProductService');
+var UserService = require(ROOT_PATH + '/services/UserService');
 var q = require('q');
 
 module.exports = function(router){
@@ -22,6 +23,23 @@ module.exports = function(router){
                     products : products || [],
                     offers : offers || []
                 });
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.post('/login', function(req, res, next){
+        try {
+            res._format = 'json';
+            UserService.login(req.body).then(function(user){
+                delete user.passwd;
+                delete user.salt;
+                req.session.uid = user.id;
+                req.session.cookie.maxAge = 14 * 24 * 3600 * 1000;
+                res.successJson(user);
             }, function(err){
                 next(err);
             });

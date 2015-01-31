@@ -18,6 +18,7 @@ module.exports = function(req, res, next){
             message : (err.getMessage4Production && err.getMessage4Production()) || (err.getMessage && err.getMessage()) || err.message
         });
     };
-    res.locals.logonId = req.session.id || '';
+    res.locals.logonId = req.session.uid || '';
+    res.locals._csrf = req.csrfToken();
     next();
 };

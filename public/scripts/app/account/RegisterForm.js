@@ -34,7 +34,16 @@ define([
             this.inherited(arguments);
         },
 
-        _bindOnInput : $.noop,
+//        _bindOnInput : $.noop,
+
+        checkEmail : function(email) {
+            var ret = this.validator.validEmail(email);
+            if (ret.result) {
+                this._displayMsg('email', '');
+            } else {
+                this._displayMsg('email', ret.message);
+            }
+        },
 
         validEmail : function(email) {
             this._validR(email, 'email');
@@ -46,7 +55,9 @@ define([
 
         validPasswd : function(passwd) {
             this._valid(passwd, 'passwd');
-            this.$repasswdInput.blur();
+            if (this.$repasswdInput.val()) {
+                this.$repasswdInput.blur();
+            }
         },
 
         validRepasswd : function(repasswd) {
@@ -59,10 +70,9 @@ define([
                 var data = self.$form.serializeObject();
                 data.passwd = md5(data.passwd);
                 data.repasswd = '';
-                console.log(data);
                 self._displaySubmitting(true);
                 account.register(data).done(function(ret){
-                    alert(ret.insertId);
+                    alert(ret.uid);
                 }).fail(function(error){
                     self._displayError(error.message);
                 }).always(function(){

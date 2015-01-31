@@ -65,5 +65,20 @@
 	"madeInTheUSA": "产自美国",
 	"saveYourMoney": "为您省钱",
 	"productPageSubTitle": "productPageSubTitle",
-    "useItFreely" : "放心使用"
+    "useItFreely" : "放心使用",
+    "login" : "登录",
+    "register" : "注册",
+    "loginAndRegister" : "登录与注册",
+    "email" : "电子邮箱",
+    "password" : {
+        "text" : "密码",
+        "lost" : "忘记密码",
+        "repeat" : "确认密码"
+    },
+    "rememberMe" : "自动登录",
+    "username" : "用户名",
+    "submit" : {
+        "text" : "提交",
+        "ing" : "提交中"
+    }
 }

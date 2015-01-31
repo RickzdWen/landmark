@@ -6,8 +6,9 @@ require([
     'domReady!',
     'jquery',
     'app/account/RegisterForm',
+    'app/account/LoginForm',
     'app/common/commonRun'
-], function(doc, $, RegisterForm){
+], function(doc, $, RegisterForm, LoginForm){
     // Tabs
     //----------------------------------------//
     var $tabsNav    = $('.tabs-nav'),
@@ -35,6 +36,9 @@ require([
         e.preventDefault();
     });
 
+    var loginForm = new LoginForm({
+        $wrapper : $('#tab1')
+    });
     var regForm = new RegisterForm({
         $wrapper : $('#tab2')
     });

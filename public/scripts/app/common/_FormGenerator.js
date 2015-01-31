@@ -80,6 +80,11 @@ define([
         this.$errorWrapper = this.$errorMsg.parents('.error');
         this.$submitWrapper = this.$form.find('.ui-submit');
         this.$submittingWrapper = this.$form.find('.ui-submitting');
+        var self = this;
+        this.$errorWrapper.on('click', '.close', function(e){
+            e.preventDefault();
+            self.$errorWrapper.slideUp();
+        });
     };
 
     _FormGenerator.prototype.initInputs = function(names) {

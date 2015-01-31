@@ -64,5 +64,20 @@
     "safeAndCertificates" : "產品安全與證書",
     "madeInTheUSA" : "產自美國",
     "saveYourMoney" : "為您省錢",
-    "useItFreely" : "放心使用"
+    "useItFreely" : "放心使用",
+    "login" : "登入",
+    "register" : "註冊",
+    "loginAndRegister" : "登入與註冊",
+    "email" : "電郵",
+    "password" : {
+        "text" : "密碼",
+        "lost" : "忘記密碼",
+        "repeat" : "確認密碼"
+    },
+    "rememberMe" : "自動登入",
+    "username" : "用戶名",
+    "submit" : {
+        "text" : "提交",
+        "ing" : "提交中"
+    }
 }
