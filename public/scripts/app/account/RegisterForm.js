@@ -8,8 +8,9 @@ define([
     'app/common/_FormGenerator',
     './accountValidator',
     'app/services/account',
-    'lib/jquery.md5'
-], function($, declare, _FormGenerator, accountValidator, account, md5){
+    'lib/jquery.md5',
+    'i18n!app/nls/account'
+], function($, declare, _FormGenerator, accountValidator, account, md5, ai18n){
     return declare([_FormGenerator], {
         inputNames : ['email', 'nick', 'passwd', 'repasswd'],
         validateNames : ['email', 'nick', 'passwd', 'repasswd'],
@@ -21,11 +22,11 @@ define([
             this.validator.validRepasswd = function(repasswd) {
                 var ret = {};
                 if (!repasswd) {
-                    ret.message = 'repeat password is required';
+                    ret.message = ai18n.repeatPasswordRequired;
                 } else {
                     var pwd = self.$passwdInput.val();
                     if (pwd && pwd != repasswd) {
-                        ret.message = 'two password are not the same';
+                        ret.message = ai18n.pwdNotSame;
                     }
                 }
                 ret.result = ret.message ? false : true;

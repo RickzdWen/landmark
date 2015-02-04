@@ -12,10 +12,11 @@ module.exports = function(req, res, next){
             data : json
         });
     };
-    res.failJson = function(err) {
+    res.failJson = function(err, lang) {
+        lang = lang || res.lang;
         res.json({
             code : err.code || -1,
-            message : (err.getMessage4Production && err.getMessage4Production()) || (err.getMessage && err.getMessage()) || err.message
+            message : (err.getMessage4Production && err.getMessage4Production(lang)) || (err.getMessage && err.getMessage()) || err.message
         });
     };
     res.locals.logonId = req.session.uid || '';

@@ -23,7 +23,9 @@ var _i18n = function(locale) {
         if(!require.config){
             require.config = {};
         }
-        require.config.i18n = locale;
+        require.config.i18n = {
+            locale : locale
+        };
     }
 };
 

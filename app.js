@@ -61,6 +61,8 @@ app.use(csrf());
 
 app.use(require(path.join(ROOT_PATH, 'middlewares/preprocess')));
 
+app.use(require(path.join(ROOT_PATH, 'middlewares/loginUser')));
+
 require(path.join(ROOT_PATH, 'middlewares/route'))(app, {
     verbose : false
 });
@@ -78,7 +80,9 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
+        if (err.status || !err.code || isNaN(err.code) || !(err.code >= 50000 && err.code <= 60000)) {
+            res.status(err.status || 500);
+        }
         if (res._format == 'json') {
             res.failJson(err);
         } else {

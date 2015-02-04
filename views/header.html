@@ -76,12 +76,20 @@
     <!-- Additional Menu -->
     <div class="twelve columns">
         <div id="additional-menu">
+            <%=logonId%>
+            <%if (logonId){%>
             <ul>
                 <li><a href="#"><%= __('shoppingCart')%></a></li>
                 <li><a href="#"><%= __('wishList')%> <span>(0)</span></a></li>
                 <!--<li><a href="#"><%= __('checkOut')%></a></li>-->
                 <li><a href="#"><%= __('myAccount')%></a></li>
             </ul>
+            <%}else{%>
+            <ul>
+                <li><a href="#">login</a></li>
+                <li><a href="#">register</a></li>
+            </ul>
+            <%}%>
         </div>
     </div>
 

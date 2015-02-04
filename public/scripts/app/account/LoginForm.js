@@ -7,8 +7,9 @@ define([
     'landmark/declare',
     'app/common/_FormGenerator',
     'app/services/account',
-    'lib/jquery.md5'
-], function($, declare, _FormGenerator, account, md5){
+    'lib/jquery.md5',
+    'i18n!app/nls/account'
+], function($, declare, _FormGenerator, account, md5, ai18n){
     return declare([_FormGenerator], {
         inputNames : ['email', 'passwd'],
         validateNames : ['email', 'passwd'],
@@ -16,7 +17,7 @@ define([
             validEmail : function(email){
                 var ret = {};
                 if (!email) {
-                    ret.message = 'email is required';
+                    ret.message = ai18n.emailRequired;
                 }
                 ret.result = ret.message ? false : true;
                 return ret;
@@ -24,7 +25,7 @@ define([
             validPasswd : function(passwd) {
                 var ret = {};
                 if (!passwd) {
-                    ret.message = 'password is required';
+                    ret.message = ai18n.pwdRequired;
                 }
                 ret.result = ret.message ? false : true;
                 return ret;
