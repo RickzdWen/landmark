@@ -54,15 +54,31 @@ define([
             })() : efficient,
 
         isIE : function() {
-            return /msie/.test(navigator.userAgent.toLowerCase());
+            return /msie/.test(navigator.userAgent.toLowerCase()) || this.isAfterIE11();
+        },
+
+        isAfterIE11 : function() {
+            return Object.hasOwnProperty.call(window, "ActiveXObject") && !window.ActiveXObject;
         },
 
         getIEVersion : function() {
             if (this.isIE()) {
-                var version = navigator.appVersion;
-                var trimVersion = version.split(';')[1].replace(/[ ]/g,"");
-                trimVersion = trimVersion.replace(/msie/ig, '');
-                return +trimVersion;
+                var rv = null;
+                if (navigator.appName == 'Microsoft Internet Explorer') {
+                    var ua = navigator.userAgent;
+                    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                    if (re.exec(ua) != null) {
+                        rv = parseFloat( RegExp.$1 );
+                    }
+                }
+                else if (navigator.appName == 'Netscape') {
+                    var ua = navigator.userAgent;
+                    var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+                    if (re.exec(ua) != null) {
+                        rv = parseFloat( RegExp.$1 );
+                    }
+                }
+                return rv;
             }
             return null;
         },
