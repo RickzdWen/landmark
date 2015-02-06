@@ -6,7 +6,7 @@
 
 <body class="boxed">
 <div id="wrapper">
-    <%var header={nav:'account'};%>
+    <%var header={nav:''};%>
     <%- include ../header.html%>
 
     <!-- Titlebar
@@ -14,12 +14,11 @@
     <section class="titlebar">
         <div class="container">
             <div class="sixteen columns">
-                <h2><%= __('myAccount')%></h2>
+                <h2><%= __('loginAndRegister')%></h2>
 
                 <nav id="breadcrumbs">
                     <ul>
                         <li><a href="/"><%= __('home')%></a></li>
-                        <li><a href="/account"><%= __('myAccount')%></a></li>
                         <li><%= __('loginAndRegister')%></li>
                     </ul>
                 </nav>

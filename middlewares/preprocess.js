@@ -21,5 +21,10 @@ module.exports = function(req, res, next){
     };
     res.locals.logonId = req.session.uid || '';
     res.locals._csrf = req.csrfToken();
-    next();
+    if (!req.session.uid && /^\/account/i.test(req.path)) {
+        var ref = req.originalUrl;
+        res.redirect('/login?ref=' + encodeURIComponent(ref));
+    } else {
+        next();
+    }
 };

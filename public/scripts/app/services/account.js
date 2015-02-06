@@ -8,14 +8,14 @@ define([
     return {
         checkReg : function(info) {
             return xhr({
-                url : '/account/reg-check',
+                url : '/reg-check',
                 data : info
             });
         },
 
         register : function(data) {
             return xhr({
-                url : '/account/reg',
+                url : '/reg',
                 type : 'POST',
                 data : data
             });
