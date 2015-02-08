@@ -76,18 +76,18 @@
     <!-- Additional Menu -->
     <div class="twelve columns">
         <div id="additional-menu">
-            <%=logonId%>
             <%if (logonId){%>
             <ul>
-                <li><a href="#"><%= __('shoppingCart')%></a></li>
-                <li><a href="#"><%= __('wishList')%> <span>(0)</span></a></li>
+                <li><a href="/account/carts"><%= __('shoppingCart')%></a></li>
+                <li><a href="/account/wish-list"><%= __('wishList')%> <span>(0)</span></a></li>
                 <!--<li><a href="#"><%= __('checkOut')%></a></li>-->
-                <li><a href="#"><%= __('myAccount')%></a></li>
+                <li><a href="/account"><%= __('myAccount')%></a></li>
+                <li><a href="/logout" id="logout"><%= __('logout')%></a></li>
             </ul>
             <%}else{%>
             <ul>
-                <li><a href="#"><%= __('login')%></a></li>
-                <li><a href="#"><%= __('register')%></a></li>
+                <li><a href="/login"><%= __('login')%></a></li>
+                <li><a href="/reg"><%= __('register')%></a></li>
             </ul>
             <%}%>
         </div>
@@ -96,48 +96,36 @@
 
     <!-- Shopping Cart -->
     <div class="twelve columns">
-
+        <%if (logonId){%>
         <div id="cart">
 
             <!-- Button -->
             <div class="cart-btn">
-                <a href="#" class="button adc">$178.00</a>
+                <a href="/account/carts" class="button adc">$0.00</a>
             </div>
 
-            <!--<div class="cart-list">
+            <div class="cart-list">
 
                 <div class="arrow"></div>
 
                 <div class="cart-amount">
-                    <span>2 items in the shopping cart</span>
+                    <span><span class="js-cart-list-len" style="padding: 0 0;"></span> <%= __('cart.items')%></span>
                 </div>
 
                 <ul>
-                    <li>
-                        <a href="#"><img src="images/small_product_list_08.jpg" alt="" /></a>
-                        <a href="#">Converse All Star Trainers</a>
-                        <span>1 x $79.00</span>
-                        <div class="clearfix"></div>
-                    </li>
-
-                    <li>
-                        <a href="#"><img src="images/small_product_list_09.jpg" alt="" /></a>
-                        <a href="#">Tommy Hilfiger <br /> Shirt Beat</a>
-                        <span>1 x $99.00</span>
-                        <div class="clearfix"></div>
-                    </li>
                 </ul>
 
                 <div class="cart-buttons button">
-                    <a href="#" class="view-cart" ><span data-hover="View Cart"><span>View Cart</span></span></a>
-                    <a href="#" class="checkout"><span data-hover="Checkout">Checkout</span></a>
+                    <a href="/account/carts" class="view-cart" ><span data-hover="View Cart"><span><%= __('cart.view')%></span></span></a>
+                    <a href="#" class="checkout"><span data-hover="Checkout"><%= __('checkOut')%></span></a>
                 </div>
                 <div class="clearfix">
 
                 </div>
-            </div>-->
+            </div>
 
         </div>
+        <%}%>
 
         <!-- Search -->
         <nav class="top-search">
@@ -150,6 +138,19 @@
     </div>
 
 </div>
+
+<script type="text/template" id="cartListTpl">
+    {%_.each(obj, function(item){%}
+    <li>
+        <a {%if(item.pid){%}href="/product/{%=item.pid%}"{%}else{%}href="/product/special_offer/{%=item.sid%}"{%}%}>
+            <img src="/images/{%if(item.pid){%}products/{%=item.pid%}{%}else{%}special_offers/{%=item.sid%}{%}%}.jpg?v={%=item.img_version%}" alt="{%=item.desc%}" />
+        </a>
+        <a {%if(item.pid){%}href="/product/{%=item.pid%}"{%}else{%}href="/product/special_offer/{%=item.sid%}"{%}%}>{%=item.desc%}</a>
+        <span>{%=item.qty%} x ${%=item.price_s%}</span>
+        <div class="clearfix"></div>
+    </li>
+    {%});%}
+</script>
 
 
 <!-- Navigation
@@ -248,7 +249,7 @@
                 <li class="dropdown">
                     <a href="#" <%if (header.nav=='account'){%>class="current"<%}%>><%= __('myAccount')%></a>
                     <ul>
-                        <li><a href="#"><%= __('shoppingCart')%></a></li>
+                        <li><a href="/account/carts"><%= __('shoppingCart')%></a></li>
                         <li><a href="#"><%= __('wishList')%></a></li>
                         <li><a href="#"><%= __('order.other')%></a></li>
                         <li><a href="#"><%= __('record.trade_s')%></a></li>

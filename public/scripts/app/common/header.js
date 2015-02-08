@@ -4,11 +4,16 @@
 
 define([
     'jquery',
+    'lib/underscore',
+    'landmark/topic',
     'ui/combobox/TopBarDropdown',
+    'app/services/account',
+    'app/services/cart',
     'lib/jquery.cookie',
     'lib/superfish',
-    'lib/jquery.jpanelmenu'
-], function($, TopBarDropdown){
+    'lib/jquery.jpanelmenu',
+    'lib/hoverIntent'
+], function($, _, topic, TopBarDropdown, account, cart){
     var langDropDown = new TopBarDropdown({
         node : $('.ui-language-dropdown')[0],
         onChange : function(value) {
@@ -66,4 +71,45 @@ define([
             jPanelMenu.close();
         }
     });
+
+    // logout
+    $('#logout').on('click', function(e){
+        e.preventDefault();
+        account.logout().then(function(){
+            window.location.href = '/';
+        });
+    });
+
+    // cart
+    var cartInfo = {};
+    var $cartWrapper = $('#cart');
+    var $cartListWrapper = $cartWrapper.find('ul');
+    var $cartTotalNode = $cartWrapper.find('.adc');
+    var $cartListLenNode = $cartWrapper.find('.js-cart-list-len');
+    var cartListTemplate = _.template($('#cartListTpl').html());
+    $("#cart").hoverIntent({
+        sensitivity: 3,
+        interval: 60,
+        over: function () {
+            if (cartInfo.list && cartInfo.list.length) {
+                $('.cart-list', this).fadeIn(200);
+                $('.cart-btn a.button', this).addClass('hovered');
+            }
+        },
+        timeout: 220,
+        out: function () {
+            $('.cart-list', this).fadeOut(100);
+            $('.cart-btn a.button', this).removeClass('hovered');
+        }
+    });
+    topic.subscribe('getCartList', function(){
+        cart.getCartList().then(function(ret){
+            $cartTotalNode.text('$' + ret.totalPrice_s);
+            $cartListLenNode.text(ret.list.length);
+            $cartListWrapper.html(cartListTemplate(ret.list));
+            cartInfo = ret;
+        });
+    });
+    topic.publish('getCartList');
+
 });

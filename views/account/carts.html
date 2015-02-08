@@ -1,0 +1,122 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:__('shoppingCart')};%>
+    <%- include ../head.html%>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'account'};%>
+    <%- include ../header.html%>
+
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('shoppingCart')%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><a href="/"><%= __('myAccount')%></a></li>
+                        <li><%= __('shoppingCart')%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <div class="container cart">
+
+        <div class="sixteen columns">
+
+            <!-- Cart -->
+            <table class="cart-table responsive-table">
+
+                <tr>
+                    <th><%= __('cart.item')%></th>
+                    <th><%= __('cart.desc')%></th>
+                    <th><%= __('cart.price')%></th>
+                    <th><%= __('cart.quantity')%></th>
+                    <th><%= __('cart.total')%></th>
+                    <th></th>
+                </tr>
+
+                <!-- Item #1 -->
+                <%list.forEach(function(item){%>
+                <tr>
+                    <td>
+                        <img src="/images/<%if(item.pid){%>products/<%=item.pid%><%}else{%>special_offers/<%=item.sid%><%}%>.jpg?v=<%=item.img_version%>"
+                             alt="<%=item.desc%>" style="width: 80px;">
+                    </td>
+                    <td class="cart-title"><a <%if(item.pid){%>href="/product/<%=item.pid%>"<%}else{%>href="/product/special_offer/<%=item.sid%>"<%}%> target="_blank"><%=item.desc%></a></td>
+                    <td>$<%=item.price_s%></td>
+                    <td>
+                        <form action='#'>
+                            <div class="qtyminus"></div>
+                            <input type='text' name="quantity" data-price="<%=item.price%>" value='<%=item.qty%>' class="qty" />
+                            <div class="qtyplus"></div>
+                        </form>
+                    </td>
+                    <td class="cart-total" data-total="<%=item.total%>">$<%= item.total_s%></td>
+                    <td><a href="#" class="cart-remove" data-id="<%=item.id%>"></a></td>
+                </tr>
+                <%});%>
+
+            </table>
+
+            <!-- Apply Coupon Code / Buttons -->
+            <table class="cart-table bottom">
+
+                <tr>
+                    <th>
+                        <!--<form action="#" method="get" class="apply-coupon">
+                            <input class="search-field" type="text" placeholder="Coupon Code" value="">
+                            <a href="#" class="button gray">Apply Coupon</a>
+                        </form>-->
+
+                        <div class="cart-btns">
+                            <a href="/account/checkout" class="button color cart-btns proceed"><%= __('cart.toCheckout')%></a>
+                            <a href="javascript:window.location.reload(true);" class="button gray cart-btns"><%= __('cart.update')%></a>
+                        </div>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+
+
+        <!-- Cart Totals -->
+        <div class="eight columns cart-totals">
+            <h3 class="headline"><%= __('cart.totals')%></h3><span class="line"></span><div class="clearfix"></div>
+
+            <table class="cart-table margin-top-5">
+
+                <tr>
+                    <th><%= __('cart.subtotal')%></th>
+                    <td><strong class="js-cart-subtotal">$<%=totalPrice_s%></strong></td>
+                </tr>
+
+                <tr>
+                    <th><%= __('shipping')%></th>
+                    <td><%= __('freeShipping')%></td>
+                </tr>
+
+                <tr>
+                    <th><%= __('cart.orderTotal')%></th>
+                    <td><strong class="js-cart-order-total">$<%=totalPrice_s%></strong></td>
+                </tr>
+
+            </table>
+            <!--<br>
+            <a href="#" class="calculate-shipping"><i class="fa fa-arrow-circle-down"></i> Calculate Shipping</a>-->
+        </div>
+
+    </div>
+
+    <div class="margin-top-50"></div>
+    <%- include ../footer.html%>
+</div>
+</body>
+<script data-main="app/account/cartsMain" src="/scripts/lib/require.js"></script>

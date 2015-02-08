@@ -39,7 +39,9 @@ module.exports = function(router){
                 delete user.passwd;
                 delete user.salt;
                 req.session.uid = user.id;
-                req.session.cookie.maxAge = 14 * 24 * 3600 * 1000;
+                if (req.body.rememberme) {
+                    req.session.cookie.maxAge = 14 * 24 * 3600 * 1000;
+                }
                 res.successJson(user);
             }, function(err){
                 next(err);
@@ -52,9 +54,25 @@ module.exports = function(router){
     router.get('/login', function(req, res, next){
         try {
             res.render('account/loginAndReg', {
-                ref : req.query.ref ? decodeURIComponent(req.query.ref) : '/'
+                ref : req.query.ref ? req.query.ref : '/',
+                isReg : 0
             });
         } catch (err){
+            next(err);
+        }
+    });
+
+    router.post('/logout', function(req, res, next){
+        try {
+            res._format = 'json';
+            req.session.destroy(function(err){
+                if (err) {
+                    next(err);
+                } else {
+                    res.successJson({});
+                }
+            });
+        } catch (err) {
             next(err);
         }
     });
@@ -62,7 +80,8 @@ module.exports = function(router){
     router.get('/reg', function(req, res, next){
         try {
             res.render('account/loginAndReg', {
-                isReg : true
+                ref : req.query.ref ? req.query.ref : '/',
+                isReg : 1
             });
         } catch (err) {
             next(err);

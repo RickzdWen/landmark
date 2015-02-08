@@ -127,7 +127,7 @@ define([
     _FormGenerator.prototype._bindOnInput = function($input, name, cName, checkFunc) {
         var self = this;
         checkFunc = checkFunc || this['valid' + cName];
-        if (!('oninput' in document.body) || (lang.isIE() && lang.getIEVersion() == 10)) {
+        if (!('oninput' in document.body) || lang.isIE()) {
             $input[0].onpropertychange = function() {
                 if (document.activeElement == this && event.propertyName.toLowerCase() == 'value') {
                     checkFunc.apply(self, [$(this).val()]);

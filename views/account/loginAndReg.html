@@ -138,5 +138,10 @@
     <%- include ../footer.html%>
 </div>
 </body>
-
+<script type="text/javascript">
+    _params({
+        ref : '<%= ref%>',
+        isReg : <%= isReg%>
+    });
+</script>
 <script data-main="app/account/loginAndRegMain" src="/scripts/lib/require.js"></script>

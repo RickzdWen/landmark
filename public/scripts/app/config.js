@@ -55,6 +55,9 @@ var require = {
                 return this._;
             }
         },
+        'numeral' : {
+            exports : 'numeral'
+        },
         'backbone' : ['jquery', 'lib/underscore'],
         'lib/jquery.cookie' : ['jquery'],
         'lib/jquery.themepunch.plugins.min' : ['jquery'],
@@ -66,6 +69,7 @@ var require = {
         'lib/jquery.royalslider.min' : ['jquery'],
         'lib/jquery.jpanelmenu' : ['jquery'],
         'lib/jquery.md5' : ['jquery'],
-        'lib/superfish' : ['jquery']
+        'lib/superfish' : ['jquery'],
+        'lib/hoverIntent' : ['jquery']
     }
 };

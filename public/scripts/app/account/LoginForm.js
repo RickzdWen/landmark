@@ -31,6 +31,7 @@ define([
                 return ret;
             }
         },
+        ref : '/',
 
         validEmail : function(email) {
             this._valid(email, 'email');
@@ -47,7 +48,7 @@ define([
                 data.passwd = md5(data.passwd);
                 self._displaySubmitting(true);
                 account.login(data).done(function(user){
-                    console.log(user);
+                    window.location.href = self.ref;
                 }).fail(function(error){
                     self._displayError(error.message);
                 }).always(function(){

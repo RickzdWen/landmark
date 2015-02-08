@@ -4,7 +4,7 @@
 	"hello": "你好",
 	"shoppingCart": "购物车",
 	"wishList": "收藏",
-	"checkOut": "结算",
+	"checkOut": "付款",
 	"myAccount": "我的帐号",
 	"newArrivals": "新品推介",
 	"addToCart": "加入购物车",
@@ -67,6 +67,7 @@
 	"productPageSubTitle": "productPageSubTitle",
     "useItFreely" : "放心使用",
     "login" : "登录",
+    "logout" : "退出",
     "register" : "注册",
     "loginAndRegister" : "登录与注册",
     "email" : "电子邮箱",
@@ -80,5 +81,21 @@
     "submit" : {
         "text" : "提交",
         "ing" : "提交中"
-    }
+    },
+    "cart" : {
+        "item" : "单品",
+        "desc" : "描述",
+        "price" : "单价",
+        "quantity" : "数量",
+        "total" : "金额",
+        "totals" : "合计",
+        "subtotal" : "合计（不含运费）",
+        "orderTotal" : "订单合计",
+        "update" : "刷新购物车",
+        "toCheckout" : "去付款",
+        "items" : "种商品被放入购物车",
+        "view" : "去购物车看看"
+    },
+    "shipping" : "运费",
+    "freeShipping" : "免运费"
 }

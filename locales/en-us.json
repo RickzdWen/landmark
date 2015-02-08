@@ -66,6 +66,7 @@
     "saveYourMoney" : "save your money",
     "useItFreely" : "use it freely",
     "login" : "Login",
+    "logout" : "Logout",
     "register" : "Register",
     "loginAndRegister" : "Login And Register",
     "email" : "Email",
@@ -79,5 +80,21 @@
     "submit" : {
         "text" : "Submit",
         "ing" : "Submitting"
-    }
+    },
+    "cart" : {
+        "item" : "Item",
+        "desc" : "Description",
+        "price" : "Price",
+        "quantity" : "Quantity",
+        "total" : "Total",
+        "totals" : "Cart Totals",
+        "subtotal" : "Cart Subtotal",
+        "orderTotal" : "Order Total",
+        "update" : "Update Cart",
+        "toCheckout" : "Proceed to Checkout",
+        "items" : "items in the shopping cart",
+        "view" : "View Cart"
+    },
+    "shipping" : "Shipping",
+    "freeShipping" : "Free Shipping"
 }

@@ -3,8 +3,9 @@
  */
 
 define([
-    'landmark/xhr'
-], function(xhr){
+    'landmark/xhr',
+    'app/common/params'
+], function(xhr, params){
     return {
         checkReg : function(info) {
             return xhr({
@@ -26,6 +27,16 @@ define([
                 url : '/login',
                 type : 'POST',
                 data : data
+            });
+        },
+
+        logout : function() {
+            return xhr({
+                url : '/logout',
+                type : 'POST',
+                data : {
+                    _csrf : params._csrf
+                }
             });
         }
     };

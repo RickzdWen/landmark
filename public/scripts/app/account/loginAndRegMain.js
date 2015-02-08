@@ -7,8 +7,9 @@ require([
     'jquery',
     'app/account/RegisterForm',
     'app/account/LoginForm',
+    'app/common/params',
     'app/common/commonRun'
-], function(doc, $, RegisterForm, LoginForm){
+], function(doc, $, RegisterForm, LoginForm, params){
     // Tabs
     //----------------------------------------//
     var $tabsNav    = $('.tabs-nav'),
@@ -21,7 +22,13 @@ require([
         $this.next().children('.tab-content').stop(true,true).hide()
             .first().show();
 
-        $this.children('li').first().addClass('active').stop(true,true).show();
+        var $selected = null;
+        if (params.isReg) {
+            $selected = $this.children('li').eq(':1');
+        } else {
+            $selected = $this.children('li').first();
+        }
+        $selected.addClass('active').stop(true,true).show();
     });
 
     $tabsNavLis.on('click', function(e) {
@@ -37,7 +44,8 @@ require([
     });
 
     var loginForm = new LoginForm({
-        $wrapper : $('#tab1')
+        $wrapper : $('#tab1'),
+        ref : params.ref
     });
     var regForm = new RegisterForm({
         $wrapper : $('#tab2')
