@@ -5581,6 +5581,10 @@ section.linking {
 	border-bottom: 0;
 	padding-top: 28px;
 }
+section.mid-linking {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
 
 #quantity {
 	position: relative;
