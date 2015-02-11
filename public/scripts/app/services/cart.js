@@ -34,6 +34,17 @@ define([
                     _csrf : params._csrf
                 }
             });
+        },
+
+        updateCartQty : function(id, qty) {
+            return xhr({
+                url : '/cart/' + id,
+                type : 'PUT',
+                data : {
+                    qty : qty,
+                    _csrf : params._csrf
+                }
+            });
         }
     };
 });

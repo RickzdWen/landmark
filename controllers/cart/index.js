@@ -39,4 +39,21 @@ module.exports = function(router){
             next(err);
         }
     });
+
+    router.put('/qty/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            if (!req.session.uid) {
+                throw new CommonError('', 50000);
+            } else {
+                CartService.updateQty(req.params.id, req.body.qty).then(function(){
+                    res.successJson({});
+                }, function(err){
+                    next(err);
+                });
+            }
+        } catch (err) {
+            next(err);
+        }
+    });
 };
