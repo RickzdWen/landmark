@@ -13,7 +13,8 @@
 		"one": "Product",
 		"other": "Product",
         "all" : "All Products",
-        "related" : "Related Products"
+        "related" : "Related Products",
+        "name" : "Product Name"
 	},
 	"latestSpecialOffers": "Latest Special Offers",
 	"allProducts": "All Products",
@@ -96,5 +97,11 @@
         "view" : "View Cart"
     },
     "shipping" : "Shipping",
-    "freeShipping" : "Free Shipping"
+    "freeShipping" : "Free Shipping",
+    "stock" : {
+        "status" : "Stock Status",
+        "in" : "In Stock"
+    },
+    "myWishlist" : "My Wishlist",
+    "menu" : "Menu"
 }

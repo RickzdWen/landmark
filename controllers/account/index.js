@@ -25,13 +25,25 @@ module.exports = function(router){
         }
     });
 
-    router.get('/wishlist', function(req, res, next){
+    router.get(/^\/wishlist(\/(\d+)?)?$/, function(req, res, next){
         try {
             if (req.query.of == 'json') {
                 res._format = 'json';
             }
             var WishListService = require(ROOT_PATH + '/services/WishListService');
-
+            var page = req.params[1];
+            if (!page || isNaN(page) || page <= 0) {
+                page = 1;
+            }
+            WishListService.listByPage(req.session.uid, page, res.lang).then(function(ret){
+                if (res._format == 'json') {
+                    res.successJson(ret);
+                } else {
+                    res.render('account/wishlist', ret);
+                }
+            }, function(err){
+                next(err);
+            });
         } catch (err) {
             next(err);
         }

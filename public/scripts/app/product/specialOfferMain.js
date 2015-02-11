@@ -18,9 +18,9 @@ require([
 
         var currentVal = parseInt(thisrowfield.val());
         if (!isNaN(currentVal)) {
-            thisrowfield.val(currentVal + 1);
+            thisrowfield.val(currentVal + 1).trigger('change');
         } else {
-            thisrowfield.val(0);
+            thisrowfield.val(1).trigger('change');
         }
     });
 
@@ -28,10 +28,13 @@ require([
         e.preventDefault();
         thisrowfield = $(this).parent().parent().parent().find('.qty');
         var currentVal = parseInt(thisrowfield.val());
-        if (!isNaN(currentVal) && currentVal > 0) {
-            thisrowfield.val(currentVal - 1);
+        if (!isNaN(currentVal) && currentVal > 1) {
+            thisrowfield.val(currentVal - 1).trigger('change');
         } else {
-            thisrowfield.val(0);
+            thisrowfield.val(1).trigger('change');
         }
+    });
+    $('#quantity').on('change', function(){
+        $('#addToCartBtn').data('qty', $(this).val());
     });
 });

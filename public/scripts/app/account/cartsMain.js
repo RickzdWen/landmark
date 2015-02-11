@@ -42,8 +42,13 @@ require([
         onQtyChange($(this), value);
     });
 
+    var requesting = false;
     $('.cart-remove').on('click', function(e){
         e.preventDefault();
+        if (requesting) {
+            return;
+        }
+        requesting = true;
         var id = $(this).data('id');
         var $tr = $(this).parents('tr:first');
         cart.removeCartItem(id).then(function(){
@@ -54,6 +59,8 @@ require([
             if (error && error.code == 50000) {
                 window.location.href = '/login?ref=' + encodeURIComponent(window.location.href);
             }
+        }).always(function(){
+            requesting = false;
         });
     });
 
@@ -65,9 +72,7 @@ require([
         var total_s = numeral(total).format('0,0.00');
         $node.parents('tr:first').find('.cart-total').data('total', total).text('$' + total_s);
         calcCartTotal();
-        _.debounce(function(){
-            updateCart($node.data('id'), qty);
-        }, 500);
+        updateCart($node.data('id'), qty);
     }
     function calcCartTotal() {
         var subTotal = 0;
@@ -78,9 +83,9 @@ require([
         $subTotalNode.text('$' + subTotal_s);
         $orderTotalNode.text('$' + subTotal_s);
     }
-    function updateCart(id, qty) {
+    var updateCart = _.debounce(function(id, qty) {
         cart.updateCartQty(id, qty).then(function(){
             topic.publish('getCartList');
         });
-    }
+    }, 500);
 });

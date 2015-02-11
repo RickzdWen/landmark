@@ -13,7 +13,8 @@
         "one" : "產品",
         "other" : "產品",
         "all" : "所有產品",
-        "related" : "相關產品"
+        "related" : "相關產品",
+        "name" : "產品名稱"
     },
 	"latestSpecialOffers": "最新優惠",
 	"allProducts": "所有產品",
@@ -96,5 +97,11 @@
         "view" : "去購物車看看"
     },
     "shipping" : "運費",
-    "freeShipping" : "免運費"
+    "freeShipping" : "免運費",
+    "stock" : {
+        "status" : "庫存狀態",
+        "in" : "有貨"
+    },
+    "myWishlist" : "我的收藏",
+    "menu" : "菜單"
 }

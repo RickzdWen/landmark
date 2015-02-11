@@ -38,7 +38,7 @@ define([
 
         updateCartQty : function(id, qty) {
             return xhr({
-                url : '/cart/' + id,
+                url : '/cart/qty/' + id,
                 type : 'PUT',
                 data : {
                     qty : qty,

@@ -93,8 +93,8 @@
                     <div class="clearfix"></div>
                 </section>
                 <section class="linking">
-                    <a href="#" class="button adc" style="margin-left: 0;"><%= __('addToCart')%></a>
-                    <a href="#" class="button atw"><%= __('addToWishList')%></a>
+                    <a href="#" id="addToCartBtn" class="button adc js-add-to-cart" data-sid="<%= offer.id%>" data-qty="1" style="margin-left: 0;"><%= __('addToCart')%></a>
+                    <a href="#" id="addToWishBtn" class="button atw js-add-to-wishlist" data-sid="<%= offer.id%>"><%= __('addToWishList')%></a>
                     <div class="clearfix"></div>
                 </section>
 

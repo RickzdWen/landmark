@@ -79,7 +79,7 @@
             <%if (logonId){%>
             <ul>
                 <li><a href="/account/carts"><%= __('shoppingCart')%></a></li>
-                <li><a href="/account/wish-list"><%= __('wishList')%> <span>(0)</span></a></li>
+                <li><a href="/account/wishlist"><%= __('wishList')%> <span id="wishCount">(0)</span></a></li>
                 <!--<li><a href="#"><%= __('checkOut')%></a></li>-->
                 <li><a href="/account"><%= __('myAccount')%></a></li>
                 <li><a href="/logout" id="logout"><%= __('logout')%></a></li>
@@ -158,7 +158,7 @@
 <div class="container">
     <div class="sixteen columns">
 
-        <a href="#menu" class="menu-trigger"><i class="fa fa-bars"></i> Menu</a>
+        <a href="#menu" class="menu-trigger"><i class="fa fa-bars"></i> <%= __('menu')%></a>
 
         <nav id="navigation">
             <ul class="menu" id="responsive">
@@ -250,7 +250,7 @@
                     <a href="#" <%if (header.nav=='account'){%>class="current"<%}%>><%= __('myAccount')%></a>
                     <ul>
                         <li><a href="/account/carts"><%= __('shoppingCart')%></a></li>
-                        <li><a href="#"><%= __('wishList')%></a></li>
+                        <li><a href="/account/wishlist"><%= __('wishList')%></a></li>
                         <li><a href="#"><%= __('order.other')%></a></li>
                         <li><a href="#"><%= __('record.trade_s')%></a></li>
                     </ul>

@@ -1,0 +1,109 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:__('wishList')};%>
+    <%- include ../head.html%>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'account'};%>
+    <%- include ../header.html%>
+
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('wishList')%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><a href="/"><%= __('myAccount')%></a></li>
+                        <li><%= __('wishList')%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <div class="container cart">
+
+
+        <!-- Cart Totals -->
+        <div class="sixteen columns">
+            <h3 class="headline"><%= __('myWishlist')%></h3><span class="line margin-bottom-35"></span><div class="clearfix"></div>
+        </div>-
+
+        <div class="sixteen columns">
+
+            <!-- Cart -->
+            <table class="cart-table responsive-table">
+
+                <tr>
+                    <th></th>
+                    <th><%= __('product.name')%></th>
+                    <th><%= __('price')%></th>
+                    <th> <%= __('stock.status')%></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                <!-- Item #1 -->
+                <%result.forEach(function(item){%>
+                <tr>
+                    <td><img src="/images/<%if(item.pid){%>products/<%=item.pid%><%}else{%>special_offers/<%=item.sid%><%}%>.jpg?v=<%=item.img_version%>"
+                             alt="<%=item.name%>" style="width: 80px;"/></td>
+                    <td class="cart-title"><a <%if(item.pid){%>href="/product/<%=item.pid%>"<%}else{%>href="/product/special_offer/<%=item.sid%>"<%}%> target="_blank"><%=item.name%></a></td>
+                    <td>$<%=item.price_s%></td>
+                    <td>
+                        <%=__('stock.in')%>
+                    </td>
+                    <td><a href="#" class="button color js-add-to-cart" data-sid="<%= item.sid%>" data-pid="<%= item.pid%>" data-qty="1"><%= __('addToCart')%></a></td>
+                    <td><a href="#" class="cart-remove" data-sid="<%= item.sid%>"></a></td>
+                </tr>
+                <%});%>
+
+            </table>
+
+            <br>
+
+            <!-- Share Buttons -->
+            <!--<div class="share-buttons">
+                <ul>
+                    <li><a href="#">Share</a></li>
+                    <li class="share-facebook"><a href="#">Facebook</a></li>
+                    <li class="share-twitter"><a href="#">Twitter</a></li>
+                    <li class="share-gplus"><a href="#">Google Plus</a></li>
+                    <li class="share-pinit"><a href="#">Pin It</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>-->
+
+        </div>
+
+        <div class="sixteen columns products" style="margin-top: 0;">
+            <div class="pagination-container">
+                <nav class="pagination">
+                    <ul>
+                        <%for(var i = 1; i <= pager.totalPage; ++i){%>
+                        <li><a href="/account/wishlist/<%=i%>" <%if(pager.page==i){%>class="current-page" onclick="return false;"<%}%>><%=i%></a></li>
+                        <%}%>
+                    </ul>
+                </nav>
+
+                <nav class="pagination-next-prev">
+                    <ul>
+                        <li><a <%if(pager.page==1){%>href="javascript:void(0)"<%}else{%>href="/account/wishlist/<%=(pager.page-1)%>"<%}%> class="prev" title="<%= __('pagination.prev')%>"></a></li>
+                        <li><a <%if(pager.page==pager.totalPage){%>href="javascript:void(0)"<%}else{%>href="/account/wishlist/<%=(pager.page+1)%>"<%}%> class="next" title="<%= __('pagination.next')%>"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="margin-top-50"></div>
+    <%- include ../footer.html%>
+</div>
+</body>
+<script data-main="app/account/wishlistMain" src="/scripts/lib/require.js"></script>

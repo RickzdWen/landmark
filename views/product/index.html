@@ -94,7 +94,7 @@
             </section>
             <section class="linking">
                 <a href="#" id="addToCartBtn" class="button adc js-add-to-cart" data-sid="<%= product.sid%>" data-pid="<%= product.id%>" data-qty="1" style="margin-left: 0;"><%= __('addToCart')%></a>
-                <a href="#" class="button atw"><%= __('addToWishList')%></a>
+                <a href="#" id="addToWishBtn" class="button atw js-add-to-wishlist" data-sid="<%= product.sid%>" data-pid="<%= product.id%>"><%= __('addToWishList')%></a>
                 <div class="clearfix"></div>
             </section>
 
@@ -168,7 +168,7 @@
                                     <a href="/product/special_offer/<%= offer.id%>" target="_blank">
                                         <img alt="" style="height: 125px;margin: auto;" src="/images/special_offers/<%= offer.id%>.jpg?v=<%= offer.img_version%>">
                                     </a>
-                                    <a href="#" class="product-button js-add-to-cart"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
+                                    <a href="#" data-sid="<%= offer.id%>" data-qty="1" class="product-button js-add-to-cart"><i class="fa fa-shopping-cart"></i> <%= __('addToCart')%></a>
                                 </div>
 
                                 <a href="/product/special_offer/<%= offer.id%>" target="_blank">

@@ -29,7 +29,7 @@ module.exports = function(router){
             if (!req.session.uid) {
                 throw new CommonError('', 50000);
             } else {
-                CartService.removeCartItem(req.params.id).then(function(){
+                CartService.removeCartItem(req.params.id, req.session.uid).then(function(){
                     res.successJson({});
                 }, function(err){
                     next(err);
@@ -46,7 +46,7 @@ module.exports = function(router){
             if (!req.session.uid) {
                 throw new CommonError('', 50000);
             } else {
-                CartService.updateQty(req.params.id, req.body.qty).then(function(){
+                CartService.updateCartQty(req.params.id, req.session.uid, req.body.qty).then(function(){
                     res.successJson({});
                 }, function(err){
                     next(err);

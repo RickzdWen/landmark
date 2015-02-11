@@ -9,11 +9,13 @@ define([
     'ui/combobox/TopBarDropdown',
     'app/services/account',
     'app/services/cart',
+    'app/services/wishlist',
+    'app/common/params',
     'lib/jquery.cookie',
     'lib/superfish',
     'lib/jquery.jpanelmenu',
     'lib/hoverIntent'
-], function($, _, topic, TopBarDropdown, account, cart){
+], function($, _, topic, TopBarDropdown, account, cart, wishlist, params){
     var langDropDown = new TopBarDropdown({
         node : $('.ui-language-dropdown')[0],
         onChange : function(value) {
@@ -110,6 +112,13 @@ define([
             cartInfo = ret;
         });
     });
-    topic.publish('getCartList');
-
+    topic.subscribe('getWishCount', function(){
+        wishlist.getCount().then(function(ret){
+            $('#wishCount').text('(' + ret.count + ')');
+        });
+    });
+    if (params.uid) {
+        topic.publish('getCartList');
+        topic.publish('getWishCount');
+    }
 });
