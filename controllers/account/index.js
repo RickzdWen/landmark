@@ -24,4 +24,16 @@ module.exports = function(router){
             next(err);
         }
     });
+
+    router.get('/wishlist', function(req, res, next){
+        try {
+            if (req.query.of == 'json') {
+                res._format = 'json';
+            }
+            var WishListService = require(ROOT_PATH + '/services/WishListService');
+
+        } catch (err) {
+            next(err);
+        }
+    });
 };
