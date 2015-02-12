@@ -1,0 +1,79 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:__('safeAndCertificates')};%>
+    <%- include ../head.html%>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'products'};%>
+    <%- include ../header.html%>
+
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('safeAndCertificates')%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><a href="/products"><%= __('product.other')%></a></li>
+                        <li><%= __('safeAndCertificates')%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Slider -->
+        <div class="ten columns" >
+            <div class="slider-padding">
+                <div id="basic-slider" class="royalSlider rsDefault">
+                    <%list.forEach(function(item){%>
+                    <a href="/images/products/cert_<%=item.id%>.jpg?v=<%=item.cimg_version%>" class="mfp-gallery" title="<%=item.name%>"><img class="rsImg" src="/images/products/cert_<%=item.id%>.jpg?v=<%=item.cimg_version%>" alt="" /></a>
+                    <%});%>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="six columns">
+            <div class="product-page">
+
+                <h3 class="headline"><%= __('safety')%></h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+
+                <!-- Project Description -->
+                <section class="project-section">
+                    <!-- Text Parapgraph -->
+                    <p class="margin-bottom-5">Maecenas consequat mauris nec semper tristique. Etiam fermentum augue ac vulputate pulvinar class aptent taciti sociosqu ad litora torquent. </p>
+
+                    <!-- Share Buttons -->
+                    <!--<div class="share-buttons">
+                        <ul>
+                            <li><a href="#">Share</a></li>
+                            <li class="share-facebook"><a href="#">Facebook</a></li>
+                            <li class="share-pinit"><a href="#">Pin It</a></li>
+                            <li class="share-twitter"><a href="#">Twitter</a></li>
+                        </ul>
+                    </div>-->
+                    <div class="clearfix"></div>
+                </section>
+
+                <br>
+            </div>
+        </div>
+
+    </div>
+    <!-- Container / End -->
+
+    <%- include ../footer.html%>
+</div>
+</body>
+
+<script data-main="app/products/certsMain" src="/scripts/lib/require.js"></script>

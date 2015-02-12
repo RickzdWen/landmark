@@ -112,6 +112,20 @@ module.exports = function(router){
             next(err);
         }
     });
+
+    router.get('/certs', function(req, res, next){
+        try {
+            ProductService.getCertificates(res.lang).then(function(rows){
+                res.render('products/certs', {
+                    list : rows || []
+                });
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
 };
 
 function _getSqlArray(rows, key) {
