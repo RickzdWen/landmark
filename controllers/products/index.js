@@ -115,9 +115,16 @@ module.exports = function(router){
 
     router.get('/certs', function(req, res, next){
         try {
-            ProductService.getCertificates(res.lang).then(function(rows){
+            var WebsiteInfoModel = require(ROOT_PATH + '/models/WebsiteInfoModel');
+            q.all([
+                ProductService.getCertificates(res.lang),
+                WebsiteInfoModel.getInstance().getSafetyDesc(res.lang)
+            ]).then(function(retArray){
+                var rows = retArray[0];
+                var desc = retArray[1];
                 res.render('products/certs', {
-                    list : rows || []
+                    list : rows || [],
+                    desc : desc
                 });
             }, function(err){
                 next(err);
