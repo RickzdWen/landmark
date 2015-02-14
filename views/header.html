@@ -263,7 +263,7 @@
 
 
                 <li class="dropdown">
-                    <a href="#"><%= __('aboutUs')%></a>
+                    <a href="/about" <%if (header.nav=='about'){%>class="current"<%}%>><%= __('aboutUs')%></a>
                     <ul>
                         <li><a href="#"><%= __('contactUs')%></a></li>
                         <li><a href="#"><%= __('joinUs')%></a></li>

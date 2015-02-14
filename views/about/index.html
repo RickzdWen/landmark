@@ -1,0 +1,50 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:__('aboutUs')};%>
+    <%- include ../head.html%>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'about'};%>
+    <%- include ../header.html%>
+
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('aboutUs')%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><%= aboutUs%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Blockquote
+        ================================================== -->
+
+        <div class="sixteen columns">
+
+            <!-- Headline -->
+            <!--<h3 class="headline">Blockquote</h3><span class="line margin-bottom-30"></span><div class="clearfix"></div>-->
+
+            <%- content%>
+
+        </div>
+
+    </div>
+    <!-- Container / End -->
+
+    <%- include ../footer.html%>
+</div>
+</body>
+<script data-main="app/about/indexMain" src="/scripts/lib/require.js"></script>
