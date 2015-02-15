@@ -192,12 +192,15 @@
                     <ul>
                         <li><a href="/about/contact"><%= __('contactUs')%></a></li>
                         <!--<li><a href="#"><%= __('joinUs')%></a></li>-->
+                        <li><a href="/about/payment"><%= __('paymentMethods')%></a></li>
+                        <li><a href="/about/delivery"><%= __('deliveryAndReturns')%></a></li>
                         <li><a href="/about/privacy"><%= __('privacyPolicy')%></a></li>
+                        <li><a href="/about/terms"><%= __('termsAndConditions')%></a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" <%if (header.nav=='account'){%>class="current"<%}%>><%= __('myAccount')%></a>
+                    <a href="/account" <%if (header.nav=='account'){%>class="current"<%}%>><%= __('myAccount')%></a>
                     <ul>
                         <li><a href="/account/carts"><%= __('shoppingCart')%></a></li>
                         <li><a href="/account/wishlist"><%= __('wishList')%></a></li>
@@ -218,7 +221,7 @@
 
 
                 <li class="demo-button">
-                    <a href="/faq">FAQ</a>
+                    <a href="/faq" <%if (header.nav=='faq'){%>class="current"<%}%>>FAQ</a>
                 </li>
 
             </ul>

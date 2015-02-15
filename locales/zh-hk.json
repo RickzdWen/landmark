@@ -59,6 +59,7 @@
         "other" : "記錄",
         "trade_s" : "交易記錄"
     },
+    "about" : "關於",
     "aboutUs" : "關於我們",
     "contactUs" : "聯繫我們",
     "joinUs" : "加盟我們",
@@ -115,5 +116,11 @@
     "getInTouch" : "取得聯繫",
     "name" : "名字",
     "message" : "消息",
-    "sendMsg" : "發送消息"
+    "sendMsg" : "發送消息",
+    "paymentMethods" : "付款方式",
+    "deliveryAndReturns" : "發貨與退款",
+    "termsAndConditions" : "服務條款與條件",
+    "faq" : "常見問答",
+    "oneMoreQuestion" : "更多問題",
+    "moreQuestionTip" : "如果您有更多問題，請發送給我們，我們會盡快給您答復。"
 }

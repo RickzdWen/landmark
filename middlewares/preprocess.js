@@ -5,6 +5,7 @@
 module.exports = function(req, res, next){
     var locale = res.getLocale();
     res.lang = locale.substr(3);
+    res.locals.lang = res.lang;
     res.successJson = function(json){
         res.json({
             code : 0,

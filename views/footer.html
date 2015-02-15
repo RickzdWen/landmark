@@ -12,16 +12,16 @@
         <div class="four columns">
 
             <!-- Headline -->
-            <h3 class="headline footer">Customer Service</h3>
+            <h3 class="headline footer"><%= __('about')%></h3>
             <span class="line"></span>
             <div class="clearfix"></div>
 
             <ul class="footer-links">
-                <li><a href="#">Order Status</a></li>
-                <li><a href="#">Payment Methods</a></li>
-                <li><a href="#">Delivery & Returns</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="/about"><%= __('aboutUs')%></a></li>
+                <li><a href="/about/payment"><%= __('paymentMethods')%></a></li>
+                <li><a href="/about/delivery"><%= __('deliveryAndReturns')%></a></li>
+                <li><a href="/about/privacy"><%= __('privacyPolicy')%></a></li>
+                <li><a href="/about/terms"><%= __('termsAndConditions')%></a></li>
             </ul>
 
         </div>
@@ -29,14 +29,14 @@
         <div class="four columns">
 
             <!-- Headline -->
-            <h3 class="headline footer">My Account</h3>
+            <h3 class="headline footer"><%= __('myAccount')%></h3>
             <span class="line"></span>
             <div class="clearfix"></div>
 
             <ul class="footer-links">
-                <li><a href="#">My Account</a></li>
-                <li><a href="#">Order History</a></li>
-                <li><a href="#">Wish List</a></li>
+                <li><a href="/account"><%= __('myAccount')%></a></li>
+                <li><a href="/account/carts"><%= __('shoppingCart')%></a></li>
+                <li><a href="/account/wishlist"><%= __('wishList')%></a></li>
             </ul>
 
         </div>

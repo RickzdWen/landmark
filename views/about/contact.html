@@ -2,7 +2,11 @@
 <head>
     <%var head={title:__('contactUs')};%>
     <%- include ../head.html%>
+    <%if(lang=='cn'){%>
+    <script src="http://maps.google.cn/maps/api/js?sensor=true"></script>
+    <%}else{%>
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <%}%>
 </head>
 
 <body class="boxed">
@@ -117,8 +121,8 @@
                         <fieldset>
 
                             <div>
-                                <label><%= __('name')%>:</label>
-                                <input name="name" type="text" id="name" <%if(logonId){%>value="<%= user.nick%>"<%}%>>
+                                <label><%= __('name')%>: <span>*</span></label>
+                                <input name="nick" type="text" id="nick" <%if(logonId){%>value="<%= user.nick%>"<%}%>>
                                 <input name="uid" type="hidden" style="display: none;" value="<%=logonId%>">
                             </div>
 
@@ -129,7 +133,7 @@
 
                             <div>
                                 <label><%= __('message')%>: <span>*</span></label>
-                                <textarea name="message" cols="40" rows="3" id="message" spellcheck="true"></textarea>
+                                <textarea name="content" cols="40" rows="3" id="content" spellcheck="true"></textarea>
                             </div>
 
                         </fieldset>

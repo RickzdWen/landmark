@@ -59,6 +59,7 @@
 		"other": "Records",
 		"trade_s": "Trade Records"
 	},
+    "about" : "About",
 	"aboutUs": "About Us",
 	"contactUs": "Contact Us",
 	"joinUs": "Join Us",
@@ -115,5 +116,11 @@
     "getInTouch" : "Get In Touch",
     "name" : "Name",
     "message" : "Message",
-    "sendMsg" : "Send Message"
+    "sendMsg" : "Send Message",
+    "paymentMethods" : "Payment Methods",
+    "deliveryAndReturns" : "Delivery & Returns",
+    "termsAndConditions" : "Terms & Conditions",
+    "faq" : "frequently asked questions",
+    "oneMoreQuestion" : "One More Question",
+    "moreQuestionTip" : "If you have more questions, send us a message and we will answer you as soon as possible."
 }

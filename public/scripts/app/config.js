@@ -70,6 +70,7 @@ var require = {
         'lib/jquery.jpanelmenu' : ['jquery'],
         'lib/jquery.magnific-popup.min' : ['jquery'],
         'lib/jquery.gmaps.min' : ['jquery'],
+        'lib/jquery-migrate' : ['jquery'],
         'lib/jquery.md5' : ['jquery'],
         'lib/superfish' : ['jquery'],
         'lib/hoverIntent' : ['jquery']
