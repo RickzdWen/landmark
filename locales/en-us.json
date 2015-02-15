@@ -12,97 +12,108 @@
 	"product": {
 		"one": "Product",
 		"other": "Product",
-        "all" : "All Products",
-        "related" : "Related Products",
-        "name" : "Product Name"
+		"all": "All Products",
+		"related": "Related Products",
+		"name": "Product Name"
 	},
 	"latestSpecialOffers": "Latest Special Offers",
 	"allProducts": "All Products",
 	"allSpecialOffers": "All Special Offers",
-    "specialOffer" : {
-        "one" : "Special Offer",
-        "other" : "Special Offers",
-        "related" : "Related Special Offers",
-        "findMore" : "Find More Special Offers",
-        "all" : "All Special Offers"
-    },
+	"specialOffer": {
+		"one": "Special Offer",
+		"other": "Special Offers",
+		"related": "Related Special Offers",
+		"findMore": "Find More Special Offers",
+		"all": "All Special Offers"
+	},
 	"allSales": "All Sales",
 	"all": "All",
 	"brand": {
 		"one": "Brand",
 		"other": "Brands"
 	},
-    "price" : "Price",
-    "filter" : "Filter",
-    "filterByPrice" : "Filter By Price",
-    "defaultSorting" : "Default Sorting",
-    "sortByPriceAsc" : "Sort by Price Asc",
-    "sortByPriceDesc" : "Sort by Price Desc",
-    "pagination" : {
-        "prev" : "prev",
-        "next" : "next"
-    },
-    "productsPageTitle" : "Bringing Health To Life",
-    "productsPageSubTitle" : "You can find what you want!",
-    "feature" : "Feature",
-    "supplementFacts" : "Supplement Facts",
-    "usage" : "Usage",
-    "addToWishList" : "Add to WishList",
-    "lmp" : "LMP",
-    "ume" : "UltraMax USA",
-    "order" : {
-        "one" : "Order",
-        "other" : "Orders"
-    },
-    "record" : {
-        "one" : "Record",
-        "other" : "Records",
-        "trade_s" : "Trade Records"
-    },
-    "aboutUs" : "About Us",
-    "contactUs" : "Contact Us",
-    "joinUs" : "Join Us",
-    "safeAndCertificates" : "Safety and Certificates",
-    "madeInTheUSA" : "made in the USA",
-    "saveYourMoney" : "save your money",
-    "useItFreely" : "use it freely",
-    "login" : "Login",
-    "logout" : "Logout",
-    "register" : "Register",
-    "loginAndRegister" : "Login And Register",
-    "email" : "Email",
-    "password" : {
-        "text" : "Password",
-        "lost" : "Lost Your Password",
-        "repeat" : "Repeat Password"
-    },
-    "rememberMe" : "Remember Me",
-    "username" : "Username",
-    "submit" : {
-        "text" : "Submit",
-        "ing" : "Submitting"
-    },
-    "cart" : {
-        "item" : "Item",
-        "desc" : "Description",
-        "price" : "Price",
-        "quantity" : "Quantity",
-        "total" : "Total",
-        "totals" : "Cart Totals",
-        "subtotal" : "Cart Subtotal",
-        "orderTotal" : "Order Total",
-        "update" : "Update Cart",
-        "toCheckout" : "Proceed to Checkout",
-        "items" : "items in the shopping cart",
-        "view" : "View Cart"
-    },
-    "shipping" : "Shipping",
-    "freeShipping" : "Free Shipping",
-    "stock" : {
-        "status" : "Stock Status",
-        "in" : "In Stock"
-    },
-    "myWishlist" : "My Wishlist",
-    "menu" : "Menu",
-    "safety" : "Safety"
+	"price": "Price",
+	"filter": "Filter",
+	"filterByPrice": "Filter By Price",
+	"defaultSorting": "Default Sorting",
+	"sortByPriceAsc": "Sort by Price Asc",
+	"sortByPriceDesc": "Sort by Price Desc",
+	"pagination": {
+		"prev": "prev",
+		"next": "next"
+	},
+	"productsPageTitle": "Bringing Health To Life",
+	"productsPageSubTitle": "You can find what you want!",
+	"feature": "Feature",
+	"supplementFacts": "Supplement Facts",
+	"usage": "Usage",
+	"addToWishList": "Add to WishList",
+	"lmp": "LMP",
+	"ume": "UltraMax USA",
+	"order": {
+		"one": "Order",
+		"other": "Orders"
+	},
+	"record": {
+		"one": "Record",
+		"other": "Records",
+		"trade_s": "Trade Records"
+	},
+	"aboutUs": "About Us",
+	"contactUs": "Contact Us",
+	"joinUs": "Join Us",
+	"safeAndCertificates": "Safety and Certificates",
+	"madeInTheUSA": "made in the USA",
+	"saveYourMoney": "save your money",
+	"useItFreely": "use it freely",
+	"login": "Login",
+	"logout": "Logout",
+	"register": "Register",
+	"loginAndRegister": "Login And Register",
+	"email": "Email",
+	"password": {
+		"text": "Password",
+		"lost": "Lost Your Password",
+		"repeat": "Repeat Password"
+	},
+	"rememberMe": "Remember Me",
+	"username": "Username",
+	"submit": {
+		"text": "Submit",
+		"ing": "Submitting"
+	},
+	"cart": {
+		"item": "Item",
+		"desc": "Description",
+		"price": "Price",
+		"quantity": "Quantity",
+		"total": "Total",
+		"totals": "Cart Totals",
+		"subtotal": "Cart Subtotal",
+		"orderTotal": "Order Total",
+		"update": "Update Cart",
+		"toCheckout": "Proceed to Checkout",
+		"items": "items in the shopping cart",
+		"view": "View Cart"
+	},
+	"shipping": "Shipping",
+	"freeShipping": "Free Shipping",
+	"stock": {
+		"status": "Stock Status",
+		"in": "In Stock"
+	},
+	"myWishlist": "My Wishlist",
+	"menu": "Menu",
+	"safety": "Safety",
+	"privacyPolicy": "Privacy Policy",
+	"404NotFound": "We're sorry, but the page you were looking for doesn't exist.",
+	"businessHours": "Business Hours",
+    "24Hours" : "24Hours",
+    "address" : "Address",
+    "contact" : "Contact",
+    "getSocial" : "Get Social",
+    "getInTouch" : "Get In Touch",
+    "name" : "Name",
+    "message" : "Message",
+    "sendMsg" : "Send Message"
 }

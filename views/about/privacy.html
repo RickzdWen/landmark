@@ -1,12 +1,12 @@
 <%- include ../doctype.html%>
 <head>
-    <%var head={title:__('aboutUs')};%>
+    <%var head={title:__('privacyPolicy')};%>
     <%- include ../head.html%>
 </head>
 
 <body class="boxed">
 <div id="wrapper">
-    <%var header={nav:'about'};%>
+    <%var header={nav:'privacy'};%>
     <%- include ../header.html%>
 
     <!-- Titlebar
@@ -14,12 +14,13 @@
     <section class="titlebar">
         <div class="container">
             <div class="sixteen columns">
-                <h2><%= __('aboutUs')%></h2>
+                <h2><%= __('privacyPolicy')%></h2>
 
                 <nav id="breadcrumbs">
                     <ul>
                         <li><a href="/"><%= __('home')%></a></li>
-                        <li><%= __('aboutUs')%></li>
+                        <li><a href="/about"><%= __('aboutUs')%></a></li>
+                        <li><%= __('privacyPolicy')%></li>
                     </ul>
                 </nav>
             </div>

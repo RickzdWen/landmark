@@ -1,0 +1,151 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:__('contactUs')};%>
+    <%- include ../head.html%>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'about'};%>
+    <%- include ../header.html%>
+
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('contactUs')%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><a href="/about"><%= __('aboutUs')%></a></li>
+                        <li><%= __('contactUs')%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container -->
+    <div class="container fullwidth-element">
+
+        <!-- Google Maps -->
+        <section class="google-map-container">
+            <div id="googlemaps" class="google-map google-map-full"></div>
+        </section>
+        <!-- Google Maps / End -->
+
+    </div>
+    <!-- Container / End -->
+
+    <!-- Container -->
+    <div class="container">
+        <div class="four columns">
+
+            <!-- Information -->
+            <div class="widget margin-top-10">
+                <div class="accordion">
+
+                    <!-- Section 2 -->
+                    <h3><span class="ui-accordion-header-icon ui-icon ui-accordion-icon"></span><i class="fa fa-thumb-tack"></i> <%= __('address')%></h3>
+                    <div>
+                        <ul class="contact-informations margin-top-0">
+                            <li><span class="address">45 Park Avenue, Apt. 303</span></li>
+                            <li><span class="address">New York, NY 10016</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <h3><span class="ui-accordion-header-icon ui-icon ui-accordion-icon"></span><i class="fa fa-user"></i> <%= __('contact')%></h3>
+                    <div>
+                        <ul class="contact-informations second">
+                            <li><i class="fa fa-phone"></i> <p>+48 880 440 110</p></li>
+                            <li><i class="fa fa-fax"></i> <p>1-866-852-9384</p></li>
+                            <li><i class="fa fa-envelope"></i> <p>contact@land-mark-shop.com</p></li>
+                            <li><i class="fa fa-globe"></i> <p><a href="www.land-mark-shop.com">www.land-mark-shop.com</a></p></li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 1 -->
+                    <h3><span class="ui-accordion-header-icon ui-icon ui-accordion-icon"></span><i class="fa fa-file-text"></i> <%= __('businessHours')%></h3>
+                    <div>
+                        <p><%= __('24Hours')%></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Social -->
+            <div class="widget">
+                <h3 class="headline"><%= __('getSocial')%></h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+                <ul class="social-icons">
+                    <%if ('zh-cn' == getLocale()){%>
+                    <li><a class="font-awesome qq" href="#"><i class="icon-qq"></i></a></li>
+                    <li><a class="font-awesome wechat" href="#"><i class="icon-wechat"></i></a></li>
+                    <li><a class="font-awesome weibo" href="#"><i class="icon-weibo"></i></a></li>
+                    <%}%>
+                    <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                    <%if ('zh-cn' != getLocale()){%>
+                    <li><a class="font-awesome qq" href="#"><i class="icon-qq"></i></a></li>
+                    <li><a class="font-awesome wechat" href="#"><i class="icon-wechat"></i></a></li>
+                    <li><a class="font-awesome weibo" href="#"><i class="icon-weibo"></i></a></li>
+                    <%}%>
+                </ul>
+                <div class="clearfix"></div>
+                <br>
+            </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <div class="twelve columns">
+            <div class="extra-padding left">
+                <h3 class="headline"><%= __('getInTouch')%></h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+
+                <!-- Contact Form -->
+                <section id="contact">
+
+                    <!-- Success Message -->
+                    <mark id="message"></mark>
+
+                    <!-- Form -->
+                    <form method="post" name="contactform" id="contactform">
+
+                        <fieldset>
+
+                            <div>
+                                <label><%= __('name')%>:</label>
+                                <input name="name" type="text" id="name" <%if(logonId){%>value="<%= user.nick%>"<%}%>>
+                                <input name="uid" type="hidden" style="display: none;" value="<%=logonId%>">
+                            </div>
+
+                            <div>
+                                <label ><%= __('email')%>: <span>*</span></label>
+                                <input name="email" type="email" id="email" <%if(logonId){%>value="<%= user.email%>"<%}%> pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" />
+                            </div>
+
+                            <div>
+                                <label><%= __('message')%>: <span>*</span></label>
+                                <textarea name="message" cols="40" rows="3" id="message" spellcheck="true"></textarea>
+                            </div>
+
+                        </fieldset>
+                        <div id="result"></div>
+                        <input type="submit" class="submit" id="submit" value="<%= __('sendMsg')%>" />
+                        <div class="clearfix"></div>
+                    </form>
+
+                </section>
+                <!-- Contact Form / End -->
+            </div>
+        </div>
+    </div>
+    <!-- Container / End -->
+
+    <%- include ../footer.html%>
+</div>
+</body>
+<script data-main="app/about/contactMain" src="/scripts/lib/require.js"></script>

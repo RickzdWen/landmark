@@ -18,4 +18,26 @@ module.exports = function(router){
             next(err);
         }
     });
+
+    router.get('/privacy', function(req, res, next){
+        try {
+            WebsiteInfoModel.getInstance().getPrivacyDesc(res.lang).then(function(content){
+                res.render('about/privacy', {
+                    content : content
+                });
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.get('/contact', function(req, res, next){
+        try {
+            res.render('about/contact', {});
+        } catch (err) {
+            next(err);
+        }
+    });
 };

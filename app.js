@@ -71,6 +71,7 @@ require(path.join(ROOT_PATH, 'middlewares/route'))(app, {
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    res.errorView = '404';
     next(err);
 });
 
@@ -86,7 +87,7 @@ if (app.get('env') === 'development') {
         if (res._format == 'json') {
             res.failJson(err);
         } else {
-            res.render('error', {
+            res.render(res.errorView || 'error', {
                 message: (err.getMessage && err.getMessage()) || err.message,
                 error: err
             });
@@ -101,7 +102,7 @@ app.use(function(err, req, res, next) {
     if (res._format == 'json') {
         res.failJson(err);
     } else {
-        res.render('error', {
+        res.render(res.errorView || 'error', {
             message: (err.getMessage && err.getMessage()) || err.message,
             error: err
         });

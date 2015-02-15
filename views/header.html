@@ -179,70 +179,6 @@
                     </ul>
                 </li>
 
-
-                <!--<li>
-                    <a href="#">Features</a>
-                    <div class="mega">
-                        <div class="mega-container">
-
-                            <div class="one-column">
-                                <ul>
-                                    <li><span class="mega-headline">Example Pages</span></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="404-page.html">404 Page</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="one-column">
-                                <ul>
-                                    <li><span class="mega-headline">Featured Pages</span></li>
-                                    <li><a href="index-2.html">Business Homepage</a></li>
-                                    <li><a href="shop-with-sidebar.html">Default Shop</a></li>
-                                    <li><a href="blog-masonry.html">Masonry Blog</a></li>
-                                    <li><a href="variable-product-page.html">Variable Product</a></li>
-                                    <li><a href="portfolio-dynamic-grid.html">Dynamic Grid</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="one-column hidden-on-mobile">
-                                <ul>
-                                    <li><span class="mega-headline">Paragraph</span></li>
-                                    <li><p>This <a href="#">Mega Menu</a> can handle everything. Lists, paragraphs, forms...</p></li>
-                                </ul>
-                            </div>
-
-                            <div class="one-fourth-column hidden-on-mobile">
-                                <a href="#" class="img-caption margin-reset">
-                                    <figure>
-                                        <img src="/images/menu-banner-01.jpg" alt="" />
-                                        <figcaption>
-                                            <h3>Jeans</h3>
-                                            <span>Pack for Style</span>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-
-                            <div class="one-fourth-column hidden-on-mobile">
-                                <a href="#" class="img-caption margin-reset">
-                                    <figure>
-                                        <img src="/images/menu-banner-02.jpg" alt="" />
-                                        <figcaption>
-                                            <h3>Sunglasses</h3>
-                                            <span>Nail the Basics</span>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </li>-->
-
                 <li class="dropdown">
                     <a href="#"><%= __('brand.other')%></a>
                     <ul>
@@ -252,21 +188,21 @@
                 </li>
 
                 <li class="dropdown">
+                    <a href="/about" <%if (header.nav=='about'){%>class="current"<%}%>><%= __('aboutUs')%></a>
+                    <ul>
+                        <li><a href="/about/contact"><%= __('contactUs')%></a></li>
+                        <!--<li><a href="#"><%= __('joinUs')%></a></li>-->
+                        <li><a href="/about/privacy"><%= __('privacyPolicy')%></a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
                     <a href="#" <%if (header.nav=='account'){%>class="current"<%}%>><%= __('myAccount')%></a>
                     <ul>
                         <li><a href="/account/carts"><%= __('shoppingCart')%></a></li>
                         <li><a href="/account/wishlist"><%= __('wishList')%></a></li>
-                        <li><a href="#"><%= __('order.other')%></a></li>
-                        <li><a href="#"><%= __('record.trade_s')%></a></li>
-                    </ul>
-                </li>
-
-
-                <li class="dropdown">
-                    <a href="/about" <%if (header.nav=='about'){%>class="current"<%}%>><%= __('aboutUs')%></a>
-                    <ul>
-                        <li><a href="#"><%= __('contactUs')%></a></li>
-                        <li><a href="#"><%= __('joinUs')%></a></li>
+                        <li><a href="/account/orders"><%= __('order.other')%></a></li>
+                        <li><a href="/account/history"><%= __('record.trade_s')%></a></li>
                     </ul>
                 </li>
 
@@ -282,7 +218,7 @@
 
 
                 <li class="demo-button">
-                    <a href="#">FAQ</a>
+                    <a href="/faq">FAQ</a>
                 </li>
 
             </ul>

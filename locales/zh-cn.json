@@ -105,5 +105,16 @@
 	},
     "myWishlist" : "我的收藏",
     "menu" : "菜单",
-    "safety" : "安全性"
+    "safety" : "安全性",
+    "privacyPolicy" : "隐私条款",
+    "404NotFound" : "抱歉，未找到你要的页面。",
+    "businessHours" : "营业时间",
+    "24Hours" : "24小时",
+    "address" : "地址",
+    "contact" : "联系方式",
+    "getSocial" : "社交联系方式",
+    "getInTouch" : "取得联系",
+    "name" : "名字",
+    "message" : "消息",
+    "sendMsg" : "发送消息"
 }
