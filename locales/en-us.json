@@ -32,6 +32,10 @@
 		"one": "Brand",
 		"other": "Brands"
 	},
+    "category" : {
+        "one" : "Category",
+        "other" : "Categories"
+    },
 	"price": "Price",
 	"filter": "Filter",
 	"filterByPrice": "Filter By Price",

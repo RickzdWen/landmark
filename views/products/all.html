@@ -48,11 +48,11 @@
 
             <!-- Brands -->
             <div class="widget margin-top-0" id="brandsConds">
-                <h3 class="headline"><%= __('brand.other')%></h3><span class="line"></span><div class="clearfix"></div>
+                <h3 class="headline"><%= __('category.other')%></h3><span class="line"></span><div class="clearfix"></div>
 
                 <ul id="categories">
-                    <%brands.forEach(function(brand){%>
-                    <li><a href="#b<%=brand.id%>" data-id="<%=brand.id%>"><%= brand.name%> <span>(<%=brand.qty%>)</span></a></li>
+                    <%categories.forEach(function(cat){%>
+                    <li><a href="#c<%=cat.id%>" data-id="<%=cat.id%>"><%= cat.name%> <span>(<%=cat.qty%>)</span></a></li>
                     <%});%>
                     <li><a href="#"><%= __('all')%> <span></span></a></li>
                 </ul>

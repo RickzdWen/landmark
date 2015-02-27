@@ -90,12 +90,12 @@ require([
             var list = data.result;
             $listNode.html(template(list));
             $paginationWrapper.html(pagerTemplate(data.pager));
-            var bid = cond.bid;
-            if (!bid) {
+            var cid = cond.cid;
+            if (!cid) {
                 $brandLinks.filter(':last').addClass('active');
                 $brandLinks.not(':last').removeClass('active');
             } else {
-                var $active = $brandLinks.filter('[data-id=' + bid + ']').addClass('active');
+                var $active = $brandLinks.filter('[data-id=' + cid + ']').addClass('active');
                 $brandLinks.not($active).removeClass('active');
             }
         }).fail(function(error){
@@ -106,18 +106,29 @@ require([
     APP.router = Backbone.Router.extend({
         routes : {
             'b:bid(/p:page)' : 'searchBrandProducts',
+            'c:cid(/p:page)' : 'searchCategoryProducts',
             'p:page' : 'defaultShow',
             '*other' : 'defaultShow'
         },
 
         searchBrandProducts : function(bid, page) {
             page = page || 1;
+            condition.cid = '';
             condition.bid = bid;
             condition.page = page;
             APP.trigger('search', condition);
         },
 
+        searchCategoryProducts : function(cid, page) {
+            page = page || 1;
+            condition.cid = cid;
+            condition.bid = '';
+            condition.page = page;
+            APP.trigger('search', condition);
+        },
+
         defaultShow : function(page) {
+            condition.cid = '';
             condition.bid = '';
             condition.page = page || 1;
             APP.trigger('search', condition);

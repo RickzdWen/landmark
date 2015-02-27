@@ -32,6 +32,10 @@
         "one": "品牌",
         "other": "品牌"
     },
+    "category" : {
+        "one" : "分類",
+        "other" : "分類"
+    },
     "price" : "價格",
     "filter" : "過濾",
     "filterByPrice" : "價格過濾",
