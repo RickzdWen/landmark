@@ -180,10 +180,10 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#"><%= __('brand.other')%></a>
+                    <a href="/brands" <%if (header.nav=='brands'){%>class="current"<%}%>><%= __('brand.other')%></a>
                     <ul>
-                        <li><a href="#"><%= __('lmp')%></a></li>
-                        <li><a href="#"><%= __('ume')%></a></li>
+                        <li><a href="/brand/90000"><%= __('lmp')%></a></li>
+                        <li><a href="/brand/90001"><%= __('ume')%></a></li>
                     </ul>
                 </li>
 

@@ -1,0 +1,51 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:brand.name};%>
+    <%- include ../head.html%>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'brands'};%>
+    <%- include ../header.html%>
+
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= brand.name%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><a href="/brands"><%= __('brand.other')%></a></li>
+                        <li><%= brand.name%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Blockquote
+        ================================================== -->
+
+        <div class="sixteen columns">
+
+            <!-- Headline -->
+            <!--<h3 class="headline">Blockquote</h3><span class="line margin-bottom-30"></span><div class="clearfix"></div>-->
+
+            <%- brand.desc%>
+
+        </div>
+
+    </div>
+    <!-- Container / End -->
+
+    <%- include ../footer.html%>
+</div>
+</body>
+<script data-main="app/about/indexMain" src="/scripts/lib/require.js"></script>

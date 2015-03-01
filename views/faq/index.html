@@ -45,60 +45,14 @@
             <div class="extra-padding">
 
                 <!-- Toggle 1 -->
+                <%list.forEach(function(item){%>
                 <div class="toggle-wrap faq">
-                    <span class="trigger opened"><a href="#"><i class="toggle-icon"></i> What is a Premium Theme? </a></span>
+                    <span class="trigger opened"><a href="#"><i class="toggle-icon"></i> <%= item.question%> </a></span>
                     <div class="toggle-container">
-                        <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Vivamus justo arcu, elementum a sollicitudin pellentesque, tincidunt ac enim. Proin id arcu ut ipsum vestibulum elementum.</p>
+                        <p><%= item.answer%></p>
                     </div>
                 </div>
-
-                <!-- Toggle 2 -->
-                <div class="toggle-wrap faq">
-                    <span class="trigger"><a href="#"><i class="toggle-icon"></i> How much does it cost?</a></span>
-                    <div class="toggle-container">
-                        <p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
-                    </div>
-                </div>
-
-                <!-- Toggle 3 -->
-                <div class="toggle-wrap faq">
-                    <span class="trigger"><a href="#"><i class="toggle-icon"></i> Why should I purchase a Premium Theme?</a></span>
-                    <div class="toggle-container">
-                        <p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
-                    </div>
-                </div>
-
-                <!-- Toggle 4 -->
-                <div class="toggle-wrap faq">
-                    <span class="trigger"><a href="#"><i class="toggle-icon"></i> Where can I get support?</a></span>
-                    <div class="toggle-container">
-                        <p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
-                    </div>
-                </div>
-
-                <!-- Toggle 5 -->
-                <div class="toggle-wrap faq">
-                    <span class="trigger"><a href="#"><i class="toggle-icon"></i> How important is branding in a website?</a></span>
-                    <div class="toggle-container">
-                        <p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
-                    </div>
-                </div>
-
-                <!-- Toggle 6 -->
-                <div class="toggle-wrap faq">
-                    <span class="trigger"><a href="#"><i class="toggle-icon"></i> What is a User Interface?</a></span>
-                    <div class="toggle-container">
-                        <p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
-                    </div>
-                </div>
-
-                <!-- Toggle 7 -->
-                <div class="toggle-wrap faq">
-                    <span class="trigger"><a href="#"><i class="toggle-icon"></i> Why should I use Premium Theme? </a></span>
-                    <div class="toggle-container">
-                        <p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
-                    </div>
-                </div>
+                <%});%>
 
             </div>
         </div>
