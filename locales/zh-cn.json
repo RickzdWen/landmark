@@ -32,10 +32,10 @@
 		"one": "品牌",
 		"other": "品牌"
 	},
-    "category" : {
-        "one" : "分类",
-        "other" : "分类"
-    },
+	"category": {
+		"one": "分类",
+		"other": "分类"
+	},
 	"price": "价格",
 	"filter": "过滤",
 	"filterByPrice": "价格过滤",
@@ -125,7 +125,7 @@
 	"paymentMethods": "付款方式",
 	"deliveryAndReturns": "发货与退款",
 	"termsAndConditions": "服务条款与条件",
-    "faq" : "常见问答",
-    "oneMoreQuestion" : "更多问题",
-    "moreQuestionTip" : "如果您有更多问题，请发送给我们，我们会尽快给您答复。"
+	"faq": "常见问答",
+	"oneMoreQuestion": "更多问题",
+	"moreQuestionTip": "如果您有更多问题，请发送给我们，我们会尽快给您答复。"
 }

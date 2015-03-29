@@ -50,7 +50,16 @@
                         <img src="/images/<%if(item.pid){%>products/<%=item.pid%><%}else{%>special_offers/<%=item.sid%><%}%>.jpg?v=<%=item.img_version%>"
                              alt="<%=item.desc%>" style="width: 80px;">
                     </td>
-                    <td class="cart-title"><a <%if(item.pid){%>href="/product/<%=item.pid%>"<%}else{%>href="/product/special_offer/<%=item.sid%>"<%}%> target="_blank"><%=item.desc%></a></td>
+                    <td class="cart-title">
+                        <a <%if(item.pid){%>href="/product/<%=item.pid%>"<%}else{%>href="/product/special_offer/<%=item.sid%>"<%}%> target="_blank"><%=item.desc%></a>
+                        <%if(item.products){%>
+                        <ul class="list-4 color">
+                            <%item.products.forEach(function(prod){%>
+                            <li><%=prod.name%> X <span class="js-prod-qty" data-unit="<%=prod.unit%>"><%=prod.qty%></span></li>
+                            <%});%>
+                        </ul>
+                        <%}%>
+                    </td>
                     <td>$<%=item.price_s%></td>
                     <td>
                         <form action='#'>
@@ -77,7 +86,9 @@
                         </form>-->
 
                         <div class="cart-btns">
-                            <a href="/account/paypal/pay" class="button color cart-btns proceed"><%= __('cart.toCheckout')%></a>
+                            <%if(list && list.length){%>
+                            <a href="/account/carts/checkout" class="button color cart-btns proceed"><%= __('cart.toCheckout')%></a>
+                            <%}%>
                             <a href="javascript:window.location.reload(true);" class="button gray cart-btns"><%= __('cart.update')%></a>
                         </div>
                     </th>

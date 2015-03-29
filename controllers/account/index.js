@@ -48,4 +48,40 @@ module.exports = function(router){
             next(err);
         }
     });
+
+    router.get('/carts/checkout', function(req, res, next){
+        try {
+            var CartService = require(ROOT_PATH + '/services/CartService');
+            var AddressService = require(ROOT_PATH + '/services/AddressService');
+            var commonConfig = require(ROOT_PATH + '/configs/commonConfig');
+            var q = require('q');
+            q.all([
+                CartService.listUserCart(req.session.uid, res.lang),
+                AddressService.getCurrentUsedAddress(req.session.uid)
+            ]).then(function(ret){
+                console.log(ret);
+                var carts = ret[0];
+                var address = ret[1] || {};
+                var snapshot = JSON.stringify(ret);
+                var crypto = require('crypto');
+                var cipher = crypto.createCipher('blowfish', commonConfig.CHEKOUT_KEY);
+                var enciphered = cipher.update(snapshot, 'utf8', 'hex');
+                enciphered += cipher.final('hex');
+
+//                var decipher = crypto.createDecipher('blowfish', commonConfig.CHEKOUT_KEY);
+//                var content = decipher.update(enciphered, 'hex', 'utf8');
+//                content += decipher.final('utf8');
+
+                res.render('account/checkout', {
+                    encipherred : enciphered,
+                    carts : carts,
+                    address : address
+                });
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
 };

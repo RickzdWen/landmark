@@ -70,7 +70,13 @@ require([
         var price = +$node.data('price');
         var total = +(price * qty).toFixed(2);
         var total_s = numeral(total).format('0,0.00');
-        $node.parents('tr:first').find('.cart-total').data('total', total).text('$' + total_s);
+        var $tr = $node.parents('tr:first');
+        $tr.find('.cart-total').data('total', total).text('$' + total_s);
+        $tr.find('.js-prod-qty').each(function(){
+            var unit = $(this).data('unit');
+            var pqty = qty * unit;
+            $(this).text(pqty);
+        });
         calcCartTotal();
         updateCart($node.data('id'), qty);
     }
