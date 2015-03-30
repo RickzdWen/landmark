@@ -92,7 +92,7 @@ define([
         var len = names.length;
         for (var i = 0; i < len; ++i) {
             var name = names[i];
-            var $node = this['$' + name + 'Input'] = this.$form.find('input[name=' + name + ']');
+            var $node = this['$' + name + 'Input'] = this.$form.find('[name=' + name + ']');
             var $wrapper = this['$' + name + 'Wrapper'] = $node.parents('.form-row');
             this['$' + name + 'Msg'] = $wrapper.find('.ui-msg-text');
         }
@@ -198,11 +198,9 @@ define([
 
     _FormGenerator.prototype._displayMsg = function(name, error, dfd) {
         if (error) {
-//            this['$' + name + 'Wrapper'].addClass('msgError').removeClass('msgOk');
             this['$' + name + 'Msg'].text(error).show();
             dfd && dfd.reject();
         } else {
-//            this['$' + name + 'Wrapper'].addClass('msgOk').removeClass('msgError');
             this['$' + name + 'Msg'].text('').hide();
             dfd && dfd.resolve();
         }

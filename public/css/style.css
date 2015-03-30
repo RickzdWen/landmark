@@ -1268,6 +1268,10 @@ a:hover .checkout-section strong {color: #fff;}
     margin: 0 3px 0 0;
 }
 
+.checkout-content .required-error {
+    border-color: red;
+}
+
 
 /* Checkbox */
 input.input-checkbox {
