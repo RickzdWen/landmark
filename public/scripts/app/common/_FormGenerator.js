@@ -127,14 +127,24 @@ define([
     _FormGenerator.prototype._bindOnInput = function($input, name, cName, checkFunc) {
         var self = this;
         checkFunc = checkFunc || this['valid' + cName];
-        if (!('oninput' in document.body) || lang.isIE()) {
+        if (!('oninput' in document.body)) {
             $input[0].onpropertychange = function() {
                 if (document.activeElement == this && event.propertyName.toLowerCase() == 'value') {
                     checkFunc.apply(self, [$(this).val()]);
                 }
             }
         } else {
+            var isIE = lang.isIE();
             $input.on('input', function(){
+                if (isIE) {
+                    if (typeof self[$(this).attr('name') + 'Value'] == 'undefined') {
+                        self[$(this).attr('name') + 'Value'] = $(this).val();
+                        return false;
+                    } else if (self[$(this).attr('name') + 'Value'] === $(this).val()) {
+                        return false;
+                    }
+                }
+                self[$(this).attr('name') + 'Value'] = $(this).val();
                 checkFunc.apply(self, [$(this).val()]);
             });
         }
