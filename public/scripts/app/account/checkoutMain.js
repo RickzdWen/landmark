@@ -5,12 +5,14 @@
 require([
     'domReady!',
     'jquery',
-    'app/account/CheckoutForm',
+    'app/account/AddressForm',
     'app/common/commonRun'
-], function(doc, $, CheckoutForm){
-    var aForm = new CheckoutForm({
-        $wrapper : $('#addressWrapper'),
-        inputNames : ['country', 'first_name', 'last_name', 'street', 'city', 'zip', 'state'],
-        validateNames : ['country', 'first_name', 'last_name', 'street', 'city', 'zip', 'state']
+], function(doc, $, AddressForm){
+    var aForm = new AddressForm({
+        $wrapper : $('#addressWrapper')
+    });
+    $('#addressSubmitBtn').on('click', function(e){
+        e.preventDefault();
+        aForm.$form.submit();
     });
 });

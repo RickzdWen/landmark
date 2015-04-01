@@ -54,6 +54,7 @@ module.exports = function(router){
             var CartService = require(ROOT_PATH + '/services/CartService');
             var AddressService = require(ROOT_PATH + '/services/AddressService');
             var commonConfig = require(ROOT_PATH + '/configs/commonConfig');
+            var util = require(ROOT_PATH + '/libs/util');
             var q = require('q');
             q.all([
                 CartService.listUserCart(req.session.uid, res.lang),
@@ -61,7 +62,7 @@ module.exports = function(router){
             ]).then(function(ret){
                 console.log(ret);
                 var carts = ret[0];
-                var address = ret[1] || {};
+                var address = ret[1] || {country : 'US'};
                 var snapshot = JSON.stringify(ret);
                 var crypto = require('crypto');
                 var cipher = crypto.createCipher('blowfish', commonConfig.CHEKOUT_KEY);
@@ -75,7 +76,9 @@ module.exports = function(router){
                 res.render('account/checkout', {
                     encipherred : enciphered,
                     carts : carts,
-                    address : address
+                    address : address,
+                    countries : util.countries,
+                    usStates : util.usStates
                 });
             }, function(err){
                 next(err);
