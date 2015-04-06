@@ -38,6 +38,14 @@ define([
                     _csrf : params._csrf
                 }
             });
+        },
+
+        updateCurrentAddress : function(data) {
+            return xhr({
+                url : '/account/address/shipping',
+                type : 'POST',
+                data : data
+            });
         }
     };
 });
