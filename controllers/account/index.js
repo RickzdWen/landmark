@@ -63,7 +63,7 @@ module.exports = function(router){
                 console.log(ret);
                 var carts = ret[0];
                 var address = ret[1] || {country : 'US'};
-                var snapshot = JSON.stringify(ret);
+                var snapshot = JSON.stringify(carts);
                 var crypto = require('crypto');
                 var cipher = crypto.createCipher('blowfish', commonConfig.CHEKOUT_KEY);
                 var enciphered = cipher.update(snapshot, 'utf8', 'hex');
