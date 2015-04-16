@@ -9,8 +9,9 @@ require([
     'app/services/account',
     'lib/underscore',
     'lib/numeral',
+    'app/common/params',
     'app/common/commonRun'
-], function(doc, $, AddressForm, account, _, numeral){
+], function(doc, $, AddressForm, account, _, numeral, params){
     var $aWrapper = $('#addressWrapper');
     var $dWrapper = $('#devliveryWrapper');
     var $pWrapper = $('#paymentWrapper');
@@ -39,12 +40,17 @@ require([
         toEditDelivery();
     });
 
+    var shipping = 0;
+    var total = 0;
+    var expressType = 1;
     $('input[name=shipping-price]').on('change', function(){
         var price = $(this).val();
-        $('#shippingPrice').text('$' + numeral(price).format('0.00')).data('price', price);
+        expressType = $(this).data('type');
+        shipping = numeral(price).format('0.00');
+        $('#shippingPrice').text('$' + shipping).data('price', price);
         var subTotal = $('#subTotalPrice').data('price');
-        var total = +price + +subTotal;
-        $('#totalPrice').text('$' + numeral(total).format('0.00'));
+        total = numeral(+price + +subTotal).format('0.00');
+        $('#totalPrice').text('$' + total);
         $('#deliveryContent').html($(this).next().html()).find('span').addClass('delivery-summary');
     });
     $('input[name=shipping-price]:checked').change();
@@ -92,4 +98,22 @@ require([
         $dWrapper.find('.js-inactive').hide();
         $pWrapper.find('.js-title').show().siblings().hide();
     }
+
+    // place order
+    var submitting = false;
+    $('#paymentSubmit').on('click', function(e){
+        e.preventDefault();
+        if (submitting) {
+            return false;
+        }
+        var address = aForm.$form.serializeObject();
+        var data = {
+            info : params.encipherred,
+            shipping_fee : shipping,
+            amount : total,
+            express_type : expressType
+        };
+        $.extend(data, address);
+        console.log(data);
+    });
 });

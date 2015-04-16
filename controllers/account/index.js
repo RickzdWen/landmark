@@ -87,4 +87,18 @@ module.exports = function(router){
             next(err);
         }
     });
+
+    router.post('/carts/place-holder', function(req, res, next){
+        try {
+            var enciphered = req.body.enciphered;
+            var crypto = require('crypto');
+            var commonConfig = require(ROOT_PATH + '/configs/commonConfig');
+            var decipher = crypto.createDecipher('blowfish', commonConfig.CHEKOUT_KEY);
+            var content = decipher.update(enciphered, 'hex', 'utf8');
+            content += decipher.final('utf8');
+            var carts = JSON.parse(content);
+        } catch (err) {
+            next(err);
+        }
+    });
 };

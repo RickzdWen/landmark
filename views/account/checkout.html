@@ -109,12 +109,12 @@
                         <li><strong>Choose delivery option below</strong></li>
                         <li>
                             <div class="delivery-option">
-                                <input id="shipping-address" type="radio" name="shipping-price" value="9.99" checked>
+                                <input id="shipping-address" type="radio" name="shipping-price" data-type="1" value="9.99" checked>
                                 <label for="shipping-address" class="checkbox">Standard Delivery <span>$9.99 <abbr class="sep">|</abbr> Delivery in 3 to 5 Business Days</span></label>
                             </div>
 
                             <div class="delivery-option">
-                                <input id="shipping-address-2" type="radio" name="shipping-price" value="14.99">
+                                <input id="shipping-address-2" type="radio" name="shipping-price" data-type="2" value="14.99">
                                 <label for="shipping-address-2" class="checkbox">Express Delivery <span>$14.99  <span class="sep">|</span> Delivery in 1 to 2 Business Days</span></label>
                             </div>
                             <div class="clearfix"></div>
@@ -149,7 +149,7 @@
                         </ul>
                     </div>
                 </div>
-                <a href="#" id="paymentSubmit" class="continue button color" style="display: none;">Place Order</a>
+                <a href="javascript:void(0)" id="paymentSubmit" class="continue button color" style="display: none;">Place Order</a>
             </div>
         </div>
         <!-- Billing Details / Enc -->
@@ -222,6 +222,11 @@
     <li>{%=city%} {%=state%}</li>
     <li>{%=zip%}</li>
     <li>{%=country%}</li>
+</script>
+<script type="text/javascript">
+    _params({
+        encipherred : '<%=encipherred%>'
+    });
 </script>
 <script data-main="app/account/checkoutMain" src="/scripts/lib/require.js"></script>
 </html>
