@@ -90,6 +90,7 @@ module.exports = function(router){
 
     router.post('/carts/place-holder', function(req, res, next){
         try {
+            res._format = 'json';
             var enciphered = req.body.enciphered;
             var crypto = require('crypto');
             var commonConfig = require(ROOT_PATH + '/configs/commonConfig');
@@ -97,6 +98,13 @@ module.exports = function(router){
             var content = decipher.update(enciphered, 'hex', 'utf8');
             content += decipher.final('utf8');
             var carts = JSON.parse(content);
+
+            var OrderService = require(ROOT_PATH + '/services/OrderService');
+            OrderService.placePaypalOrder(req.session.uid, req.body, carts).then(function(ret){
+                res.successJson(ret);
+            }, function(err){
+                next(err);
+            });
         } catch (err) {
             next(err);
         }
