@@ -65,7 +65,7 @@ module.exports = function(router){
                 var address = ret[1] || {country : 'US'};
                 var snapshot = JSON.stringify(carts);
                 var crypto = require('crypto');
-                var cipher = crypto.createCipher('blowfish', commonConfig.CHEKOUT_KEY);
+                var cipher = crypto.createCipher('blowfish', commonConfig.CHEKOUT_KEY + req.session.uid);
                 var enciphered = cipher.update(snapshot, 'utf8', 'hex');
                 enciphered += cipher.final('hex');
 
@@ -90,18 +90,29 @@ module.exports = function(router){
 
     router.post('/carts/place-holder', function(req, res, next){
         try {
-            res._format = 'json';
-            var enciphered = req.body.enciphered;
+            var data = req.body.data;
+            data = JSON.parse(data);
+            console.log(data);
+            var enciphered = data.info;
             var crypto = require('crypto');
             var commonConfig = require(ROOT_PATH + '/configs/commonConfig');
-            var decipher = crypto.createDecipher('blowfish', commonConfig.CHEKOUT_KEY);
+            var decipher = crypto.createDecipher('blowfish', commonConfig.CHEKOUT_KEY + req.session.uid);
             var content = decipher.update(enciphered, 'hex', 'utf8');
             content += decipher.final('utf8');
             var carts = JSON.parse(content);
 
             var OrderService = require(ROOT_PATH + '/services/OrderService');
-            OrderService.placePaypalOrder(req.session.uid, req.body, carts).then(function(ret){
-                res.successJson(ret);
+            OrderService.placePaypalOrder(req.session.uid, data, carts).then(function(ret){
+                var payment = ret.payment;
+                var links = payment.links;
+                var approveLinks = links.filter(function(item){
+                    return item.rel == 'approval_url';
+                });
+                if (approveLinks && approveLinks[0]) {
+                    res.redirect(approveLinks[0].href);
+                } else {
+                    throw new CommonError('', 54000);
+                }
             }, function(err){
                 next(err);
             });

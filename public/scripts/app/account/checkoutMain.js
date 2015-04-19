@@ -100,6 +100,7 @@ require([
     }
 
     // place order
+    var $orderForm = $('#orderForm');
     var submitting = false;
     $('#paymentSubmit').on('click', function(e){
         e.preventDefault();
@@ -114,6 +115,9 @@ require([
             express_type : expressType
         };
         $.extend(data, address);
+        delete data._csrf;
+        $('#orderData').val(JSON.stringify(data));
         console.log(data);
+        $orderForm.submit();
     });
 });

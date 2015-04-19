@@ -134,7 +134,7 @@
                 <a href="#" class="continue button color active" id="deliverySubmitBtn" style="display: none;">Continue</a>
             </div>
             <div id="paymentWrapper">
-                <a href="#" class="js-title"><div class="checkout-section"><span>3</span> Payment &amp; Order Review</div></a>
+                <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>3</span> Payment &amp; Order Review</div></a>
                 <div class="checkout-section active" style="display: none;"><span>3</span> Payment &amp; Order Review</div>
                 <div class="checkout-summary" style="display: none;">
                     <div class="eight columns alpha omega">
@@ -150,6 +150,10 @@
                     </div>
                 </div>
                 <a href="javascript:void(0)" id="paymentSubmit" class="continue button color" style="display: none;">Place Order</a>
+                <form method="POST" action="/account/carts/place-holder" target="_blank" id="orderForm" name="orderForm">
+                    <input type="hidden" style="display: none;" name="data" id="orderData">
+                    <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
+                </form>
             </div>
         </div>
         <!-- Billing Details / Enc -->

@@ -44,7 +44,7 @@
                 </tr>
 
                 <!-- Item #1 -->
-                <%list.forEach(function(item){%>
+                <%list && list.forEach(function(item){%>
                 <tr>
                     <td>
                         <img src="/images/<%if(item.pid){%>products/<%=item.pid%><%}else{%>special_offers/<%=item.sid%><%}%>.jpg?v=<%=item.img_version%>"
