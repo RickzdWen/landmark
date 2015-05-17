@@ -56,7 +56,11 @@
 	"ume": "UltraMax USA",
 	"order": {
 		"one": "Order",
-		"other": "Orders"
+		"other": "Orders",
+        "id" : "Order No.",
+        "price" : "Price",
+        "desc" : "Description",
+        "status" : "Status"
 	},
 	"record": {
 		"one": "Record",

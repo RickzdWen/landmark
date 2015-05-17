@@ -56,7 +56,11 @@
 	"ume": "美国无限药业",
 	"order": {
 		"one": "订单",
-		"other": "订单"
+		"other": "订单",
+        "id" : "订单编号",
+        "price" : "总价",
+        "desc" : "描述",
+        "status" : "状态"
 	},
 	"record": {
 		"one": "记录",

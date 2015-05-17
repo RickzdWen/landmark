@@ -49,6 +49,30 @@ module.exports = function(router){
         }
     });
 
+    router.get(/^\/orders(\/(\d+)?)?$/, function(req, res, next){
+        try {
+            if (req.query.of == 'json') {
+                res._format = 'json';
+            }
+            var OrderService = require(ROOT_PATH + '/services/OrderService');
+            var page = req.params[1];
+            if (!page || isNaN(page) || page <= 0) {
+                page = 1;
+            }
+            OrderService.getOrdersByUid(req.session.uid, page).then(function(ret){
+                if (res._format == 'json') {
+                    res.successJson(ret);
+                } else {
+                    res.render('account/orders', ret);
+                }
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
+
     router.get('/carts/checkout', function(req, res, next){
         try {
             var CartService = require(ROOT_PATH + '/services/CartService');

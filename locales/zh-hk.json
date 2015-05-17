@@ -56,7 +56,11 @@
     "ume" : "美國無限藥業",
     "order" : {
         "one" : "訂單",
-        "other" : "訂單"
+        "other" : "訂單",
+        "id" : "訂單編號",
+        "price" : "總價",
+        "desc" : "描述",
+        "status" : "狀態"
     },
     "record" : {
         "one" : "記錄",
