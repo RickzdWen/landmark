@@ -73,6 +73,7 @@ var require = {
         'lib/jquery-migrate' : ['jquery'],
         'lib/jquery.md5' : ['jquery'],
         'lib/superfish' : ['jquery'],
-        'lib/hoverIntent' : ['jquery']
+        'lib/hoverIntent' : ['jquery'],
+        'lib/stacktable' : ['jquery']
     }
 };

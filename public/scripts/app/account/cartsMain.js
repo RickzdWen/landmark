@@ -9,7 +9,8 @@ require([
     'lib/underscore',
     'landmark/topic',
     'app/services/cart',
-    'app/common/commonRun'
+    'app/common/commonRun',
+    'app/common/makeTableResponsive'
 ], function(doc, $, numeral, _, topic, cart){
     var thisrowfield;
     $('.qtyplus').click(function(e){

@@ -7,7 +7,8 @@ require([
     'jquery',
     'app/services/wishlist',
     'landmark/topic',
-    'app/common/commonRun'
+    'app/common/commonRun',
+    'app/common/makeTableResponsive'
 ], function(doc, $, wishlist, topic){
     var requesting = false;
     $('.cart-table').on('click', '.cart-remove', function(e){
