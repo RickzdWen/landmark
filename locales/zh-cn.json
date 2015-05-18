@@ -57,10 +57,19 @@
 	"order": {
 		"one": "订单",
 		"other": "订单",
-        "id" : "订单编号",
-        "price" : "总价",
-        "desc" : "描述",
-        "status" : "状态"
+		"id": "订单编号",
+		"price": "总价",
+		"desc": "描述",
+		"status": "状态",
+		"time": "下单时间",
+        "status_0" : "订单已创建",
+        "status_1" : "已付款",
+        "status_2" : "已发货",
+        "status_3" : "已完成",
+        "status_4" : "已取消",
+        "status_5" : "申请退款",
+        "status_6" : "退款中",
+        "status_7" : "已退款"
 	},
 	"record": {
 		"one": "记录",

@@ -60,7 +60,16 @@
         "id" : "Order No.",
         "price" : "Price",
         "desc" : "Description",
-        "status" : "Status"
+        "status" : "Status",
+        "time" : "Time",
+        "status_0" : "Order Created",
+        "status_1" : "Payment Completed",
+        "status_2" : "On the Way",
+        "status_3" : "Completed",
+        "status_4" : "Canceled",
+        "status_5" : "Refund Applied",
+        "status_6" : "Refunding",
+        "status_7" : "Refunded"
 	},
 	"record": {
 		"one": "Record",
