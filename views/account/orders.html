@@ -97,8 +97,8 @@
 
                 <nav class="pagination-next-prev">
                     <ul>
-                        <li><a <%if(pager.page==1){%>href="javascript:void(0)"<%}else{%>href="/account/wishlist/<%=(pager.page-1)%>"<%}%> class="prev" title="<%= __('pagination.prev')%>"></a></li>
-                        <li><a <%if(pager.page==pager.totalPage){%>href="javascript:void(0)"<%}else{%>href="/account/wishlist/<%=(pager.page+1)%>"<%}%> class="next" title="<%= __('pagination.next')%>"></a></li>
+                        <li><a <%if(pager.page==1){%>href="javascript:void(0)"<%}else{%>href="/account/order/<%=(pager.page-1)%>"<%}%> class="prev" title="<%= __('pagination.prev')%>"></a></li>
+                        <li><a <%if(pager.page==pager.totalPage){%>href="javascript:void(0)"<%}else{%>href="/account/order/<%=(pager.page+1)%>"<%}%> class="next" title="<%= __('pagination.next')%>"></a></li>
                     </ul>
                 </nav>
             </div>
