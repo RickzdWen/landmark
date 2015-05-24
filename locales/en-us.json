@@ -62,6 +62,7 @@
         "desc" : "Description",
         "status" : "Status",
         "time" : "Time",
+        "detail" : "Order Detail",
         "status_0" : "Order Created",
         "status_1" : "Payment Completed",
         "status_2" : "On the Way",

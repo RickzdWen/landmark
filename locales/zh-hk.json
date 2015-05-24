@@ -62,6 +62,7 @@
         "desc" : "描述",
         "status" : "狀態",
         "time" : "下單時間",
+        "detail" : "訂單詳情",
         "status_0" : "訂單已創建",
         "status_1" : "已付款",
         "status_2" : "已發貨",

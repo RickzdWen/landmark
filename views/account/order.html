@@ -1,0 +1,236 @@
+<%- include ../doctype.html%>
+<head>
+    <%var head={title:__('order.detail')};%>
+    <%- include ../head.html%>
+</head>
+
+<body class="boxed">
+<div id="wrapper">
+    <%var header={nav:'account'};%>
+    <%- include ../header.html%>
+
+    <!-- Titlebar
+================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2><%= __('order.detail')%> - <%= id%></h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/"><%= __('home')%></a></li>
+                        <li><a href="/"><%= __('myAccount')%></a></li>
+                        <li><a href="/account/orders"><%= __('order.other')%></a></li>
+                        <li><%= __('order.detail')%></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container -->
+    <div class="container">
+
+        <div class="eight columns" id="checkoutWrapper">
+
+            <!-- Billing Details Content -->
+            <div id="addressWrapper">
+                <div class="checkout-section active js-title"><span>1</span> Billing Details</div>
+                <a class="js-title" href="#" style="display: none;"><div class="checkout-section"><span>1</span> Billing Details <strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong> </div></a>
+                <form name="addressForm">
+                    <div class="notification error closeable" style="display: none;">
+                        <p><span class="ui-error-msg"></span></p>
+                        <a class="close" href="#"></a>
+                    </div>
+                    <div class="checkout-content">
+
+                        <div class="fullwidth">
+                            <label class="billing">Country: <abbr>*</abbr></label>
+                            <select name="country"><option value="">Select a country…</option>
+                                <%for(var v in countries){%>
+                                <option value="<%= v%>" <%if(address.country===v){%>selected="selected"<%}%>><%= countries[v]%></option>
+                                <%}%>
+                            </select>
+                        </div>
+
+
+                        <div class="half first"><label>First Name: <abbr>*</abbr></label><input name="first_name" type="text" placeholder="" value="<%=address.first_name || ''%>"></div>
+                        <div class="half"><label>Last Name: <abbr>*</abbr></label><input name="last_name" type="text" placeholder="" value="<%=address.last_name || ''%>"></div>
+
+
+                        <label>Street Address: <abbr>*</abbr></label><input type="text" name="street" class="input-text " value="<%=address.street || ''%>">
+
+
+                        <div class="half first"><label>Town / City:  <abbr>*</abbr></label><input type="text" name="city" placeholder="" value="<%=address.city || ''%>"></div>
+                        <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input type="text" name="zip" placeholder="" value="<%=address.zip || ''%>"></div>
+
+
+                        <div class="fullwidth" <%if(address.country!='US'){%>style="display:none;"<%}%> id="stateShortWrapper">
+                        <label>State: <abbr>*</abbr></label>
+                        <select name="state_short"><option value="">Select a state…</option>
+                            <%for(var v in usStates){%>
+                            <option value="<%= v%>" <%if(address.state_short===v){%>selected="selected"<%}%>><%= usStates[v]%></option>
+                            <%}%>
+                        </select>
+                    </div>
+
+                    <div class="fullwidth" id="stateWrapper" <%if(address.country=='US'){%>style="display:none;"<%}%>>
+                    <label>State: <abbr>*</abbr></label><input type="text" name="state" placeholder="" value="<%=address.state || ''%>">
+            </div>
+
+            <div class="fullwidth">
+                <label>Phone: <abbr>*</abbr></label><input type="text" name="phone" placeholder="" value="<%=address.phone || ''%>">
+            </div>
+            <!-- <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder="" value=""></div>
+             <div class="half"><label>Phone: <abbr>*</abbr></label><input type="text" placeholder="" value=""></div>-->
+
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <input type="hidden" style="display: none;" name="id" value="<%=address.id || ''%>">
+        <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
+        <a href="javascript:void(0)" class="continue button color" id="addressSubmitBtn">Continue</a>
+        </form>
+        <div class="checkout-content" style="display: none;">
+            <div class="four columns alpha" style="float: inherit;">
+                <ul class="address-review">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="devliveryWrapper">
+        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>2</span> Delivery <strong class="js-edit-icon" style="display: none;"><i class="fa fa-edit"></i>Edit</strong></div></a>
+        <div class="checkout-section active" style="display: none;"><span>2</span> Delivery</div>
+        <div class="checkout-delivery active" style="display: none;">
+            <ul class="delivery-options">
+                <li><strong>Choose delivery option below</strong></li>
+                <li>
+                    <div class="delivery-option">
+                        <input id="shipping-address" type="radio" name="shipping-price" data-type="1" value="9.99" checked>
+                        <label for="shipping-address" class="checkbox">Standard Delivery <span>$9.99 <abbr class="sep">|</abbr> Delivery in 3 to 5 Business Days</span></label>
+                    </div>
+
+                    <div class="delivery-option">
+                        <input id="shipping-address-2" type="radio" name="shipping-price" data-type="2" value="14.99">
+                        <label for="shipping-address-2" class="checkbox">Express Delivery <span>$14.99  <span class="sep">|</span> Delivery in 1 to 2 Business Days</span></label>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="checkout-delivery js-inactive" style="display: none;">
+            <div class="eight columns alpha omega">
+                <ul class="address-review delivery">
+                    <li><strong id="deliveryContent"></strong></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+        <div class="clearfix"></div>
+        <a href="#" class="continue button color active" id="deliverySubmitBtn" style="display: none;">Continue</a>
+    </div>
+    <div id="paymentWrapper">
+        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>3</span> Payment &amp; Order Review</div></a>
+        <div class="checkout-section active" style="display: none;"><span>3</span> Payment &amp; Order Review</div>
+        <div class="checkout-summary" style="display: none;">
+            <div class="eight columns alpha omega">
+                <ul class="address-review summary">
+                    <li><strong>Paypal</strong></li>
+                    <li>
+                        <ul class="payment-icons checkout">
+                            <li><img src="/images/paypal.png" alt="paypal"></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a href="javascript:void(0)" id="paymentSubmit" class="continue button color" style="display: none;">Place Order</a>
+        <form method="POST" action="/account/carts/place-holder" target="_blank" id="orderForm" name="orderForm">
+            <input type="hidden" style="display: none;" name="data" id="orderData">
+            <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
+        </form>
+    </div>
+</div>
+<!-- Billing Details / Enc -->
+
+<!-- Checkout Cart -->
+<div class="eight columns">
+    <div class="checkout-section cart"><%= __('shoppingCart')%></div>
+    <!-- Cart -->
+    <table class="stacktable small-only"><tbody><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"></td><td class="st-val st-head-row"><img src="./checkout-billing-details_files/small_product_list_08.jpg" alt=""></td></tr><tr><td class="st-key"></td><td class="st-val"><a href="http://vasterad.com/themes/trizzy/checkout-billing-details.html#">Converse All Star Trainers</a></td></tr><tr><td class="st-key">Price</td><td class="st-val">$79.00</td></tr><tr><td class="st-key">Qty</td><td class="st-val">1</td></tr><tr><td class="st-key">Total</td><td class="st-val">$79.00</td></tr><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"></td><td class="st-val st-head-row"><img src="./checkout-billing-details_files/small_product_list_09.jpg" alt=""></td></tr><tr><td class="st-key"></td><td class="st-val"><a href="http://vasterad.com/themes/trizzy/checkout-billing-details.html#">Wool Two-Piece Suit</a></td></tr><tr><td class="st-key">Price</td><td class="st-val">$99.00</td></tr><tr><td class="st-key">Qty</td><td class="st-val">1</td></tr><tr><td class="st-key">Total</td><td class="st-val">$99.00</td></tr></tbody></table><table class="checkout cart-table responsive-table stacktable large-only">
+
+    <tbody><tr>
+        <th class="hide-on-mobile"><%= __('cart.item')%></th>
+        <th></th>
+        <th><%= __('cart.price')%></th>
+        <th><%= __('cart.quantity')%></th>
+        <th><%= __('cart.total')%></th>
+    </tr>
+
+    <!-- Item #1 -->
+    <%carts.list.forEach(function(item){%>
+    <tr>
+        <td class="hide-on-mobile"><img src="/images/<%if(item.pid){%>products/<%=item.pid%><%}else{%>special_offers/<%=item.sid%><%}%>.jpg?v=<%=item.img_version%>" alt="<%=item.desc%>" style="width: 80px;"></td>
+        <td class="cart-title">
+            <a <%if(item.pid){%>href="/product/<%=item.pid%>"<%}else{%>href="/product/special_offer/<%=item.sid%>"<%}%> target="_blank"><%=item.desc%></a>
+            <%if(item.products){%>
+            <ul class="list-4 color">
+                <%item.products.forEach(function(prod){%>
+                <li><%=prod.name%> X <span class="js-prod-qty" data-unit="<%=prod.unit%>"><%=prod.qty%></span></li>
+                <%});%>
+            </ul>
+            <%}%>
+        </td>
+        <td>$<%=item.price_s%></td>
+        <td class="qty-checkout"><%=item.qty%></td>
+        <td class="cart-total">$<%= item.total_s%></td>
+    </tr>
+    <%});%>
+
+    </tbody></table>
+
+    <!-- Apply Coupon Code / Buttons -->
+    <table class="cart-table bottom">
+
+        <tbody>
+        <tr>
+            <th class="checkout-totals">
+                <div class="checkout-subtotal">
+                    <%= __('cart.subtotal')%>: <span id="subTotalPrice" data-price="<%=carts.totalPrice%>">$<%=carts.totalPrice_s%></span>
+                </div><br>
+                <div class="checkout-subtotal"><%= __('shipping')%>: <span id="shippingPrice"></span></div><br>
+                <div class="checkout-subtotal summary"><%= __('cart.orderTotal')%>: <span id="totalPrice"></span></div>
+            </th>
+        </tr>
+
+        </tbody></table>
+</div>
+<!-- Checkout Cart / End -->
+
+
+</div>
+<!-- Container / End -->
+
+<div class="margin-top-50"></div>
+<%- include ../footer.html%>
+</div>
+</body>
+<script type="text/template" id="addressReviewTpl">
+    <li>{%=first_name%} {%=last_name%}</li>
+    <li>{%=street%}</li>
+    <li>{%=city%} {%=state%}</li>
+    <li>{%=zip%}</li>
+    <li>{%=country%}</li>
+</script>
+<script type="text/javascript">
+    _params({
+        encipherred : '<%=encipherred%>'
+    });
+</script>
+<script data-main="app/account/checkoutMain" src="/scripts/lib/require.js"></script>
+</html>
