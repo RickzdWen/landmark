@@ -35,9 +35,9 @@
 
             <!-- Billing Details Content -->
             <div id="addressWrapper">
-                <div class="checkout-section active js-title"><span>1</span> Billing Details</div>
-                <a class="js-title" href="#" style="display: none;"><div class="checkout-section"><span>1</span> Billing Details <strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong> </div></a>
-                <form name="addressForm">
+                <div class="checkout-section active js-title" style="display: none;"><span>1</span> Billing Details</div>
+                <a class="js-title" href="#"><div class="checkout-section"><span>1</span> Billing Details <strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong> </div></a>
+                <form name="addressForm" style="display: none;">
                     <div class="notification error closeable" style="display: none;">
                         <p><span class="ui-error-msg"></span></p>
                         <a class="close" href="#"></a>
@@ -72,34 +72,39 @@
                             <option value="<%= v%>" <%if(address.state_short===v){%>selected="selected"<%}%>><%= usStates[v]%></option>
                             <%}%>
                         </select>
-                    </div>
+                        </div>
 
-                    <div class="fullwidth" id="stateWrapper" <%if(address.country=='US'){%>style="display:none;"<%}%>>
-                    <label>State: <abbr>*</abbr></label><input type="text" name="state" placeholder="" value="<%=address.state || ''%>">
-            </div>
+                        <div class="fullwidth" id="stateWrapper" <%if(address.country=='US'){%>style="display:none;"<%}%> >
+                        <label>State: <abbr>*</abbr></label><input type="text" name="state" placeholder="" value="<%=address.state || ''%>">
+                        </div>
 
-            <div class="fullwidth">
-                <label>Phone: <abbr>*</abbr></label><input type="text" name="phone" placeholder="" value="<%=address.phone || ''%>">
-            </div>
+                        <div class="fullwidth">
+                            <label>Phone: <abbr>*</abbr></label><input type="text" name="phone" placeholder="" value="<%=address.phone || ''%>">
+                        </div>
             <!-- <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder="" value=""></div>
              <div class="half"><label>Phone: <abbr>*</abbr></label><input type="text" placeholder="" value=""></div>-->
 
 
+                    <div class="clearfix"></div>
+                </div>
             <div class="clearfix"></div>
-        </div>
-        <div class="clearfix"></div>
 
-        <input type="hidden" style="display: none;" name="id" value="<%=address.id || ''%>">
-        <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
-        <a href="javascript:void(0)" class="continue button color" id="addressSubmitBtn">Continue</a>
-        </form>
-        <div class="checkout-content" style="display: none;">
-            <div class="four columns alpha" style="float: inherit;">
-                <ul class="address-review">
-                </ul>
+            <input type="hidden" style="display: none;" name="id" value="<%=address.id || ''%>">
+            <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
+            <a href="javascript:void(0)" class="continue button color" id="addressSubmitBtn">Continue</a>
+            </form>
+            <div class="checkout-content">
+                <div class="four columns alpha" style="float: inherit;">
+                    <ul class="address-review">
+                        <li><%=address.first_name%> <%=address.last_name%></li>
+                        <li><%=address.street%></li>
+                        <li><%=address.city%> <%=address.state%></li>
+                        <li><%=address.zip%></li>
+                        <li><%=address.county%></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
     <div id="devliveryWrapper">
         <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>2</span> Delivery <strong class="js-edit-icon" style="display: none;"><i class="fa fa-edit"></i>Edit</strong></div></a>
@@ -136,7 +141,7 @@
     <div id="paymentWrapper">
         <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>3</span> Payment &amp; Order Review</div></a>
         <div class="checkout-section active" style="display: none;"><span>3</span> Payment &amp; Order Review</div>
-        <div class="checkout-summary" style="display: none;">
+        <div class="checkout-summary">
             <div class="eight columns alpha omega">
                 <ul class="address-review summary">
                     <li><strong>Paypal</strong></li>
@@ -227,10 +232,6 @@
     <li>{%=zip%}</li>
     <li>{%=country%}</li>
 </script>
-<script type="text/javascript">
-    _params({
-        encipherred : '<%=encipherred%>'
-    });
-</script>
-<script data-main="app/account/checkoutMain" src="/scripts/lib/require.js"></script>
+
+<!--<script data-main="app/account/checkoutMain" src="/scripts/lib/require.js"></script>-->
 </html>
