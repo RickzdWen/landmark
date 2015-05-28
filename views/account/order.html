@@ -100,7 +100,7 @@
                         <li><%=address.street%></li>
                         <li><%=address.city%> <%=address.state%></li>
                         <li><%=address.zip%></li>
-                        <li><%=address.county%></li>
+                        <li><%=address.country%></li>
                     </ul>
                 </div>
             </div>
@@ -126,10 +126,18 @@
                 </li>
             </ul>
         </div>
-        <div class="checkout-delivery js-inactive" style="display: none;">
+        <div class="checkout-delivery js-inactive">
             <div class="eight columns alpha omega">
                 <ul class="address-review delivery">
-                    <li><strong id="deliveryContent"></strong></li>
+                    <li>
+                        <strong id="deliveryContent">
+                            <%if(express_type==1){%>
+                            Standard Delivery <span class="delivery-summary">$9.99 <abbr class="sep">|</abbr> Delivery in 3 to 5 Business Days</span>
+                            <%}else if (express_type == 2){%>
+                            Express Delivery <span class="delivery-summary">$14.99  <span class="sep">|</span> Delivery in 1 to 2 Business Days</span>
+                            <%}%>
+                        </strong>
+                    </li>
                 </ul>
             </div>
             <div class="clearfix"></div>
