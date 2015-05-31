@@ -23,4 +23,75 @@ module.exports = function(router) {
             next(err);
         }
     });
+
+    router.put('/address/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            OrderService.modifyOrderAddress(req.session.uid, req.params.id, req.body).then(function(){
+                res.successJson({});
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.post('/receive/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            OrderService.confirmReceive(req.session.uid, req.params.id).then(function(){
+                res.successJson({});
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.post('/apply-refund/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            if (!req.body.reason) {
+                throw new CommonError('', 54003);
+            }
+            OrderService.applyPaypalRefund(req.session.uid, req.params.id, req.body.reason).then(function(){
+                res.successJson({});
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.delete('/apply-refund/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            OrderService.cancelPaypalRefund(req.session.uid, req.params.id).then(function(){
+                res.successJson({});
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
+
+    router.put('/apply-refund/reason/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            if (!req.body.reason) {
+                throw new CommonError('', 54003);
+            }
+            OrderService.modifyRefundReason(req.session.uid, req.params.id, req.body.reason).then(function(){
+                res.successJson({});
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
 };

@@ -70,7 +70,12 @@
         "status_4" : "Canceled",
         "status_5" : "Refund Applied",
         "status_6" : "Refunding",
-        "status_7" : "Refunded"
+        "status_7" : "Refunded",
+        "confirmReceive" : "Confirmation of Receipt",
+        "cancel" : "Cancel Order",
+        "cancelRefund" : "Cancel Applying for Refund",
+        "pay" : "Finish Payment",
+        "refundReason" : "Reason"
 	},
 	"record": {
 		"one": "Record",

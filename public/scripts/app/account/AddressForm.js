@@ -14,6 +14,8 @@ define([
 
         cb : $.noop,
 
+        service : account.updateCurrentAddress,
+
         _initValidator : function() {
             this.inherited(arguments);
             var validator = this.validator;
@@ -59,20 +61,24 @@ define([
         submit : function() {
             var self = this;
             $.when(this.countryDfd, this.first_nameDfd, this.last_nameDfd, this.streetDfd, this.cityDfd, this.zipDfd,
-                this.stateDfd, this.state_shortDfd).done(function(){
+                this.stateDfd, this.state_shortDfd, this.phoneDfd).done(function(){
                     var data = self.$form.serializeObject();
                     self._displaySubmitting(true);
-                    account.updateCurrentAddress(data).then(function(ret){
-                        if (ret.insertId) {
-                            self.$idInput.val(ret.insertId);
-                        }
-                        self.cb(data);
+                    self.service(data).then(function(ret){
+                        self._submitCb(ret, data);
                     }, function(error){
                         self._displayError(error.message);
                     }).always(function(){
                         self._displaySubmitting(false);
                     });
             });
+        },
+
+        _submitCb : function(ret, data) {
+            if (ret.insertId) {
+                this.$idInput.val(ret.insertId);
+            }
+            this.cb(data);
         }
     });
 });

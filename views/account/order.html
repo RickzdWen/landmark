@@ -35,8 +35,8 @@
 
             <!-- Billing Details Content -->
             <div id="addressWrapper">
-                <div class="checkout-section active js-title" style="display: none;"><span>1</span> Billing Details</div>
-                <a class="js-title" href="#"><div class="checkout-section"><span>1</span> Billing Details <strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong> </div></a>
+                <div class="checkout-section active js-title" style="display: none;"><span>*</span>Billing Details</div>
+                <a class="js-title" href="#"><div class="checkout-section"><span>*</span>Billing Details <%if (status<2){%><strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong><%}%> </div></a>
                 <form name="addressForm" style="display: none;">
                     <div class="notification error closeable" style="display: none;">
                         <p><span class="ui-error-msg"></span></p>
@@ -48,7 +48,7 @@
                             <label class="billing">Country: <abbr>*</abbr></label>
                             <select name="country"><option value="">Select a country…</option>
                                 <%for(var v in countries){%>
-                                <option value="<%= v%>" <%if(address.country===v){%>selected="selected"<%}%>><%= countries[v]%></option>
+                                <option value="<%= v%>" <%if(address.country_short===v){%>selected="selected"<%}%>><%= countries[v]%></option>
                                 <%}%>
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                         <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input type="text" name="zip" placeholder="" value="<%=address.zip || ''%>"></div>
 
 
-                        <div class="fullwidth" <%if(address.country!='US'){%>style="display:none;"<%}%> id="stateShortWrapper">
+                        <div class="fullwidth" <%if(address.country_short!='US'){%>style="display:none;"<%}%> id="stateShortWrapper">
                         <label>State: <abbr>*</abbr></label>
                         <select name="state_short"><option value="">Select a state…</option>
                             <%for(var v in usStates){%>
@@ -74,7 +74,7 @@
                         </select>
                         </div>
 
-                        <div class="fullwidth" id="stateWrapper" <%if(address.country=='US'){%>style="display:none;"<%}%> >
+                        <div class="fullwidth" id="stateWrapper" <%if(address.country_short=='US'){%>style="display:none;"<%}%> >
                         <label>State: <abbr>*</abbr></label><input type="text" name="state" placeholder="" value="<%=address.state || ''%>">
                         </div>
 
@@ -88,10 +88,9 @@
                     <div class="clearfix"></div>
                 </div>
             <div class="clearfix"></div>
-
-            <input type="hidden" style="display: none;" name="id" value="<%=address.id || ''%>">
             <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
-            <a href="javascript:void(0)" class="continue button color" id="addressSubmitBtn">Continue</a>
+            <input type="hidden" style="display: none;" name="id" value="<%= id%>">
+            <a href="javascript:void(0)" class="continue button color" id="addressSubmitBtn">Confirm</a>
             </form>
             <div class="checkout-content">
                 <div class="four columns alpha" style="float: inherit;">
@@ -101,31 +100,14 @@
                         <li><%=address.city%> <%=address.state%></li>
                         <li><%=address.zip%></li>
                         <li><%=address.country%></li>
+                        <li><%=address.phone%></li>
                     </ul>
                 </div>
             </div>
         </div>
 
     <div id="devliveryWrapper">
-        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>2</span> Delivery <strong class="js-edit-icon" style="display: none;"><i class="fa fa-edit"></i>Edit</strong></div></a>
-        <div class="checkout-section active" style="display: none;"><span>2</span> Delivery</div>
-        <div class="checkout-delivery active" style="display: none;">
-            <ul class="delivery-options">
-                <li><strong>Choose delivery option below</strong></li>
-                <li>
-                    <div class="delivery-option">
-                        <input id="shipping-address" type="radio" name="shipping-price" data-type="1" value="9.99" checked>
-                        <label for="shipping-address" class="checkbox">Standard Delivery <span>$9.99 <abbr class="sep">|</abbr> Delivery in 3 to 5 Business Days</span></label>
-                    </div>
-
-                    <div class="delivery-option">
-                        <input id="shipping-address-2" type="radio" name="shipping-price" data-type="2" value="14.99">
-                        <label for="shipping-address-2" class="checkbox">Express Delivery <span>$14.99  <span class="sep">|</span> Delivery in 1 to 2 Business Days</span></label>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-            </ul>
-        </div>
+        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>*</span>Delivery </div></a>
         <div class="checkout-delivery js-inactive">
             <div class="eight columns alpha omega">
                 <ul class="address-review delivery">
@@ -146,9 +128,52 @@
         <div class="clearfix"></div>
         <a href="#" class="continue button color active" id="deliverySubmitBtn" style="display: none;">Continue</a>
     </div>
+    <%if(status > 0){%>
+    <div id="statusWrapper">
+        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>*</span><%= __('order.status')%></div></a>
+        <div class="checkout-content">
+            <%= __('order.status_' + status)%>
+        </div>
+    </div>
+    <div id="refundWrapper" <%if (status<5){%>style="display: none;"<%}%>>
+        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>*</span><%= __('order.status_5')%></div></a>
+        <%if (status < 5){%>
+        <div class="checkout-content">
+            <form>
+                <div class="notification error closeable" style="display: none;">
+                    <p><span class="ui-error-msg"></span></p>
+                    <a class="close" href="#"></a>
+                </div>
+                <div class="fullwidth">
+                    <label class="billing"><%= __('order.refundReason')%>: <abbr>*</abbr></label>
+                    <textarea style="width: 100%;min-height:100px;padding: 0;" name="reason"><%=refund_reason || ''%></textarea>
+                </div>
+            </form>
+        </div>
+        <%}else{%>
+        <div class="checkout-content">
+            <p><strong><%= __('order.refundReason')%>：</strong><%= refund_reason%></p>
+        </div>
+        <%}%>
+    </div>
+    <div class="notification error closeable" id="errorWrappr" style="display: none;">
+        <p><span class="ui-error-msg"></span></p>
+        <a class="close" href="#"></a>
+    </div>
+    <%if (status==1 || status == 2){%>
+    <a href="#" class="button color active js-operate" id="confirmReceiveBtn"><%= __('order.confirmReceive')%></a>
+    <%}%>
+    <%if (status==1){%>
+    <a href="#" class="button active js-operate" id="cancelRefundBtn" style="display: none;"><%= __('order.cancelRefund')%></a>
+    <a href="#" class="button gray active js-operate" id="applyRefundBtn"><%= __('order.status_5')%></a>
+    <a href="#" class="button gray active js-operate" id="applyRefundBtn2" style="display: none;"><%= __('order.status_5')%></a>
+    <%}%>
+    <%if (status==5){%>
+    <a href="#" class="button active js-operate" id="cancelRefundBtn"><%= __('order.cancelRefund')%></a>
+    <%}%>
+    <%}else{%>
     <div id="paymentWrapper">
-        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>3</span> Payment &amp; Order Review</div></a>
-        <div class="checkout-section active" style="display: none;"><span>3</span> Payment &amp; Order Review</div>
+        <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>*</span>Payment &amp; Order Review</div></a>
         <div class="checkout-summary">
             <div class="eight columns alpha omega">
                 <ul class="address-review summary">
@@ -163,11 +188,8 @@
             </div>
         </div>
         <a href="javascript:void(0)" id="paymentSubmit" class="continue button color" style="display: none;">Place Order</a>
-        <form method="POST" action="/account/carts/place-holder" target="_blank" id="orderForm" name="orderForm">
-            <input type="hidden" style="display: none;" name="data" id="orderData">
-            <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
-        </form>
     </div>
+    <%}%>
 </div>
 <!-- Billing Details / Enc -->
 
@@ -216,8 +238,8 @@
                 <div class="checkout-subtotal">
                     <%= __('cart.subtotal')%>: <span id="subTotalPrice" data-price="<%=carts.totalPrice%>">$<%=carts.totalPrice_s%></span>
                 </div><br>
-                <div class="checkout-subtotal"><%= __('shipping')%>: <span id="shippingPrice"></span></div><br>
-                <div class="checkout-subtotal summary"><%= __('cart.orderTotal')%>: <span id="totalPrice"></span></div>
+                <div class="checkout-subtotal"><%= __('shipping')%>: <span id="shippingPrice">$<%= shipping_fee_s%></span></div><br>
+                <div class="checkout-subtotal summary"><%= __('cart.orderTotal')%>: <span id="totalPrice">$<%= amount_s%></span></div>
             </th>
         </tr>
 
@@ -239,7 +261,13 @@
     <li>{%=city%} {%=state%}</li>
     <li>{%=zip%}</li>
     <li>{%=country%}</li>
+    <li>{%=phone%}</li>
 </script>
-
-<!--<script data-main="app/account/checkoutMain" src="/scripts/lib/require.js"></script>-->
+<script type="text/javascript">
+    _params({
+        id : '<%=id%>',
+        status : '<%=status%>'
+    });
+</script>
+<script data-main="app/account/orderDetailMain" src="/scripts/lib/require.js"></script>
 </html>

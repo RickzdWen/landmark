@@ -46,6 +46,45 @@ define([
                 type : 'POST',
                 data : data
             });
+        },
+
+        modifyOrderAddress : function(data) {
+            return xhr({
+                url : '/account/order/address/' + data.id,
+                type : 'PUT',
+                data : data
+            });
+        },
+
+        confirmReceive : function(id) {
+            return xhr({
+                url : '/account/order/receive/' + id,
+                type : 'POST',
+                data : {
+                    _csrf : params._csrf
+                }
+            });
+        },
+
+        applyRefund : function(id, reason) {
+            return xhr({
+                url : '/account/order/apply-refund/' + id,
+                type : 'POST',
+                data : {
+                    reason : reason,
+                    _csrf : params._csrf
+                }
+            });
+        },
+
+        cancelApplyRefund : function(id) {
+            return xhr({
+                url : '/account/order/apply-refund/' + id,
+                type : 'DELETE',
+                data : {
+                    _csrf : params._csrf
+                }
+            });
         }
     };
 });

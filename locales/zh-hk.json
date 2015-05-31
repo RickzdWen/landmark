@@ -70,7 +70,12 @@
         "status_4" : "已取消",
         "status_5" : "申請退款",
         "status_6" : "退款中",
-        "status_7" : "已退款"
+        "status_7" : "已退款",
+        "confirmReceive" : "確認收貨",
+        "cancel" : "取消訂單",
+        "cancelRefund" : "取消申請退款",
+        "pay" : "付款",
+        "refundReason" : "原因"
     },
     "record" : {
         "one" : "記錄",
