@@ -75,7 +75,10 @@
         "cancel" : "取消订单",
         "cancelRefund" : "取消申请退款",
         "pay" : "付款",
-        "refundReason" : "原因"
+        "refundReason" : "原因",
+        "shippingAddress" : "收货地址",
+        "delivery" : "快递类型",
+        "manifest" : "货物清单"
 	},
 	"record": {
 		"one": "记录",
@@ -146,5 +149,15 @@
 	"termsAndConditions": "服务条款与条件",
 	"faq": "常见问答",
 	"oneMoreQuestion": "更多问题",
-	"moreQuestionTip": "如果您有更多问题，请发送给我们，我们会尽快给您答复。"
+	"moreQuestionTip": "如果您有更多问题，请发送给我们，我们会尽快给您答复。",
+    "shippingAddress" : {
+        "country" : "国家",
+        "firstName" : "名字",
+        "lastName" : "姓氏",
+        "street" : "街道",
+        "city" : "县 / 市",
+        "zip" : "邮编",
+        "state" : "州 / 省",
+        "phone" : "电话"
+    }
 }

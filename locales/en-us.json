@@ -75,7 +75,10 @@
         "cancel" : "Cancel Order",
         "cancelRefund" : "Cancel Applying for Refund",
         "pay" : "Finish Payment",
-        "refundReason" : "Reason"
+        "refundReason" : "Reason",
+        "shippingAddress" : "Shipping Address",
+        "delivery" : "Delivery",
+        "manifest" : "Manifest"
 	},
 	"record": {
 		"one": "Record",
@@ -145,5 +148,15 @@
     "termsAndConditions" : "Terms & Conditions",
     "faq" : "frequently asked questions",
     "oneMoreQuestion" : "One More Question",
-    "moreQuestionTip" : "If you have more questions, send us a message and we will answer you as soon as possible."
+    "moreQuestionTip" : "If you have more questions, send us a message and we will answer you as soon as possible.",
+    "shipping" : {
+        "country" : "Country",
+        "firstName" : "First Name",
+        "lastName" : "Last Name",
+        "street" : "Street Address",
+        "city" : "Town / City",
+        "zip" : "Postcode / Zip",
+        "state" : "State",
+        "phone" : "Phone"
+    }
 }

@@ -35,8 +35,8 @@
 
             <!-- Billing Details Content -->
             <div id="addressWrapper">
-                <div class="checkout-section active js-title"><span>1</span> Billing Details</div>
-                <a class="js-title" href="#" style="display: none;"><div class="checkout-section"><span>1</span> Billing Details <strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong> </div></a>
+                <div class="checkout-section active js-title"><span>1</span> <%= __('order.shippingAddress')%></div>
+                <a class="js-title" href="#" style="display: none;"><div class="checkout-section"><span>1</span> <%= __('order.shippingAddress')%> <strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong> </div></a>
                 <form name="addressForm">
                     <div class="notification error closeable" style="display: none;">
                         <p><span class="ui-error-msg"></span></p>
@@ -45,7 +45,7 @@
                     <div class="checkout-content">
 
                         <div class="fullwidth">
-                            <label class="billing">Country: <abbr>*</abbr></label>
+                            <label class="billing"><%= __('shippingAddress.country')%>: <abbr>*</abbr></label>
                             <select name="country"><option value="">Select a country…</option>
                                 <%for(var v in countries){%>
                                 <option value="<%= v%>" <%if(address.country===v){%>selected="selected"<%}%>><%= countries[v]%></option>
@@ -54,19 +54,19 @@
                         </div>
 
 
-                        <div class="half first"><label>First Name: <abbr>*</abbr></label><input name="first_name" type="text" placeholder="" value="<%=address.first_name || ''%>"></div>
-                        <div class="half"><label>Last Name: <abbr>*</abbr></label><input name="last_name" type="text" placeholder="" value="<%=address.last_name || ''%>"></div>
+                        <div class="half first"><label><%= __('shippingAddress.firstName')%>: <abbr>*</abbr></label><input name="first_name" type="text" placeholder="" value="<%=address.first_name || ''%>"></div>
+                        <div class="half"><label><%= __('shippingAddress.lastName')%>: <abbr>*</abbr></label><input name="last_name" type="text" placeholder="" value="<%=address.last_name || ''%>"></div>
 
 
-                        <label>Street Address: <abbr>*</abbr></label><input type="text" name="street" class="input-text " value="<%=address.street || ''%>">
+                        <label><%= __('shippingAddress.street')%>: <abbr>*</abbr></label><input type="text" name="street" class="input-text " value="<%=address.street || ''%>">
 
 
-                        <div class="half first"><label>Town / City:  <abbr>*</abbr></label><input type="text" name="city" placeholder="" value="<%=address.city || ''%>"></div>
-                        <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input type="text" name="zip" placeholder="" value="<%=address.zip || ''%>"></div>
+                        <div class="half first"><label><%= __('shippingAddress.city')%>:  <abbr>*</abbr></label><input type="text" name="city" placeholder="" value="<%=address.city || ''%>"></div>
+                        <div class="half"><label><%= __('shippingAddress.zip')%>:<abbr>*</abbr></label><input type="text" name="zip" placeholder="" value="<%=address.zip || ''%>"></div>
 
 
                         <div class="fullwidth" <%if(address.country!='US'){%>style="display:none;"<%}%> id="stateShortWrapper">
-                            <label>State: <abbr>*</abbr></label>
+                            <label><%= __('shippingAddress.state')%>: <abbr>*</abbr></label>
                             <select name="state_short"><option value="">Select a state…</option>
                                 <%for(var v in usStates){%>
                                 <option value="<%= v%>" <%if(address.state_short===v){%>selected="selected"<%}%>><%= usStates[v]%></option>
@@ -75,11 +75,11 @@
                         </div>
 
                         <div class="fullwidth" id="stateWrapper" <%if(address.country=='US'){%>style="display:none;"<%}%>>
-                            <label>State: <abbr>*</abbr></label><input type="text" name="state" placeholder="" value="<%=address.state || ''%>">
+                            <label><%= __('shippingAddress.state')%>: <abbr>*</abbr></label><input type="text" name="state" placeholder="" value="<%=address.state || ''%>">
                         </div>
 
                         <div class="fullwidth">
-                            <label>Phone: <abbr>*</abbr></label><input type="text" name="phone" placeholder="" value="<%=address.phone || ''%>">
+                            <label><%= __('shippingAddress.phone')%>: <abbr>*</abbr></label><input type="text" name="phone" placeholder="" value="<%=address.phone || ''%>">
                         </div>
                        <!-- <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder="" value=""></div>
                         <div class="half"><label>Phone: <abbr>*</abbr></label><input type="text" placeholder="" value=""></div>-->
@@ -102,8 +102,8 @@
             </div>
 
             <div id="devliveryWrapper">
-                <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>2</span> Delivery <strong class="js-edit-icon" style="display: none;"><i class="fa fa-edit"></i>Edit</strong></div></a>
-                <div class="checkout-section active" style="display: none;"><span>2</span> Delivery</div>
+                <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>2</span> <%= __('order.delivery')%> <strong class="js-edit-icon" style="display: none;"><i class="fa fa-edit"></i>Edit</strong></div></a>
+                <div class="checkout-section active" style="display: none;"><span>2</span> <%= __('order.delivery')%></div>
                 <div class="checkout-delivery active" style="display: none;">
                     <ul class="delivery-options">
                         <li><strong>Choose delivery option below</strong></li>
