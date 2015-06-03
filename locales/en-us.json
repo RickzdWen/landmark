@@ -78,7 +78,8 @@
         "refundReason" : "Reason",
         "shippingAddress" : "Shipping Address",
         "delivery" : "Delivery",
-        "manifest" : "Manifest"
+        "manifest" : "Manifest",
+        "place" : "Place Order"
 	},
 	"record": {
 		"one": "Record",
@@ -149,7 +150,7 @@
     "faq" : "frequently asked questions",
     "oneMoreQuestion" : "One More Question",
     "moreQuestionTip" : "If you have more questions, send us a message and we will answer you as soon as possible.",
-    "shipping" : {
+    "shippingAddress" : {
         "country" : "Country",
         "firstName" : "First Name",
         "lastName" : "Last Name",
@@ -157,6 +158,16 @@
         "city" : "Town / City",
         "zip" : "Postcode / Zip",
         "state" : "State",
-        "phone" : "Phone"
-    }
+        "phone" : "Phone",
+        "selectCountry" : "Select a country…",
+        "selectState" : "Select a state…"
+    },
+    "edit" : "Edit",
+    "delivery" : {
+        "standard" : "Standard Delivery",
+        "standardDesc" : "Delivery in 3 to 5 Business Days",
+        "express" : "Express Delivery",
+        "expressDesc" : "Delivery in 1 to 2 Business Days"
+    },
+    "continue" : "Continue"
 }

@@ -36,7 +36,7 @@
             <!-- Billing Details Content -->
             <div id="addressWrapper">
                 <div class="checkout-section active js-title" style="display: none;"><span>*</span><%= __('order.shippingAddress')%></div>
-                <a class="js-title" href="javascript:void(0)"><div class="checkout-section"><span>*</span><%= __('order.shippingAddress')%> <%if (status<2){%><strong class="js-edit-icon"><i class="fa fa-edit"></i>Edit</strong><%}%> </div></a>
+                <a class="js-title" href="javascript:void(0)"><div class="checkout-section"><span>*</span><%= __('order.shippingAddress')%> <%if (status<2){%><strong class="js-edit-icon"><i class="fa fa-edit"></i><%= __('edit')%></strong><%}%> </div></a>
                 <form name="addressForm" style="display: none;">
                     <div class="notification error closeable" style="display: none;">
                         <p><span class="ui-error-msg"></span></p>
@@ -46,7 +46,7 @@
 
                         <div class="fullwidth">
                             <label class="billing"><%= __('shippingAddress.country')%>: <abbr>*</abbr></label>
-                            <select name="country"><option value="">Select a country…</option>
+                            <select name="country"><option value=""><%= __('shippingAddress.selectCountry')%></option>
                                 <%for(var v in countries){%>
                                 <option value="<%= v%>" <%if(address.country_short===v){%>selected="selected"<%}%>><%= countries[v]%></option>
                                 <%}%>
@@ -67,7 +67,7 @@
 
                         <div class="fullwidth" <%if(address.country_short!='US'){%>style="display:none;"<%}%> id="stateShortWrapper">
                         <label><%= __('shippingAddress.state')%>: <abbr>*</abbr></label>
-                        <select name="state_short"><option value="">Select a state…</option>
+                        <select name="state_short"><option value=""><%= __('shippingAddress.selectState')%></option>
                             <%for(var v in usStates){%>
                             <option value="<%= v%>" <%if(address.state_short===v){%>selected="selected"<%}%>><%= usStates[v]%></option>
                             <%}%>
@@ -114,9 +114,9 @@
                     <li>
                         <strong id="deliveryContent">
                             <%if(express_type==1){%>
-                            Standard Delivery <span class="delivery-summary">$9.99 <abbr class="sep">|</abbr> Delivery in 3 to 5 Business Days</span>
+                            <%= __('delivery.standard')%> <span class="delivery-summary">$9.99 <abbr class="sep">|</abbr> <%= __('delivery.standardDesc')%></span>
                             <%}else if (express_type == 2){%>
-                            Express Delivery <span class="delivery-summary">$14.99  <span class="sep">|</span> Delivery in 1 to 2 Business Days</span>
+                            <%= __('delivery.express')%> <span class="delivery-summary">$14.99  <span class="sep">|</span> <%= __('delivery.expressDesc')%></span>
                             <%}%>
                         </strong>
                     </li>
@@ -186,7 +186,7 @@
                     </ul>
                 </div>
             </div>
-            <a href="<%= approval_url%>" id="paymentSubmit" class="continue button color" style="display: none;">Place Order</a>
+            <a href="<%= approval_url%>" id="paymentSubmit" class="continue button color"><%= __('cart.toCheckout')%></a>
         </div>
     <%}%>
 </div>

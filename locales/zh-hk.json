@@ -78,7 +78,8 @@
         "refundReason" : "原因",
         "shippingAddress" : "收貨地址",
         "delivery" : "快遞類型",
-        "manifest" : "貨物清單"
+        "manifest" : "貨物清單",
+        "place" : "下單"
     },
     "record" : {
         "one" : "記錄",
@@ -149,7 +150,7 @@
     "faq" : "常見問答",
     "oneMoreQuestion" : "更多問題",
     "moreQuestionTip" : "如果您有更多問題，請發送給我們，我們會盡快給您答復。",
-    "shipping" : {
+    "shippingAddress" : {
         "country" : "國家",
         "firstName" : "名字",
         "lastName" : "姓氏",
@@ -157,6 +158,16 @@
         "city" : "縣 / 市",
         "zip" : "郵編",
         "state" : "州 / 省",
-        "phone" : "電話"
-    }
+        "phone" : "電話",
+        "selectCountry" : "選擇一個國家…",
+        "selectState" : "選擇一個州…"
+    },
+    "edit" : "編輯",
+    "delivery" : {
+      "standard" : "標準運送",
+      "standardDesc" : "預計3-5個工作日到達",
+      "express" : "快速運送",
+      "expressDesc" : "預計1-2個工作日到達"
+    },
+    "continue" : "繼續"
 }
