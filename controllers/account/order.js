@@ -94,4 +94,17 @@ module.exports = function(router) {
             next(err);
         }
     });
+
+    router.get('/pay/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            OrderService.payAgain(req.session.uid, req.params.id).then(function(payment){
+                res.successJson(payment);
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
 };

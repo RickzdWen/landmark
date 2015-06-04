@@ -17,6 +17,7 @@ module.exports = function(router) {
                 next(err);
             });
         } catch (err) {
+            console.log(err);
             next(err);
         }
     });
