@@ -79,7 +79,8 @@
         "shippingAddress" : "收货地址",
         "delivery" : "快递类型",
         "manifest" : "货物清单",
-        "place" : "下单"
+        "place" : "下单",
+        "review" : "订单回顾"
 	},
 	"record": {
 		"one": "记录",
@@ -168,7 +169,10 @@
       "standard" : "标准运送",
       "standardDesc" : "预计3-5个工作日到达",
       "express" : "快速运送",
-      "expressDesc" : "预计1-2个工作日到达"
+      "expressDesc" : "预计1-2个工作日到达",
+      "select" : "选择快递类型"
     },
-    "continue" : "继续"
+    "continue" : "继续",
+    "payment" : "付款",
+    "modify" : "修改"
 }

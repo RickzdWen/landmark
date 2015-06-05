@@ -106,7 +106,7 @@
                 <div class="checkout-section active" style="display: none;"><span>2</span> <%= __('order.delivery')%></div>
                 <div class="checkout-delivery active" style="display: none;">
                     <ul class="delivery-options">
-                        <li><strong>Choose delivery option below</strong></li>
+                        <li><strong><%= __('delivery.select')%></strong></li>
                         <li>
                             <div class="delivery-option">
                                 <input id="shipping-address" type="radio" name="shipping-price" data-type="1" value="9.99" checked>
@@ -134,8 +134,8 @@
                 <a href="#" class="continue button color active" id="deliverySubmitBtn" style="display: none;"><%= __('continue')%></a>
             </div>
             <div id="paymentWrapper">
-                <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>3</span> Payment &amp; Order Review</div></a>
-                <div class="checkout-section active" style="display: none;"><span>3</span> Payment &amp; Order Review</div>
+                <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>3</span> <%= __('payment')%> &amp; <%= __('order.review')%></div></a>
+                <div class="checkout-section active" style="display: none;"><span>3</span> <%= __('payment')%> &amp; <%= __('order.review')%></div>
                 <div class="checkout-summary" style="display: none;">
                     <div class="eight columns alpha omega">
                         <ul class="address-review summary">
@@ -162,7 +162,7 @@
         <div class="eight columns">
             <div class="checkout-section cart"><%= __('shoppingCart')%></div>
             <!-- Cart -->
-            <table class="stacktable small-only"><tbody><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"></td><td class="st-val st-head-row"><img src="./checkout-billing-details_files/small_product_list_08.jpg" alt=""></td></tr><tr><td class="st-key"></td><td class="st-val"><a href="http://vasterad.com/themes/trizzy/checkout-billing-details.html#">Converse All Star Trainers</a></td></tr><tr><td class="st-key">Price</td><td class="st-val">$79.00</td></tr><tr><td class="st-key">Qty</td><td class="st-val">1</td></tr><tr><td class="st-key">Total</td><td class="st-val">$79.00</td></tr><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"></td><td class="st-val st-head-row"><img src="./checkout-billing-details_files/small_product_list_09.jpg" alt=""></td></tr><tr><td class="st-key"></td><td class="st-val"><a href="http://vasterad.com/themes/trizzy/checkout-billing-details.html#">Wool Two-Piece Suit</a></td></tr><tr><td class="st-key">Price</td><td class="st-val">$99.00</td></tr><tr><td class="st-key">Qty</td><td class="st-val">1</td></tr><tr><td class="st-key">Total</td><td class="st-val">$99.00</td></tr></tbody></table><table class="checkout cart-table responsive-table stacktable large-only">
+           <table class="checkout cart-table responsive-table stacktable large-only">
 
             <tbody><tr>
                 <th class="hide-on-mobile"><%= __('cart.item')%></th>

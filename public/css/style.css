@@ -1377,6 +1377,7 @@ ul.delivery-options {
     display: block;
     margin-top: 5px;
     float: left;
+    clear: left;
 }
 
 

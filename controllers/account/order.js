@@ -99,7 +99,14 @@ module.exports = function(router) {
         try {
             res._format = 'json';
             OrderService.payAgain(req.session.uid, req.params.id).then(function(payment){
-                res.successJson(payment);
+                var links = payment.links.filter(function(item){
+                    return item.rel == 'approval_url';
+                });
+                if (links && links[0]) {
+                    res.redirect(links[0].href);
+                } else {
+                    throw new CommonError('', 54004);
+                }
             }, function(err){
                 next(err);
             });

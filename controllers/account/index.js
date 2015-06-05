@@ -135,7 +135,7 @@ module.exports = function(router){
                 if (approveLinks && approveLinks[0]) {
                     res.redirect(approveLinks[0].href);
                 } else {
-                    throw new CommonError('', 54000);
+                    throw new CommonError('', 54004);
                 }
             }, function(err){
                 next(err);

@@ -90,7 +90,7 @@
             <div class="clearfix"></div>
             <input type="hidden" style="display: none;" name="_csrf" value="<%= _csrf%>">
             <input type="hidden" style="display: none;" name="id" value="<%= id%>">
-            <a href="javascript:void(0)" class="continue button color" id="addressSubmitBtn">Confirm</a>
+            <a href="javascript:void(0)" class="continue button color" id="addressSubmitBtn"><%= __('modify')%></a>
             </form>
             <div class="checkout-content">
                 <div class="four columns alpha" style="float: inherit;">
@@ -172,7 +172,7 @@
         <%}%>
     <%}else{%>
         <div id="paymentWrapper">
-            <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>*</span>Payment &amp; Order Review</div></a>
+            <a href="javascript:void(0)" class="js-title"><div class="checkout-section"><span>*</span><%= __('payment')%> &amp; <%= __('order.review')%></div></a>
             <div class="checkout-summary">
                 <div class="eight columns alpha omega">
                     <ul class="address-review summary">
@@ -186,7 +186,7 @@
                     </ul>
                 </div>
             </div>
-            <a href="<%= approval_url%>" id="paymentSubmit" class="continue button color"><%= __('cart.toCheckout')%></a>
+            <a href="/account/order/pay/<%= id%>" id="paymentSubmit" class="continue button color"><%= __('cart.toCheckout')%></a>
         </div>
     <%}%>
 </div>
@@ -196,7 +196,7 @@
 <div class="eight columns">
     <div class="checkout-section cart"><%= __('order.manifest')%></div>
     <!-- Cart -->
-    <table class="stacktable small-only"><tbody><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"></td><td class="st-val st-head-row"><img src="./checkout-billing-details_files/small_product_list_08.jpg" alt=""></td></tr><tr><td class="st-key"></td><td class="st-val"><a href="http://vasterad.com/themes/trizzy/checkout-billing-details.html#">Converse All Star Trainers</a></td></tr><tr><td class="st-key">Price</td><td class="st-val">$79.00</td></tr><tr><td class="st-key">Qty</td><td class="st-val">1</td></tr><tr><td class="st-key">Total</td><td class="st-val">$79.00</td></tr><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"></td><td class="st-val st-head-row"><img src="./checkout-billing-details_files/small_product_list_09.jpg" alt=""></td></tr><tr><td class="st-key"></td><td class="st-val"><a href="http://vasterad.com/themes/trizzy/checkout-billing-details.html#">Wool Two-Piece Suit</a></td></tr><tr><td class="st-key">Price</td><td class="st-val">$99.00</td></tr><tr><td class="st-key">Qty</td><td class="st-val">1</td></tr><tr><td class="st-key">Total</td><td class="st-val">$99.00</td></tr></tbody></table><table class="checkout cart-table responsive-table stacktable large-only">
+    <table class="checkout cart-table responsive-table stacktable large-only">
 
     <tbody><tr>
         <th class="hide-on-mobile"><%= __('cart.item')%></th>

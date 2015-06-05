@@ -79,7 +79,8 @@
         "shippingAddress" : "收貨地址",
         "delivery" : "快遞類型",
         "manifest" : "貨物清單",
-        "place" : "下單"
+        "place" : "下單",
+        "review" : "訂單回顧"
     },
     "record" : {
         "one" : "記錄",
@@ -167,7 +168,10 @@
       "standard" : "標準運送",
       "standardDesc" : "預計3-5個工作日到達",
       "express" : "快速運送",
-      "expressDesc" : "預計1-2個工作日到達"
+      "expressDesc" : "預計1-2個工作日到達",
+      "select" : "選擇快遞類型"
     },
-    "continue" : "繼續"
+    "continue" : "繼續",
+    "payment" : "付款",
+    "modify" : "修改"
 }
