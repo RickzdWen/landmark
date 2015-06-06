@@ -2,6 +2,7 @@ ln -s ../landmark_oa/models ./models
 ln -s ../landmark_oa/configs ./configs
 ln -s ../landmark_oa/libs ./libs
 ln -s ../landmark_oa/services ./services
+ln -s ../landmark_oa/enum ./enum
 cd ./public/images/
 ln -s ../../../landmark_oa/public/images/home_banners ./home_banners
 ln -s ../../../landmark_oa/public/images/products ./products
