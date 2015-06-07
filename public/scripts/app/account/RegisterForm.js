@@ -16,6 +16,7 @@ define([
         validateNames : ['email', 'nick', 'passwd', 'repasswd'],
         validator : accountValidator,
         remoteService : account.checkReg,
+        ref : '/',
 
         init : function(){
             var self = this;
@@ -73,7 +74,7 @@ define([
                 data.repasswd = '';
                 self._displaySubmitting(true);
                 account.register(data).done(function(ret){
-                    alert(ret.uid);
+                    window.location.href = self.ref;
                 }).fail(function(error){
                     self._displayError(error.message);
                 }).always(function(){

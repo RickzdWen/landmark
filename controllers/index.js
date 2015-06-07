@@ -114,6 +114,8 @@ module.exports = function(router){
             res._format = 'json';
             var data = constructRegData(req.body);
             UserService.register(data).then(function(ret){
+                req.session.uid = ret.insertId;
+                req.session.cookie.maxAge = 14 * 24 * 3600 * 1000;
                 res.successJson({
                     uid : ret.insertId
                 });

@@ -140,7 +140,7 @@
             <%if (status < 5){%>
             <div class="checkout-content">
                 <form>
-                    <div class="notification error closeable" style="display: none;">
+                    <div class="notification error closeable" id="errorWrapper" style="display: none;">
                         <p><span class="ui-error-msg"></span></p>
                         <a class="close" href="#"></a>
                     </div>
@@ -187,6 +187,11 @@
                 </div>
             </div>
             <a href="/account/order/pay/<%= id%>" id="paymentSubmit" class="continue button color"><%= __('cart.toCheckout')%></a>
+            <a href="javascript:void(0)" id="cancelOrderBtn" class="continue button gray"><%= __('order.cancel')%></a>
+            <div class="notification error closeable" id="errorWrapper" style="display: none;">
+                <p><span class="ui-error-msg"></span></p>
+                <a class="close" href="#"></a>
+            </div>
         </div>
     <%}%>
 </div>

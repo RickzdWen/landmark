@@ -85,6 +85,16 @@ define([
                     _csrf : params._csrf
                 }
             });
+        },
+
+        cancelOrder : function(id) {
+            return xhr({
+                url : '/account/order/cancel/' + id,
+                type : 'POST',
+                data : {
+                    _csrf : params._csrf
+                }
+            });
         }
     };
 });

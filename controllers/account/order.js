@@ -114,4 +114,17 @@ module.exports = function(router) {
             next(err);
         }
     });
+
+    router.post('/cancel/:id', function(req, res, next){
+        try {
+            res._format = 'json';
+            OrderService.cancelOrder(req.session.uid, req.params.id).then(function(){
+                res.successJson({});
+            }, function(err){
+                next(err);
+            });
+        } catch (err) {
+            next(err);
+        }
+    });
 };

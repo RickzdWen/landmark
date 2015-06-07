@@ -92,6 +92,21 @@ require([
         }
     });
 
+    $('#cancelOrderBtn').on('click', function(e){
+        e.preventDefault();
+        if (requesting) {
+            return;
+        }
+        requesting = true;
+        account.cancelOrder(params.id).then(function(){
+            window.location.reload(true).replace();
+        }, function(error){
+            showError(error.message);
+        }).always(function(){
+            requesting = false;
+        });
+    });
+
     $eWrapper.on('click', '.close', function(e){
         e.preventDefault();
         hideError();

@@ -48,6 +48,7 @@ require([
         ref : params.ref
     });
     var regForm = new RegisterForm({
-        $wrapper : $('#tab2')
+        $wrapper : $('#tab2'),
+        ref : params.ref
     });
 });
